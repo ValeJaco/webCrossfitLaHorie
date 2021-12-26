@@ -1,0 +1,23 @@
+<div class="test-div">
+  <form>
+    <mat-form-field>
+      <mat-label>{{ "USER.USERNAME" | translate }}</mat-label>
+      <br/>
+      <input [formControl]="user.usernameFormControl" matInput/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "USER.FORENAME" | translate }}</mat-label>
+      <br/>
+      <input [formControl]="user.forenameFormControl" matInput/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "USER.LASTNAME" | translate }}</mat-label>
+      <br/>
+      <input [formControl]="user.lastnameFormControl" matInput/>
+    </mat-form-field>
+
+    ---
+
+    <button (click)="showValue()" mat-button>pwet</button>
+  </form>
+</div>
