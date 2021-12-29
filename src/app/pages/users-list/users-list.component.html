@@ -1,0 +1,12 @@
+<div class="div-flex">
+  <div class="margin-auto grid-container">
+    <div *ngFor="let user of userList; let i = index"
+         [ngClass]="{'user-left-card': i % 2 == 0, 'user-right-card': i % 2 != 0}"
+    >
+      <mat-card (click)="goToUserDetail(user.id)" class="user-card show-pointer mat-elevation-z7">
+        <mat-card-title>{{user.id}}</mat-card-title>
+        <mat-card-content>{{user.forename}} {{user.lastname}}</mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

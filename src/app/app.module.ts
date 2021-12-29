@@ -11,11 +11,27 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {MainContainerComponent} from './main-container/main-container.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {SeanceFormComponent} from './pages/seance-form/seance-form.component';
+import {MatListModule} from "@angular/material/list";
+import {UsersListComponent} from './pages/users-list/users-list.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {CustomSnackBarComponent} from './components/custom-snack-bar/custom-snack-bar.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormComponent
+    UserFormComponent,
+    MainContainerComponent,
+    SeanceFormComponent,
+    UsersListComponent,
+    CustomSnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +49,15 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
       }
     }),
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

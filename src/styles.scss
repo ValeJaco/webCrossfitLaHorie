@@ -1,1 +1,45 @@
-@import "../node_modules/@angular/material/prebuilt-themes/purple-green.css";
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+.div-flex {
+  display: flex;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.form-field-container {
+  padding: 10px;
+  margin: 5px;
+  min-width: 250px;
+}
+
+.show-pointer {
+  cursor: pointer;
+}
+
+.form-button {
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  alignment: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+  background-color: chocolate;
+  width: 100%;
+}
+
+.form-field-container mat-form-field {
+  width: 100%;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.main-body {
+  background-color: #2f2c2c;
+  color: papayawhip;
+}

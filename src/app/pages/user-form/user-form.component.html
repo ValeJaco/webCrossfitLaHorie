@@ -1,23 +1,108 @@
-<div class="test-div">
-  <form>
-    <mat-form-field>
-      <mat-label>{{ "USER.USERNAME" | translate }}</mat-label>
-      <br/>
-      <input [formControl]="user.usernameFormControl" matInput/>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>{{ "USER.FORENAME" | translate }}</mat-label>
-      <br/>
-      <input [formControl]="user.forenameFormControl" matInput/>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>{{ "USER.LASTNAME" | translate }}</mat-label>
-      <br/>
-      <input [formControl]="user.lastnameFormControl" matInput/>
-    </mat-form-field>
-
-    ---
-
-    <button (click)="showValue()" mat-button>pwet</button>
-  </form>
+<div class="div-flex">
+  <div class="margin-auto">
+    <mat-card class="user-form-card mat-elevation-z7">
+      <form class="form-standard">
+        <div class="div-flex">
+          <div class="margin-auto">
+            <div class="grid-container">
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.FORENAME" | translate }}</mat-label>
+                  <input [formControl]="user.forenameFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.LASTNAME" | translate }}</mat-label>
+                  <input [formControl]="user.lastnameFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.USERNAME" | translate }}</mat-label>
+                  <input [formControl]="user.usernameFormControl" matInput type="email"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-slide-toggle [formControl]="user.useSessionNotebookFormControl" color="warn">
+                  {{ "USER.USE_SESSION_NOTEBOOK" | translate }}
+                </mat-slide-toggle>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.AVAILABLE_SESSION_NUMBER" | translate }}</mat-label>
+                  <input [formControl]="user.availableSessionNumberFormControl" matInput step="1"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.ADDRESS" | translate }}</mat-label>
+                  <input [formControl]="user.addressFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.ZIP_CODE" | translate }}</mat-label>
+                  <input [formControl]="user.zipCodeFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.CITY" | translate }}</mat-label>
+                  <input [formControl]="user.cityFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.SUBSCRIPTION_DATE" | translate }}</mat-label>
+                  <input [formControl]="user.subscriptionDateFormControl" matInput type="date"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.BIRTHDATE" | translate }}</mat-label>
+                  <input [formControl]="user.birthDateFormControl" matInput type="date"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.RENEWAL_DATE" | translate }}</mat-label>
+                  <input [formControl]="user.renewalDateFormControl" matInput type="date"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.PAYMENT_METHOD" | translate }}</mat-label>
+                  <input [formControl]="user.paymentMethodFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-slide-toggle [formControl]="user.freeAccessFormControl" color="warn">
+                  {{ "USER.FREE_ACCESS" | translate }}
+                </mat-slide-toggle>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "USER.BADGE_REFERENCE" | translate }}</mat-label>
+                  <input [formControl]="user.badgeReferenceFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container grid-col-2 mat-elevation-z1">
+                <mat-selection-list [formControl]='user.rolesFormControl' color="warn">
+                  <mat-list-option *ngFor="let combo of rolesArray" [value]="combo">
+                    {{ 'ROLES.' + combo | translate }}
+                  </mat-list-option>
+                </mat-selection-list>
+              </div>
+              <div class="form-field-container grid-col-2 text-centered">
+                <button (click)="postUserForm()" [disabled]="!user.isValid(user)" class="form-button" mat-raised-button>
+                  Enregistrer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
 </div>

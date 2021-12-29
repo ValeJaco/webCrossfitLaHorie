@@ -2,6 +2,22 @@
   "USER": {
     "LASTNAME": "Nom",
     "FORENAME": "Prénom",
-    "USERNAME": "Mail"
+    "USERNAME": "Mail",
+    "USE_SESSION_NOTEBOOK": "Carnet de séances",
+    "AVAILABLE_SESSION_NUMBER": "Séances restantes",
+    "ADDRESS": "Adresse",
+    "ZIP_CODE": "Code postal",
+    "CITY": "Ville",
+    "SUBSCRIPTION_DATE": "Date d'inscription",
+    "BIRTHDATE": "Date d'anniversaire",
+    "RENEWAL_DATE": "date de renouvellement",
+    "PAYMENT_METHOD": "Méthode de paiement",
+    "FREE_ACCESS": "Free access",
+    "BADGE_REFERENCE": "Numéro de badge"
+  },
+  "ROLES": {
+    "ROLE_COACH": "Coach",
+    "ROLE_MEMBER": "Membre",
+    "ROLE_OFFICE": "Bureau"
   }
 }

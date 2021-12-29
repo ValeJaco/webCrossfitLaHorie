@@ -1,0 +1,31 @@
+<mat-toolbar class="main-toolbar">
+  <button
+    (click)="drawer.toggle()"
+    *ngIf="isHandset$"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    type="button"
+  >
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>Crossfit La Horie</span>
+</mat-toolbar>
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer
+    #drawer
+    class="sidenav"
+    mode="over"
+    role="navigation"
+  >
+    <mat-toolbar class="sidenav">Menu</mat-toolbar>
+    <mat-nav-list (click)="drawer.toggle()">
+      <a [routerLink]="['/users']" mat-list-item>Gestion des membres</a>
+    </mat-nav-list>
+    <mat-nav-list (click)="drawer.toggle()">
+      <a [routerLink]="['/seances']" mat-list-item>S'inscrire aux séances</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content class="main-content-container">
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

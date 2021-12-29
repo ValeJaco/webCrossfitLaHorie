@@ -1,0 +1,19 @@
+.user-card {
+  min-width: 250px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #94812B;
+  color: papayawhip;
+}
+
+.user-card:hover {
+  background-color: #84c226;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0;
+  grid-auto-rows: minmax(50px, auto);
+}
+

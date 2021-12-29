@@ -1,42 +1,88 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from "../../models/user";
+import {UsersFacadeService} from "../../services/users/users-facade.service";
+import {Subscription, take} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
+import {RolesEnum} from "../../constants/rolesEnum";
+import {showSnackBar} from "../../utils/utils";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, OnDestroy {
 
-  user: User;
+  paramUserdId: number;
+  user: User = new User();
+  userFormSubscriptions: Subscription[] = [];
+  rolesArray = Object.keys(RolesEnum);
 
-  constructor() {
+  constructor(
+    private usersFacade: UsersFacadeService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
   }
 
-  ngOnInit(): void {
-    this.user = new User();
-
-    this.user.lastname = "Jacobi";
-    this.user.forename = "Valérian";
-    this.user.username = "user@lala.fr";
+  ngOnInit()
+    :
+    void {
 
     this.user.initializeFormController();
+    this.paramUserdId = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.user.lastnameFormControl.valueChanges.subscribe(value => {
-      this.user.lastname = value;
-    })
+    if (!
+      this.paramUserdId || isNaN(this.paramUserdId)
+    ) {
+      this.router.navigate(['/users']);
+    }
 
-    this.user.forenameFormControl.valueChanges.subscribe(value => {
-      this.user.forename = value;
-    })
-
-    this.user.usernameFormControl.valueChanges.subscribe(value => {
-      this.user.username = value;
+    this.usersFacade.getUserById(this.paramUserdId).pipe(take(1)).subscribe(value => {
+      this.user = new User(value);
+      this.unsubscribeFromUserFormControllers();
+      this.user.initializeFormController();
+      this.userFormSubscriptions = this.user.initializeFormControllerSubscription();
     })
   }
 
-  showValue() {
-    console.log(this.user);
+  postUserForm()
+    :
+    void {
+    this.usersFacade.updateUser(this.user.id, this.user.userToApi()).pipe(take(1)).subscribe(user => {
+      console.log(user)
+
+      showSnackBar(
+        this.snackBar,
+        'SNACKBAR.UPDATE_GENERIC_OK',
+        'success-snackbar',
+        'check'
+      );
+
+    });
+  }
+
+  unsubscribeFromUserFormControllers()
+    :
+    void {
+    this.userFormSubscriptions.forEach(sub =>
+      sub.unsubscribe()
+    )
+    this.userFormSubscriptions = [];
+  }
+
+  unsubscribeFromAll()
+    :
+    void {
+    this.unsubscribeFromUserFormControllers();
+  }
+
+  ngOnDestroy()
+    :
+    void {
+    this.unsubscribeFromAll();
   }
 
 }
