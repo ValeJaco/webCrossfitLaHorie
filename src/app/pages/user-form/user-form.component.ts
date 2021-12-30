@@ -27,9 +27,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit()
-    :
-    void {
+  ngOnInit(): void {
 
     this.user.initializeFormController();
     this.paramUserdId = Number(this.route.snapshot.paramMap.get('id'));
@@ -37,51 +35,79 @@ export class UserFormComponent implements OnInit, OnDestroy {
     if (!
       this.paramUserdId || isNaN(this.paramUserdId)
     ) {
-      this.router.navigate(['/users']);
-    }
-
-    this.usersFacade.getUserById(this.paramUserdId).pipe(take(1)).subscribe(value => {
-      this.user = new User(value);
-      this.unsubscribeFromUserFormControllers();
-      this.user.initializeFormController();
       this.userFormSubscriptions = this.user.initializeFormControllerSubscription();
-    })
+    } else {
+      this.usersFacade.getUserById(this.paramUserdId).pipe(take(1)).subscribe(value => {
+        this.user = new User(value);
+        this.unsubscribeFromUserFormControllers();
+        this.user.initializeFormController();
+        this.userFormSubscriptions = this.user.initializeFormControllerSubscription();
+      })
+    }
   }
 
-  postUserForm()
-    :
-    void {
-    this.usersFacade.updateUser(this.user.id, this.user.userToApi()).pipe(take(1)).subscribe(user => {
-      console.log(user)
+  postUserForm(): void {
 
-      showSnackBar(
-        this.snackBar,
-        'SNACKBAR.UPDATE_GENERIC_OK',
-        'success-snackbar',
-        'check'
-      );
+    if (this.user.id > 0) {
+      this.usersFacade.updateUser(
+        this.user.id,
+        this.user.userToApi())
+        .pipe(take(1))
+        .subscribe(user => {
 
-    });
+          if (user) {
+            showSnackBar(
+              this.snackBar,
+              'SNACKBAR.UPDATE_USER_OK',
+              'success-snackbar',
+              'check'
+            );
+          } else {
+            showSnackBar(
+              this.snackBar,
+              'SNACKBAR.UPDATE_USER_NOK',
+              'error-snackbar',
+              'error'
+            );
+          }
+
+        });
+    } else {
+      this.usersFacade.createUser(
+        this.user.userToApi())
+        .pipe(take(1))
+        .subscribe(user => {
+          if (user) {
+            showSnackBar(
+              this.snackBar,
+              'SNACKBAR.CREATE_USER_OK',
+              'success-snackbar',
+              'check'
+            );
+          } else {
+            showSnackBar(
+              this.snackBar,
+              'SNACKBAR.CREATE_USER_NOK',
+              'error-snackbar',
+              'error'
+            );
+          }
+        });
+    }
   }
 
-  unsubscribeFromUserFormControllers()
-    :
-    void {
+  unsubscribeFromUserFormControllers(): void {
     this.userFormSubscriptions.forEach(sub =>
       sub.unsubscribe()
     )
     this.userFormSubscriptions = [];
   }
 
-  unsubscribeFromAll()
-    :
-    void {
+  unsubscribeFromAll(): void {
     this.unsubscribeFromUserFormControllers();
   }
 
-  ngOnDestroy()
-    :
-    void {
+  ngOnDestroy(): void {
     this.unsubscribeFromAll();
   }
 

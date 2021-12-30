@@ -19,5 +19,15 @@
     "ROLE_COACH": "Coach",
     "ROLE_MEMBER": "Membre",
     "ROLE_OFFICE": "Bureau"
+  },
+  "SNACKBAR": {
+    "CREATE_USER_OK": "Création du nouvel utilisateur effectuée",
+    "UPDATE_USER_OK": "Modification de l'utilisateur effectuée"
+  },
+  "SIDENAV": {
+    "SEANCES_LIST": "Liste des séances",
+    "USERS_LIST": "Liste des membres",
+    "TOOLBAR_TITLE": "Crossfit La Horie",
+    "MENU": "Menu"
   }
 }

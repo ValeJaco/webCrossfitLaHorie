@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -23,6 +23,12 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {CustomSnackBarComponent} from './components/custom-snack-bar/custom-snack-bar.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {RouterModule} from "@angular/router";
+import {SeancesListComponent} from './pages/seances-list/seances-list.component';
+import {CommonModule, DatePipe, registerLocaleData} from "@angular/common";
+import {MAT_DATE_LOCALE} from "@angular/material/core";
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -31,10 +37,12 @@ import {RouterModule} from "@angular/router";
     MainContainerComponent,
     SeanceFormComponent,
     UsersListComponent,
-    CustomSnackBarComponent
+    CustomSnackBarComponent,
+    SeancesListComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -59,7 +67,8 @@ import {RouterModule} from "@angular/router";
     MatSnackBarModule,
     RouterModule
   ],
-  providers: [],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+    {provide: LOCALE_ID, useValue: 'fr-FR'}, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -31,7 +31,7 @@ export function showSnackBar(
 ): void {
   setTimeout(() => {
     snackBar.openFromComponent(CustomSnackBarComponent, {
-      data: {message, icon},
+      data: {message, icon, status},
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
       duration: environment.SNACKBAR_DURATION,

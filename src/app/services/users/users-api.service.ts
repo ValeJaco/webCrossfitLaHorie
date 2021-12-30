@@ -10,6 +10,8 @@ import {BackendResponse} from "../../models/backend-response";
 })
 export class UsersApiService {
 
+  STATUS_OK = 200;
+
   constructor(private apiService: ApiService) {
   }
 
@@ -31,15 +33,25 @@ export class UsersApiService {
     );
   }
 
-  createUser(jsonUser: any): Observable<User> {
+  createUser(jsonUser: any): Observable<User | boolean> {
     return this.apiService
       .post(`${environment.API_URL}/users`, jsonUser)
-      .pipe(map((response: BackendResponse) => response.body));
+      .pipe(map((response: BackendResponse) => {
+        if (response.status == this.STATUS_OK) {
+          return response.body;
+        }
+        return false;
+      }));
   }
 
-  updateUser(userId: number, jsonUser: any): Observable<User> {
+  updateUser(userId: number, jsonUser: any): Observable<User | boolean> {
     return this.apiService
       .patch(`${environment.API_URL}/users/${userId}`, jsonUser)
-      .pipe(map((response: BackendResponse) => response.body));
+      .pipe(map((response: BackendResponse) => {
+        if (response.status == this.STATUS_OK) {
+          return response.body;
+        }
+        return false;
+      }));
   }
 }

@@ -8,7 +8,7 @@
   >
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-  <span>Crossfit La Horie</span>
+  <span>{{ "SIDENAV.TOOLBAR_TITLE" | translate }}</span>
 </mat-toolbar>
 <mat-drawer-container class="sidenav-container">
   <mat-drawer
@@ -17,12 +17,12 @@
     mode="over"
     role="navigation"
   >
-    <mat-toolbar class="sidenav">Menu</mat-toolbar>
+    <mat-toolbar class="sidenav">{{ "SIDENAV.MENU" | translate }}</mat-toolbar>
     <mat-nav-list (click)="drawer.toggle()">
-      <a [routerLink]="['/users']" mat-list-item>Gestion des membres</a>
+      <a [routerLink]="['/users']" mat-list-item>{{ "SIDENAV.USERS_LIST" | translate }}</a>
     </mat-nav-list>
     <mat-nav-list (click)="drawer.toggle()">
-      <a [routerLink]="['/seances']" mat-list-item>S'inscrire aux séances</a>
+      <a [routerLink]="['/seances']" mat-list-item>{{ "SIDENAV.SEANCES_LIST" | translate }}</a>
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content class="main-content-container">

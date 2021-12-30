@@ -9,10 +9,12 @@ import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
 export class CustomSnackBarComponent implements OnInit {
   text: string;
   icon: string;
+  status: string;
 
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
     this.text = data.message;
     this.icon = data.icon;
+    this.status = data.status;
   }
 
   ngOnInit(): void {

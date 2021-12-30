@@ -1,0 +1,34 @@
+<div class="div-flex">
+  <div class="margin-auto grid-container">
+
+    <mat-card *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
+              class="text-centered day-title-card">
+      <mat-card-content>
+        {{ getDateForCalendar(index) | date: 'EEEE - dd/MM':timeZone:'fr' }}
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
+         class="text-centered day-of-week day-of-week-{{ index }}"
+    >
+      <ng-container *ngIf='seancesList.get( getDateKey(getDateForCalendar(index)) )'>
+        <div class="seances-of-day-container">
+          <ng-container
+            *ngFor='let seance of seancesList.get( getDateKey(getDateForCalendar(index)) )'>
+            <mat-card (click)="goToSeanceDetail(seance)" class="seance-card show-pointer mat-elevation-z3">
+              <mat-card-title>{{seance.name}}</mat-card-title>
+              <mat-card-content>
+                {{seance.startDate | date: 'hh:mm':timeZone:'fr' }}<br/>
+                {{seance.users.length}}/{{seance.maxSpot}}
+              </mat-card-content>
+              <mat-card-footer>
+                <mat-icon class="seance_mgt_icons hover-green">add_circle</mat-icon>
+                <mat-icon class="seance_mgt_icons hover-red">remove_circle</mat-icon>
+              </mat-card-footer>
+            </mat-card>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

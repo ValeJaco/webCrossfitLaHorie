@@ -27,7 +27,6 @@
 
 .spacer {
   flex: 1 1 auto;
-  background-color: chocolate;
   width: 100%;
 }
 
@@ -43,3 +42,16 @@
   background-color: #2f2c2c;
   color: papayawhip;
 }
+
+.error-snackbar {
+  background: red;
+}
+
+.success-snackbar {
+  background: green;
+}
+
+.warning-snackbar {
+  background: darkorange;
+}
+

@@ -19,7 +19,11 @@ export class UsersFacadeService {
     return this.usersApiService.getUserById(userId);
   }
 
-  updateUser(userId: number, jsonUser: any): Observable<User> {
+  updateUser(userId: number, jsonUser: any): Observable<User | boolean> {
     return this.usersApiService.updateUser(userId, jsonUser);
+  }
+
+  createUser(jsonUser: any): Observable<User | boolean> {
+    return this.usersApiService.createUser(jsonUser);
   }
 }
