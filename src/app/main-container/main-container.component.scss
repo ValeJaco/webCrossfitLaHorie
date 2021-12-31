@@ -18,6 +18,10 @@
 .main-toolbar {
   background-color: #596643;
   color: papayawhip;
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
 }
 
 .sidenav, .sidenav a {

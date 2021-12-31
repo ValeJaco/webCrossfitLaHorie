@@ -19,8 +19,8 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.usersFacade.getUsers().pipe(take(1)).subscribe(value => {
-      this.userList = initGenericArrayFromJson(User, value);
+    this.usersFacade.getUsers().pipe(take(1)).subscribe(response => {
+      this.userList = initGenericArrayFromJson(User, response.body);
     })
   }
 

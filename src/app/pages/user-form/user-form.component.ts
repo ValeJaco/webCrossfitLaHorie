@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {RolesEnum} from "../../constants/rolesEnum";
 import {showSnackBar} from "../../utils/utils";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ResponseEnum} from "../../constants/response-enum";
 
 @Component({
   selector: 'app-user-form',
@@ -37,8 +38,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
     ) {
       this.userFormSubscriptions = this.user.initializeFormControllerSubscription();
     } else {
-      this.usersFacade.getUserById(this.paramUserdId).pipe(take(1)).subscribe(value => {
-        this.user = new User(value);
+      this.usersFacade.getUserById(this.paramUserdId).pipe(take(1)).subscribe(response => {
+        this.user = new User(response.body);
         this.unsubscribeFromUserFormControllers();
         this.user.initializeFormController();
         this.userFormSubscriptions = this.user.initializeFormControllerSubscription();
@@ -53,9 +54,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
         this.user.id,
         this.user.userToApi())
         .pipe(take(1))
-        .subscribe(user => {
-
-          if (user) {
+        .subscribe(response => {
+          if (response.status === ResponseEnum.OK) {
             showSnackBar(
               this.snackBar,
               'SNACKBAR.UPDATE_USER_OK',
@@ -70,14 +70,14 @@ export class UserFormComponent implements OnInit, OnDestroy {
               'error'
             );
           }
-
         });
     } else {
       this.usersFacade.createUser(
         this.user.userToApi())
         .pipe(take(1))
-        .subscribe(user => {
-          if (user) {
+        .subscribe(response => {
+          if (response.status === ResponseEnum.OK) {
+            this.user.id = response.body.id
             showSnackBar(
               this.snackBar,
               'SNACKBAR.CREATE_USER_OK',

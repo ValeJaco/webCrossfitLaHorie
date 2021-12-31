@@ -15,15 +15,17 @@
         <div class="seances-of-day-container">
           <ng-container
             *ngFor='let seance of seancesList.get( getDateKey(getDateForCalendar(index)) )'>
-            <mat-card (click)="goToSeanceDetail(seance)" class="seance-card show-pointer mat-elevation-z3">
+            <mat-card class="seance-card mat-elevation-z3">
               <mat-card-title>{{seance.name}}</mat-card-title>
               <mat-card-content>
-                {{seance.startDate | date: 'hh:mm':timeZone:'fr' }}<br/>
+                {{seance.startDate | date: 'HH:mm':timeZone:'fr' }}<br/>
                 {{seance.users.length}}/{{seance.maxSpot}}
               </mat-card-content>
               <mat-card-footer>
-                <mat-icon class="seance_mgt_icons hover-green">add_circle</mat-icon>
-                <mat-icon class="seance_mgt_icons hover-red">remove_circle</mat-icon>
+                <mat-icon class="show-pointer seance_mgt_icons hover-green">add_circle</mat-icon>
+                <mat-icon class="show-pointer seance_mgt_icons hover-red">remove_circle</mat-icon>
+                <mat-icon (click)="goToSeanceDetail(seance.id)" class="show-pointer seance_mgt_icons hover-orange">edit
+                </mat-icon>
               </mat-card-footer>
             </mat-card>
           </ng-container>

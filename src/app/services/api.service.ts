@@ -7,6 +7,9 @@ import {RESPONSE_OBSERVE_OPTION} from "../constants/constants";
   providedIn: 'root'
 })
 export class ApiService {
+
+  STATUS_OK = 200;
+  
   constructor(private http: HttpClient) {
   }
 

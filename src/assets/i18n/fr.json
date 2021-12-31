@@ -13,7 +13,17 @@
     "RENEWAL_DATE": "date de renouvellement",
     "PAYMENT_METHOD": "Méthode de paiement",
     "FREE_ACCESS": "Free access",
-    "BADGE_REFERENCE": "Numéro de badge"
+    "BADGE_REFERENCE": "Numéro de badge",
+    "BUTTON_SAVE": "Sauvegarder"
+  },
+  "SEANCE": {
+    "NAME": "Nom",
+    "MAX_SPOT": "Nombre de places",
+    "START_DATE": "Début de la séance",
+    "DURATION": "Durée",
+    "LOCATION": "Localisation",
+    "COACH": "Coach",
+    "BUTTON_SAVE": "Sauvegarder"
   },
   "ROLES": {
     "ROLE_COACH": "Coach",
@@ -22,7 +32,13 @@
   },
   "SNACKBAR": {
     "CREATE_USER_OK": "Création du nouvel utilisateur effectuée",
-    "UPDATE_USER_OK": "Modification de l'utilisateur effectuée"
+    "UPDATE_USER_OK": "Mise à jour de l'utilisateur effectuée",
+    "CREATE_SEANCE_OK": "Création de la séance effectuée",
+    "UPDATE_SEANCE_OK": "Mise à jour de la séance",
+    "CREATE_USER_NOK": "Échec de la création du nouvel utilisateur",
+    "UPDATE_USER_NOK": "Échec de la mise à jour de l'utilisateur",
+    "CREATE_SEANCE_NOK": "Échec de la création de la séance",
+    "UPDATE_SEANCE_NOK": "Échec de la mise à jour de la séance"
   },
   "SIDENAV": {
     "SEANCES_LIST": "Liste des séances",

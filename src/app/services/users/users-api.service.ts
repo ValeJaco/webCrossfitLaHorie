@@ -1,57 +1,53 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from "../api.service";
-import {User} from "../../models/user";
 import {map, Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
-import {BackendResponse} from "../../models/backend-response";
+import {UserResponse} from "../../models/responses/user-response";
+import {UsersListResponse} from "../../models/responses/users-list-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersApiService {
 
-  STATUS_OK = 200;
-
   constructor(private apiService: ApiService) {
   }
 
-  getUserById(userId: number): Observable<User> {
+  getUserById(userId: number): Observable<UserResponse> {
     const url = `${environment.API_URL}/users/${userId}`;
     return this.apiService.get(url).pipe(
-      map((response: BackendResponse) => {
-        return response.body;
+      map((response: UserResponse) => {
+        return response;
       })
     );
   }
 
-  getUsers(): Observable<User[]> {
+  getUsers(): Observable<UsersListResponse> {
     const url = `${environment.API_URL}/users`;
     return this.apiService.get(url).pipe(
-      map((response: BackendResponse) => {
-        return response.body;
+      map((response: UsersListResponse) => {
+        return response;
       })
     );
   }
 
-  createUser(jsonUser: any): Observable<User | boolean> {
+  createUser(jsonUser: any): Observable<UserResponse> {
     return this.apiService
       .post(`${environment.API_URL}/users`, jsonUser)
-      .pipe(map((response: BackendResponse) => {
-        if (response.status == this.STATUS_OK) {
-          return response.body;
+      .pipe(map((response: UserResponse) => {
+        if (response.status == this.apiService.STATUS_OK) {
+          return response;
         }
-        return false;
       }));
   }
 
-  updateUser(userId: number, jsonUser: any): Observable<User | boolean> {
+  updateUser(userId: number, jsonUser: any): Observable<UserResponse> {
     return this.apiService
       .patch(`${environment.API_URL}/users/${userId}`, jsonUser)
-      .pipe(map((response: BackendResponse) => {
-        if (response.status == this.STATUS_OK) {
-          return response.body;
+      .pipe(map((response: UserResponse) => {
+        if (response.status == this.apiService.STATUS_OK) {
+          return response;
         }
-        return false;
       }));
   }
 }

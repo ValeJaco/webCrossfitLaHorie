@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {map, Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
-import {BackendResponse} from "../../models/backend-response";
 import {ApiService} from "../api.service";
-import {Seance} from "../../models/seance";
+import {SeanceResponse} from "../../models/responses/seance-response";
+import {SeancesListResponse} from "../../models/responses/seances-list-response";
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +13,42 @@ export class SeancesApiService {
   constructor(private apiService: ApiService) {
   }
 
-  getSeanceById(seanceId: number): Observable<Seance> {
+  getSeanceById(seanceId: number): Observable<SeanceResponse> {
     const url = `${environment.API_URL}/seances/${seanceId}`;
     return this.apiService.get(url).pipe(
-      map((response: BackendResponse) => {
-        return response.body;
+      map((response: SeanceResponse) => {
+        return response;
       })
     );
   }
 
-  getSeances(): Observable<Seance[]> {
+  getSeances(): Observable<SeancesListResponse> {
     const url = `${environment.API_URL}/seances`;
     return this.apiService.get(url).pipe(
-      map((response: BackendResponse) => {
-        return response.body;
+      map((response: SeancesListResponse) => {
+        return response;
       })
     );
+  }
+
+  createSeance(jsonSeance: any): Observable<SeanceResponse> {
+    return this.apiService
+      .post(`${environment.API_URL}/seances`, jsonSeance)
+      .pipe(map((response: SeanceResponse) => {
+        if (response.status == this.apiService.STATUS_OK) {
+          return response;
+        }
+      }));
+  }
+
+  updateSeance(seanceId: number, jsonSeance: any): Observable<SeanceResponse> {
+    return this.apiService
+      .patch(`${environment.API_URL}/seances/${seanceId}`, jsonSeance)
+      .pipe(map((response: SeanceResponse) => {
+        if (response.status == this.apiService.STATUS_OK) {
+          return response;
+        }
+      }));
   }
 
 }

@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {UsersApiService} from "./users-api.service";
 import {Observable} from "rxjs";
-import {User} from "../../models/user";
+import {UsersListResponse} from "../../models/responses/users-list-response";
+import {UserResponse} from "../../models/responses/user-response";
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,19 @@ export class UsersFacadeService {
   constructor(private usersApiService: UsersApiService) {
   }
 
-  getUsers(): Observable<User[]> {
+  getUsers(): Observable<UsersListResponse> {
     return this.usersApiService.getUsers();
   }
 
-  getUserById(userId: number): Observable<User> {
+  getUserById(userId: number): Observable<UserResponse> {
     return this.usersApiService.getUserById(userId);
   }
 
-  updateUser(userId: number, jsonUser: any): Observable<User | boolean> {
+  updateUser(userId: number, jsonUser: any): Observable<UserResponse> {
     return this.usersApiService.updateUser(userId, jsonUser);
   }
 
-  createUser(jsonUser: any): Observable<User | boolean> {
+  createUser(jsonUser: any): Observable<UserResponse> {
     return this.usersApiService.createUser(jsonUser);
   }
 }

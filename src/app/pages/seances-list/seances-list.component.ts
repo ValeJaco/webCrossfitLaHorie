@@ -4,6 +4,7 @@ import {SeancesFacadeService} from "../../services/seances/seances-facade.servic
 import {take} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {DatePipe} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-seances-list',
@@ -19,15 +20,15 @@ export class SeancesListComponent implements OnInit {
   timeZone = environment.TIMEZONE;
   nbDaysToShow = 7;
 
-  constructor(private seancesFacadeService: SeancesFacadeService) {
+  constructor(private seancesFacadeService: SeancesFacadeService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.seancesFacadeService.getSeances()
       .pipe(take(1))
-      .subscribe(seances => {
-        if (seances && seances.length > 0) {
-          seances.forEach(seance => {
+      .subscribe(response => {
+        if (response.body && response.body.length > 0) {
+          response.body.forEach(seance => {
             const dateSearchedKey = this.getDateKey(new Date(seance.startDate));
             if (!this.seancesList.get(dateSearchedKey)) {
               this.seancesList.set(dateSearchedKey, []);
@@ -38,8 +39,8 @@ export class SeancesListComponent implements OnInit {
       })
   }
 
-  goToSeanceDetail(seanceId: any) {
-    console.log(seanceId);
+  goToSeanceDetail(seanceId: number) {
+    this.router.navigate(['/seances/' + seanceId]);
   }
 
   getDateKey(date: Date): string {
