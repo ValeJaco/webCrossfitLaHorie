@@ -38,12 +38,19 @@
     "CREATE_USER_NOK": "Échec de la création du nouvel utilisateur",
     "UPDATE_USER_NOK": "Échec de la mise à jour de l'utilisateur",
     "CREATE_SEANCE_NOK": "Échec de la création de la séance",
-    "UPDATE_SEANCE_NOK": "Échec de la mise à jour de la séance"
+    "UPDATE_SEANCE_NOK": "Échec de la mise à jour de la séance",
+    "AUTHENTIFICATION_NOK": "Les informations de connexion sont erronées"
   },
   "SIDENAV": {
     "SEANCES_LIST": "Liste des séances",
     "USERS_LIST": "Liste des membres",
     "TOOLBAR_TITLE": "Crossfit La Horie",
-    "MENU": "Menu"
+    "MENU": "Menu",
+    "LOG_OUT": "Se déconnecter"
+  },
+  "AUTH": {
+    "USERNAME": "Email",
+    "PASSWORD": "Mot de passe",
+    "LOG_IN": "Se connecter"
   }
 }

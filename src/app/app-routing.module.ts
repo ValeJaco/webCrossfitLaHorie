@@ -5,6 +5,7 @@ import {SeanceFormComponent} from "./pages/seance-form/seance-form.component";
 import {AuthGuard} from "./security/auth.guard";
 import {UsersListComponent} from "./pages/users-list/users-list.component";
 import {SeancesListComponent} from "./pages/seances-list/seances-list.component";
+import {AuthentificationComponent} from "./pages/authentification/authentification.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'seances', pathMatch: 'full'},
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'users/:id',
     component: UserFormComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'auth',
+    component: AuthentificationComponent
   }];
 
 @NgModule({

@@ -1,7 +1,7 @@
 <mat-toolbar class="main-toolbar">
   <button
     (click)="drawer.toggle()"
-    *ngIf="isHandset$"
+    *ngIf="isLoggedIn()"
     aria-label="Toggle sidenav"
     mat-icon-button
     type="button"
@@ -17,13 +17,19 @@
     mode="over"
     role="navigation"
   >
-    <mat-toolbar class="sidenav">{{ "SIDENAV.MENU" | translate }}</mat-toolbar>
-    <mat-nav-list (click)="drawer.toggle()">
-      <a [routerLink]="['/users']" mat-list-item>{{ "SIDENAV.USERS_LIST" | translate }}</a>
-    </mat-nav-list>
-    <mat-nav-list (click)="drawer.toggle()">
-      <a [routerLink]="['/seances']" mat-list-item>{{ "SIDENAV.SEANCES_LIST" | translate }}</a>
-    </mat-nav-list>
+    <ng-container *ngIf="isLoggedIn()">
+      <mat-toolbar class="sidenav">{{ "SIDENAV.MENU" | translate }}</mat-toolbar>
+      <mat-nav-list (click)="drawer.toggle()">
+        <a [routerLink]="['/users']" mat-list-item>{{ "SIDENAV.USERS_LIST" | translate }}</a>
+      </mat-nav-list>
+      <mat-nav-list (click)="drawer.toggle()">
+        <a [routerLink]="['/seances']" mat-list-item>{{ "SIDENAV.SEANCES_LIST" | translate }}</a>
+      </mat-nav-list>
+      <mat-nav-list (click)="drawer.toggle()">
+        <a (click)=" logOut() ; drawer.toggle()" mat-list-item>{{ "SIDENAV.LOG_OUT" | translate }}</a>
+      </mat-nav-list>
+    </ng-container>
+
   </mat-drawer>
   <mat-drawer-content class="main-content-container">
     <ng-content></ng-content>

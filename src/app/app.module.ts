@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {UserFormComponent} from './pages/user-form/user-form.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
@@ -27,6 +27,8 @@ import {SeancesListComponent} from './pages/seances-list/seances-list.component'
 import {CommonModule, DatePipe, registerLocaleData} from "@angular/common";
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import localeFr from '@angular/common/locales/fr';
+import {AuthentificationComponent} from './pages/authentification/authentification.component';
+import {AuthInterceptor} from "./security/auth.interceptor";
 
 registerLocaleData(localeFr);
 
@@ -38,7 +40,8 @@ registerLocaleData(localeFr);
     SeanceFormComponent,
     UsersListComponent,
     CustomSnackBarComponent,
-    SeancesListComponent
+    SeancesListComponent,
+    AuthentificationComponent
   ],
   imports: [
     BrowserModule,
@@ -67,8 +70,12 @@ registerLocaleData(localeFr);
     MatSnackBarModule,
     RouterModule
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
-    {provide: LOCALE_ID, useValue: 'fr-FR'}, DatePipe],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+    {provide: LOCALE_ID, useValue: 'fr-FR'},
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

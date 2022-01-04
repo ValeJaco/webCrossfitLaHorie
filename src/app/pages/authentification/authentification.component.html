@@ -1,0 +1,30 @@
+<div class="div-flex">
+  <div class="margin-auto grid-container">
+    <mat-card class="seance-form-card mat-elevation-z7">
+      <form class="form-standard">
+        <div class="div-flex">
+          <div class="margin-auto">
+            <div class="form-field-container">
+              <mat-form-field>
+                <mat-label>{{ "AUTH.USERNAME" | translate }}</mat-label>
+                <input [formControl]="usernameFormControl" matInput type="text"/>
+              </mat-form-field>
+            </div>
+            <div class="form-field-container">
+              <mat-form-field>
+                <mat-label>{{ "AUTH.PASSWORD" | translate }}</mat-label>
+                <input [formControl]="passwordFormControl" matInput type="password"/>
+              </mat-form-field>
+            </div>
+            <div class="form-field-container grid-col-2 text-centered">
+              <button (click)="logIn()" [disabled]="passwordFormControl.invalid || usernameFormControl.invalid"
+                      class="form-button" mat-raised-button>
+                {{"AUTH.LOG_IN" | translate}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

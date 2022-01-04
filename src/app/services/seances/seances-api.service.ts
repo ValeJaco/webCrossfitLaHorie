@@ -35,9 +35,7 @@ export class SeancesApiService {
     return this.apiService
       .post(`${environment.API_URL}/seances`, jsonSeance)
       .pipe(map((response: SeanceResponse) => {
-        if (response.status == this.apiService.STATUS_OK) {
-          return response;
-        }
+        return response;
       }));
   }
 
@@ -45,9 +43,7 @@ export class SeancesApiService {
     return this.apiService
       .patch(`${environment.API_URL}/seances/${seanceId}`, jsonSeance)
       .pipe(map((response: SeanceResponse) => {
-        if (response.status == this.apiService.STATUS_OK) {
-          return response;
-        }
+        return response;
       }));
   }
 

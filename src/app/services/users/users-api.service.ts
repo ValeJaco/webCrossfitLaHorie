@@ -35,9 +35,7 @@ export class UsersApiService {
     return this.apiService
       .post(`${environment.API_URL}/users`, jsonUser)
       .pipe(map((response: UserResponse) => {
-        if (response.status == this.apiService.STATUS_OK) {
-          return response;
-        }
+        return response;
       }));
   }
 
@@ -45,9 +43,7 @@ export class UsersApiService {
     return this.apiService
       .patch(`${environment.API_URL}/users/${userId}`, jsonUser)
       .pipe(map((response: UserResponse) => {
-        if (response.status == this.apiService.STATUS_OK) {
-          return response;
-        }
+        return response;
       }));
   }
 }
