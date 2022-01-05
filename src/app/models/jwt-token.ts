@@ -4,6 +4,8 @@ export class JwtToken {
   roles: string[];
   sub: string
   userId: number;
+  foreName: string;
+  lastName: string;
 
   constructor(token: any) {
     this.copy(token);
@@ -15,6 +17,8 @@ export class JwtToken {
       this.roles = token.roles;
       this.sub = token.sub;
       this.userId = token.userId;
+      this.foreName = token.foreName;
+      this.lastName = token.lastName;
     }
   }
 }

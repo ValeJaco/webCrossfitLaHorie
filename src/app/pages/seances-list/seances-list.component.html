@@ -22,9 +22,14 @@
                 {{seance.users.length}}/{{seance.maxSpot}}
               </mat-card-content>
               <mat-card-footer>
-                <mat-icon class="show-pointer seance_mgt_icons hover-green">add_circle</mat-icon>
-                <mat-icon class="show-pointer seance_mgt_icons hover-red">remove_circle</mat-icon>
-                <mat-icon (click)="goToSeanceDetail(seance.id)" class="show-pointer seance_mgt_icons hover-orange">edit
+                <mat-icon (click)="subscribeToSeance(seance.id)" class="show-pointer seance_mgt_icons hover-green">
+                  add_circle
+                </mat-icon>
+                <mat-icon (click)="unsubscribeToSeance(seance.id)" class="show-pointer seance_mgt_icons hover-red">
+                  remove_circle
+                </mat-icon>
+                <mat-icon (click)="goToSeanceDetail(seance.id)" class="show-pointer seance_mgt_icons hover-orange">
+                  edit
                 </mat-icon>
               </mat-card-footer>
             </mat-card>

@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Seance} from "../../models/seance";
 import {SeancesFacadeService} from "../../services/seances/seances-facade.service";
-import {take} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {DatePipe} from "@angular/common";
 import {Router} from "@angular/router";
+import {SecurityFacadeService} from "../../services/security/security-facade.service";
+import {ResponseEnum} from "../../constants/response-enum";
+import {showSnackBar} from "../../utils/utils";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-seances-list',
@@ -20,23 +23,30 @@ export class SeancesListComponent implements OnInit {
   timeZone = environment.TIMEZONE;
   nbDaysToShow = 7;
 
-  constructor(private seancesFacadeService: SeancesFacadeService, private router: Router) {
+  constructor(
+    private seancesFacadeService: SeancesFacadeService,
+    private router: Router,
+    private securityFacadeService: SecurityFacadeService,
+    private snackBar: MatSnackBar
+  ) {
   }
 
   ngOnInit(): void {
     this.seancesFacadeService.getSeances()
-      .pipe(take(1))
       .subscribe(response => {
         if (response.body && response.body.length > 0) {
+          const tempMap = new Map<string, Seance[]>();
           response.body.forEach(seance => {
             const dateSearchedKey = this.getDateKey(new Date(seance.startDate));
-            if (!this.seancesList.get(dateSearchedKey)) {
-              this.seancesList.set(dateSearchedKey, []);
+            if (!tempMap.get(dateSearchedKey)) {
+              tempMap.set(dateSearchedKey, []);
             }
-            this.seancesList.get(dateSearchedKey).push(seance);
+            tempMap.get(dateSearchedKey).push(seance);
           })
+          this.seancesList = tempMap;
         }
       })
+    this.seancesFacadeService.loadSeances();
   }
 
   goToSeanceDetail(seanceId: number) {
@@ -57,4 +67,41 @@ export class SeancesListComponent implements OnInit {
     return tempDate;
   }
 
+  subscribeToSeance(seanceId: number) {
+    this.seancesFacadeService.addUserToSeance(
+      seanceId,
+      this.securityFacadeService.getJwtTokenObject().userId
+    ).subscribe(response => {
+        if (response.status === ResponseEnum.OK) {
+          showSnackBar(
+            this.snackBar,
+            'SNACKBAR.SUBSCRIBE_OK',
+            'success-snackbar',
+            'check'
+          );
+
+          this.seancesFacadeService.loadSeances();
+        }
+      }
+    );
+  }
+
+  unsubscribeToSeance(seanceId: number) {
+    this.seancesFacadeService.removeUserFromSeance(
+      seanceId,
+      this.securityFacadeService.getJwtTokenObject().userId
+    ).subscribe(response => {
+        if (response.status === ResponseEnum.OK) {
+          showSnackBar(
+            this.snackBar,
+            'SNACKBAR.UNSUBSCRIBE_OK',
+            'success-snackbar',
+            'check'
+          );
+
+          this.seancesFacadeService.loadSeances();
+        }
+      }
+    );
+  }
 }

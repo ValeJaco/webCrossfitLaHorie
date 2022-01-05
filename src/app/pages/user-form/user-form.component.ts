@@ -111,4 +111,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
     this.unsubscribeFromAll();
   }
 
+  resetUserId() {
+    this.user.id = 0;
+  }
+
 }
