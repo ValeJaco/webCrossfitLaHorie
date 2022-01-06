@@ -4,9 +4,8 @@ import {Subscription, take} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {SeancesFacadeService} from "../../services/seances/seances-facade.service";
 import {DatePipe} from "@angular/common";
-import {showSnackBar} from "../../utils/utils";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {ResponseEnum} from "../../constants/response-enum";
+import {SnackBarService} from "../../services/snack-bar.service";
 
 @Component({
   selector: 'app-seance-form',
@@ -23,7 +22,7 @@ export class SeanceFormComponent implements OnInit {
     private route: ActivatedRoute,
     private seancesFacade: SeancesFacadeService,
     private datePipe: DatePipe,
-    private snackBar: MatSnackBar) {
+    private snackBarService: SnackBarService) {
   }
 
   ngOnInit(): void {
@@ -69,21 +68,10 @@ export class SeanceFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe(response => {
           if (response.status === ResponseEnum.OK) {
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.UPDATE_SEANCE_OK',
-              'success-snackbar',
-              'check'
-            );
+            this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_SEANCE_OK");
           } else {
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.UPDATE_SEANCE_NOK',
-              'error-snackbar',
-              'error'
-            );
+            this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_SEANCE_NOK");
           }
-
         });
     } else {
       this.seancesFacade.createSeance(
@@ -92,19 +80,9 @@ export class SeanceFormComponent implements OnInit {
         .subscribe(response => {
           if (response.status === ResponseEnum.OK) {
             this.seance.id = response.body.id;
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.CREATE_SEANCE_OK',
-              'success-snackbar',
-              'check'
-            );
+            this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_SEANCE_OK");
           } else {
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.CREATE_SEANCE_NOK',
-              'error-snackbar',
-              'error'
-            );
+            this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_SEANCE_NOK");
           }
         });
     }

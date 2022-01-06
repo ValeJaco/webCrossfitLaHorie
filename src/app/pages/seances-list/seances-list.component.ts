@@ -6,8 +6,7 @@ import {DatePipe} from "@angular/common";
 import {Router} from "@angular/router";
 import {SecurityFacadeService} from "../../services/security/security-facade.service";
 import {ResponseEnum} from "../../constants/response-enum";
-import {showSnackBar} from "../../utils/utils";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {SnackBarService} from "../../services/snack-bar.service";
 
 @Component({
   selector: 'app-seances-list',
@@ -27,7 +26,7 @@ export class SeancesListComponent implements OnInit {
     private seancesFacadeService: SeancesFacadeService,
     private router: Router,
     private securityFacadeService: SecurityFacadeService,
-    private snackBar: MatSnackBar
+    private snackBarService: SnackBarService
   ) {
   }
 
@@ -73,13 +72,7 @@ export class SeancesListComponent implements OnInit {
       this.securityFacadeService.getJwtTokenObject().userId
     ).subscribe(response => {
         if (response.status === ResponseEnum.OK) {
-          showSnackBar(
-            this.snackBar,
-            'SNACKBAR.SUBSCRIBE_OK',
-            'success-snackbar',
-            'check'
-          );
-
+          this.snackBarService.showSuccesSnackBar("SNACKBAR.SUBSCRIBE_OK");
           this.seancesFacadeService.loadSeances();
         }
       }
@@ -92,13 +85,7 @@ export class SeancesListComponent implements OnInit {
       this.securityFacadeService.getJwtTokenObject().userId
     ).subscribe(response => {
         if (response.status === ResponseEnum.OK) {
-          showSnackBar(
-            this.snackBar,
-            'SNACKBAR.UNSUBSCRIBE_OK',
-            'success-snackbar',
-            'check'
-          );
-
+          this.snackBarService.showSuccesSnackBar("SNACKBAR.UNSUBSCRIBE_OK");
           this.seancesFacadeService.loadSeances();
         }
       }

@@ -4,9 +4,8 @@ import {UsersFacadeService} from "../../services/users/users-facade.service";
 import {Subscription, take} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RolesEnum} from "../../constants/rolesEnum";
-import {showSnackBar} from "../../utils/utils";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {ResponseEnum} from "../../constants/response-enum";
+import {SnackBarService} from "../../services/snack-bar.service";
 
 @Component({
   selector: 'app-user-form',
@@ -24,7 +23,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
     private usersFacade: UsersFacadeService,
     private route: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBarService: SnackBarService
   ) {
   }
 
@@ -56,19 +55,9 @@ export class UserFormComponent implements OnInit, OnDestroy {
         .pipe(take(1))
         .subscribe(response => {
           if (response.status === ResponseEnum.OK) {
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.UPDATE_USER_OK',
-              'success-snackbar',
-              'check'
-            );
+            this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_USER_OK");
           } else {
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.UPDATE_USER_NOK',
-              'error-snackbar',
-              'error'
-            );
+            this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_USER_NOK");
           }
         });
     } else {
@@ -78,19 +67,9 @@ export class UserFormComponent implements OnInit, OnDestroy {
         .subscribe(response => {
           if (response.status === ResponseEnum.OK) {
             this.user.id = response.body.id
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.CREATE_USER_OK',
-              'success-snackbar',
-              'check'
-            );
+            this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_USER_OK");
           } else {
-            showSnackBar(
-              this.snackBar,
-              'SNACKBAR.CREATE_USER_NOK',
-              'error-snackbar',
-              'error'
-            );
+            this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_USER_NOK");
           }
         });
     }

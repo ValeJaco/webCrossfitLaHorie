@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {SecurityFacadeService} from "../../services/security/security-facade.service";
 import {Router} from "@angular/router";
-import {showSnackBar} from "../../utils/utils";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {take} from "rxjs";
+import {SnackBarService} from "../../services/snack-bar.service";
 
 @Component({
   selector: 'app-authentification',
@@ -19,7 +18,7 @@ export class AuthentificationComponent implements OnInit {
   constructor(
     private securityFacadeService: SecurityFacadeService,
     private router: Router,
-    private snackBar: MatSnackBar) {
+    private snackBarService: SnackBarService) {
   }
 
   ngOnInit(): void {
@@ -33,12 +32,7 @@ export class AuthentificationComponent implements OnInit {
       if (authOk === true) {
         this.router.navigate(['/'])
       } else if (authOk === false) {
-        showSnackBar(
-          this.snackBar,
-          'SNACKBAR.AUTHENTIFICATION_NOK',
-          'error-snackbar',
-          'error'
-        );
+        this.snackBarService.showErrorSnackBar("SNACKBAR.AUTHENTIFICATION_NOK");
       }
     });
   }
