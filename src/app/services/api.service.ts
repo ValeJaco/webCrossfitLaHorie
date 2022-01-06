@@ -9,7 +9,7 @@ import {RESPONSE_OBSERVE_OPTION} from "../constants/constants";
 export class ApiService {
 
   STATUS_OK = 200;
-  
+
   constructor(private http: HttpClient) {
   }
 
@@ -39,7 +39,6 @@ export class ApiService {
     options.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
     return this.http.get(url, options).pipe(
-      // timeout(environment.API_TIMEOUT_DURATION),
       catchError(this.errorHandler)
     );
   }
@@ -77,7 +76,6 @@ export class ApiService {
     options.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
     return this.http.post(url, body, options).pipe(
-      // timeout(environment.API_TIMEOUT_DURATION),
       catchError(this.errorHandler)
     );
   }
@@ -114,7 +112,6 @@ export class ApiService {
     options.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
     return this.http.put(url, body, options).pipe(
-      // timeout(environment.API_TIMEOUT_DURATION),
       catchError(this.errorHandler)
     );
   }
@@ -149,7 +146,6 @@ export class ApiService {
     let url: string;
     url = endpoint;
     return this.http.patch(url, body, options).pipe(
-      // timeout(environment.API_TIMEOUT_DURATION),
       catchError(this.errorHandler)
     );
   }
@@ -171,14 +167,11 @@ export class ApiService {
     options.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
     return this.http.delete(url, options).pipe(
-      // timeout(environment.API_TIMEOUT_DURATION),
       catchError(this.errorHandler)
     );
   }
 
   private errorHandler(response: HttpErrorResponse): Observable<never> {
-    // Logger.errorObject(this, response, "ApiService");
-
     return throwError(() => response || 'Api request got a Server Error');
   }
 }

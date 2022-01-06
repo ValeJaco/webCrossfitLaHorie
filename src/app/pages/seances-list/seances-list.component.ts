@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {SecurityFacadeService} from "../../services/security/security-facade.service";
 import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
+import {SeanceFilters} from "../../filters/seance-filters";
 
 @Component({
   selector: 'app-seances-list',
@@ -31,9 +32,13 @@ export class SeancesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const filters = new SeanceFilters();
+    filters.startDate = this.startDate;
+
     this.seancesFacadeService.getSeances()
       .subscribe(response => {
-        if (response.body && response.body.length > 0) {
+        if (response?.body && response.body.length > 0) {
           const tempMap = new Map<string, Seance[]>();
           response.body.forEach(seance => {
             const dateSearchedKey = this.getDateKey(new Date(seance.startDate));
@@ -45,7 +50,7 @@ export class SeancesListComponent implements OnInit {
           this.seancesList = tempMap;
         }
       })
-    this.seancesFacadeService.loadSeances();
+    this.seancesFacadeService.loadSeances(filters.filtersToApi());
   }
 
   goToSeanceDetail(seanceId: number) {

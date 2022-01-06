@@ -15,8 +15,8 @@ export class SeancesFacadeService {
     private seancesStorageService: SeancesStorageService) {
   }
 
-  loadSeances(): void {
-    this.seancesApiService.getSeances().pipe(take(1))
+  loadSeances(filters = ""): void {
+    this.seancesApiService.getSeances(filters).pipe(take(1))
       .subscribe(response => {
         this.seancesStorageService.setSeances(response);
       })

@@ -22,11 +22,8 @@ export class SeancesApiService {
     );
   }
 
-  getSeances(): Observable<SeancesListResponse> {
-
-    const temp = new Date("2021-12-21T18:30:00Z");
-
-    const url = `${environment.API_URL}/seances?startDate=${temp.toJSON()}`;
+  getSeances(filters = ""): Observable<SeancesListResponse> {
+    const url = `${environment.API_URL}/seances${filters}`;
     return this.apiService.get(url).pipe(
       map((response: SeancesListResponse) => {
         return response;

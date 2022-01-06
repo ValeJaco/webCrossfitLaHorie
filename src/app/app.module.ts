@@ -74,6 +74,7 @@ registerLocaleData(localeFr);
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
     {provide: LOCALE_ID, useValue: 'fr-FR'},
+    //{provide: ErrorHandler, useClass: CustomErrorHandlerService},
     DatePipe,
   ],
   bootstrap: [AppComponent]
