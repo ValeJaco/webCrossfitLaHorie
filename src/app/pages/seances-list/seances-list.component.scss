@@ -11,6 +11,30 @@
   height: 100%;
 }
 
+.image-180 {
+  transform: rotate(180deg);
+}
+
+.calendar-arrow {
+  grid-column: span 3;
+  text-align: center;
+}
+
+.calendar-arrow mat-icon {
+  color: papayawhip;
+  text-align: center;
+  font-size: 30px;
+}
+
+.calendar-arrow mat-icon:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.calendar-arrow-spacer {
+  grid-column: span 1;
+}
+
 .day-of-week-0 {
   grid-column: 1;
 }

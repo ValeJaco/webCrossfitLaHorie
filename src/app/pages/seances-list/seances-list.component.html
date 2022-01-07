@@ -1,5 +1,13 @@
 <div class="div-flex">
   <div class="margin-auto grid-container">
+    <div class="calendar-arrow">
+      <mat-icon (click)="goTPreviousDay()" class="image-180">play_circle_filled</mat-icon>
+    </div>
+    <div class="calendar-arrow-spacer"></div>
+    <div class="calendar-arrow">
+      <mat-icon (click)="goToNextDay()">play_circle_filled</mat-icon>
+    </div>
+
 
     <mat-card *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
               class="text-centered day-title-card">

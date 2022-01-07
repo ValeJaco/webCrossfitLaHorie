@@ -96,4 +96,13 @@ export class SeancesListComponent implements OnInit {
       }
     );
   }
+
+  goTPreviousDay() {
+    this.startDate.setDate(this.startDate.getDate() - 1);
+  }
+ 
+  goToNextDay() {
+    this.startDate.setDate(this.startDate.getDate() + 1);
+  }
+
 }
