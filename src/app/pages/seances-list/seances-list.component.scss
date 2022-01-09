@@ -13,6 +13,7 @@
 
 .image-180 {
   transform: rotate(180deg);
+  margin-top: 8px;
 }
 
 .calendar-arrow {
@@ -21,14 +22,14 @@
 }
 
 .calendar-arrow mat-icon {
-  color: papayawhip;
+  color: #bda37c;
   text-align: center;
   font-size: 30px;
 }
 
 .calendar-arrow mat-icon:hover {
   cursor: pointer;
-  color: blue;
+  color: papayawhip;
 }
 
 .calendar-arrow-spacer {
@@ -103,4 +104,12 @@
 
 .hover-orange:hover {
   color: darkorange;
+}
+
+.card_subscribed_to_waiting {
+  border: solid blue 3px;
+}
+
+.card_subscribed {
+  border: solid green 3px;
 }

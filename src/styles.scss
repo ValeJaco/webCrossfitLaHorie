@@ -23,6 +23,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
   alignment: center;
+  background-color: #bda37c;
+}
+
+.form-button:hover {
+  background-color: papayawhip;
 }
 
 .spacer {
@@ -67,5 +72,9 @@
   user-select: none;
   /* Non-prefixed version, currently
                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.margin-top-20 {
+  margin-top: 20px;
 }
 

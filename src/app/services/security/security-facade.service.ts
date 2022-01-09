@@ -35,6 +35,10 @@ export class SecurityFacadeService {
     return jwtDecode<JwtToken>(this.getAuthToken());
   }
 
+  hasRole(roleName: string): boolean {
+    return this.getJwtTokenObject().roles.findIndex(role => role === roleName) > -1;
+  }
+
   logIn(username: string, password: string): Observable<boolean> {
     this.securityApiService.logIn(username, password).subscribe(response => {
       if (response.status === ResponseEnum.OK) {

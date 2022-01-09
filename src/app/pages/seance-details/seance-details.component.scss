@@ -8,15 +8,11 @@
   height: 100%;
 }
 
-.margin-top-20 {
-  margin-top: 20px;
-}
-
 .guest-form-card mat-card-title {
   text-align: center;
 }
 
-.grid-container {
+.grid_container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0;
@@ -52,4 +48,16 @@
   padding-bottom: 2px;
   width: 100%;
   display: flex;
+}
+
+.mat-expansion-panel,
+.mat-expansion-panel-header,
+.mat-expansion-panel-header:hover,
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover {
+  background-color: #bda37c;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  background-color: #94812B;
 }

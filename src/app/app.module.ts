@@ -33,6 +33,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { AutoCompleteSearchUsersComponent } from './components/auto-complete-search-users/auto-complete-search-users.component';
 
 registerLocaleData(localeFr);
 
@@ -45,7 +46,8 @@ registerLocaleData(localeFr);
     UsersListComponent,
     CustomSnackBarComponent,
     SeancesListComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    AutoCompleteSearchUsersComponent
   ],
   imports: [
     BrowserModule,

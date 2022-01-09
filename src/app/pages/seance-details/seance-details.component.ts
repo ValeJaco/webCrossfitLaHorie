@@ -9,8 +9,6 @@ import {SnackBarService} from "../../services/snack-bar.service";
 import {Guest} from "../../models/guest";
 import {SecurityFacadeService} from "../../services/security/security-facade.service";
 import {FormControl, Validators} from "@angular/forms";
-import {User} from "../../models/user";
-import {UsersFacadeService} from "../../services/users/users-facade.service";
 
 @Component({
   selector: 'app-seance-details',
@@ -23,19 +21,17 @@ export class SeanceDetailsComponent implements OnInit {
   guestSubscription = new Guest();
   paramsSeanceId: number;
   seanceFormSubscriptions: Subscription[] = [];
-  usersList: User[] = [];
+  selectedUserId: number;
 
   guestNameFormControl: FormControl;
   guestCommentFormControl: FormControl;
   userSearchFieldFormControl: FormControl;
   guestNameSubscription: Subscription;
   guestCommentSubscription: Subscription;
-  userSearchFieldSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private seancesFacade: SeancesFacadeService,
-    private usersFacade: UsersFacadeService,
     private datePipe: DatePipe,
     private snackBarService: SnackBarService,
     private securityFacadeService: SecurityFacadeService
@@ -70,12 +66,6 @@ export class SeanceDetailsComponent implements OnInit {
     })
   }
 
-  loadUsersFromApi(searchedName: string) {
-    this.usersFacade.getUsersByName(searchedName).pipe(take(1)).subscribe(response => {
-      this.usersList = response.body;
-    })
-  }
-
   unsubscribeFromSeeanceFormControllers(): void {
     this.seanceFormSubscriptions.forEach(sub =>
       sub.unsubscribe()
@@ -87,7 +77,6 @@ export class SeanceDetailsComponent implements OnInit {
     this.unsubscribeFromSeeanceFormControllers();
     this.guestNameSubscription.unsubscribe();
     this.guestCommentSubscription.unsubscribe();
-    this.userSearchFieldSubscription.unsubscribe();
   }
 
   ngOnDestroy(): void {
@@ -115,6 +104,7 @@ export class SeanceDetailsComponent implements OnInit {
         .subscribe(response => {
           if (response.status === ResponseEnum.OK) {
             this.seance.id = response.body.id;
+            this.paramsSeanceId = this.seance.id;
             this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_SEANCE_OK");
           } else {
             this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_SEANCE_NOK");
@@ -136,9 +126,6 @@ export class SeanceDetailsComponent implements OnInit {
     this.guestCommentSubscription = this.guestCommentFormControl.valueChanges.subscribe(value => {
       this.guestSubscription.comment = value;
     })
-    this.userSearchFieldSubscription = this.userSearchFieldFormControl.valueChanges.subscribe(value => {
-      this.loadUsersFromApi(value);
-    })
   }
 
   addGuest(): void {
@@ -154,10 +141,20 @@ export class SeanceDetailsComponent implements OnInit {
     }
   }
 
-  addUser(userId: number) {
-    console.log(userId);
-    //this.usersList = [];
-    //this.userSearchFieldFormControl.setValue("", {emitEvent: false})
+  changeSelectedUser(userId: number) {
+    this.selectedUserId = userId;
+  }
+
+  addUser() {
+    if (this.selectedUserId && this.selectedUserId > 0 && this.userSearchFieldFormControl.valid) {
+      this.seancesFacade.addUserToSeance(this.seance.id, this.selectedUserId).subscribe(response => {
+        if (response.status === ResponseEnum.OK) {
+          this.snackBarService.showSuccesSnackBar("SNACKBAR.SUBSCRIBE_OK");
+          this.loadSeanceFromApi();
+          this.userSearchFieldFormControl.setValue("");
+        }
+      })
+    }
   }
 
   removeUser(userId: number) {

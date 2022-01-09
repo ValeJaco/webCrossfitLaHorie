@@ -19,3 +19,8 @@ export function initGenericArrayFromJson<T>(
 function create<T>(ctor: new (p: any) => T, val: any): T {
   return new ctor(val);
 }
+
+export function capitalise(word: string) {
+  if (!word) return word;
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}

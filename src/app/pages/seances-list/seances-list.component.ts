@@ -8,6 +8,8 @@ import {SecurityFacadeService} from "../../services/security/security-facade.ser
 import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {SeanceFilters} from "../../filters/seance-filters";
+import {RolesEnum} from "../../constants/rolesEnum";
+import {JwtToken} from "../../models/jwt-token";
 
 @Component({
   selector: 'app-seances-list',
@@ -22,6 +24,7 @@ export class SeancesListComponent implements OnInit {
   startDate = new Date('2021-12-18');
   timeZone = environment.TIMEZONE;
   nbDaysToShow = 7;
+  showSeanceMenu = false;
 
   constructor(
     private seancesFacadeService: SeancesFacadeService,
@@ -32,6 +35,8 @@ export class SeancesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.showSeanceMenu = this.hasRole(RolesEnum.ROLE_COACH);
 
     const filters = new SeanceFilters();
     filters.startDate = this.startDate;
@@ -45,7 +50,7 @@ export class SeancesListComponent implements OnInit {
             if (!tempMap.get(dateSearchedKey)) {
               tempMap.set(dateSearchedKey, []);
             }
-            tempMap.get(dateSearchedKey).push(seance);
+            tempMap.get(dateSearchedKey).push(new Seance(seance));
           })
           this.seancesList = tempMap;
         }
@@ -100,9 +105,21 @@ export class SeancesListComponent implements OnInit {
   goTPreviousDay() {
     this.startDate.setDate(this.startDate.getDate() - 1);
   }
- 
+
   goToNextDay() {
     this.startDate.setDate(this.startDate.getDate() + 1);
+  }
+
+  goToNewSeance() {
+    this.router.navigate(['/seances/new']);
+  }
+
+  hasRole(roleName: string): boolean {
+    return this.securityFacadeService.hasRole(roleName);
+  }
+
+  getJwtTokenObject(): JwtToken {
+    return this.securityFacadeService.getJwtTokenObject();
   }
 
 }

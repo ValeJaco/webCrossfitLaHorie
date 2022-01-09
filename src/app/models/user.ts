@@ -1,5 +1,6 @@
 import {FormControl, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
+import {capitalise} from "../utils/utils";
 
 export class User {
 
@@ -135,6 +136,10 @@ export class User {
   }
 
   userToApi(): string {
+
+    this.forename = capitalise(this.forename);
+    this.lastname = capitalise(this.lastname);
+
     return JSON.stringify(
       this,
       [

@@ -14,7 +14,10 @@
     "PAYMENT_METHOD": "Méthode de paiement",
     "FREE_ACCESS": "Free access",
     "BADGE_REFERENCE": "Numéro de badge",
-    "BUTTON_SAVE": "Sauvegarder"
+    "BUTTON_SAVE": "Sauvegarder",
+    "SEARCHED_NAME": "Prénom Nom",
+    "RESET_FILTERS": "Réinitialiser la recherche",
+    "CREATE_NEW_USER": "Créer un nouvel utilisateur"
   },
   "SEANCE": {
     "NAME": "Nom",
@@ -33,9 +36,10 @@
     "GUEST_NAME": "Nom",
     "GUEST_COMMENT": "Commentaire (facultatif)",
     "BUTTON_ADD_GUEST": "Enregistrer l'invité(e)",
-    "MEMBER_NAME": "Prénom Nom",
     "BUTTON_ADD_MEMBER": "Ajouter à la séance",
-    "ADD_MEMBER": "Ajouter un membre"
+    "ADD_MEMBER": "Ajouter un membre",
+    "CREATE_NEW_SEANCE": "Créer une nouvelle séance",
+    "WAIT_LIST_POSITION": "File d'attente : "
   },
   "ROLES": {
     "ROLE_COACH": "Coach",

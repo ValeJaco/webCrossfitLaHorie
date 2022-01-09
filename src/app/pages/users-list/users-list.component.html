@@ -1,5 +1,29 @@
 <div class="div-flex">
   <div class="margin-auto grid-container">
+
+    <div class="search-user-field-container">
+      <mat-card class="search-user-field-card">
+        <mat-form-field>
+          <mat-label>{{ "USER.SEARCHED_NAME" | translate }}</mat-label>
+          <input
+            [formControl]="userSearchFieldFormControl"
+            autocomplete="off"
+            matInput
+            type="text"
+          />
+        </mat-form-field>
+      </mat-card>
+    </div>
+    <div class="text-centered user-list-filters-action-div">
+      <button (click)="resetFilters()" class="form-button" mat-raised-button>
+        {{"USER.RESET_FILTERS" | translate}}
+      </button>
+    </div>
+    <div class="text-centered user-list-filters-action-div">
+      <button (click)="goToNewUser()" class="form-button" mat-raised-button>
+        {{"USER.CREATE_NEW_USER" | translate}}
+      </button>
+    </div>
     <div *ngFor="let user of userList; let i = index"
          [ngClass]="{'user-left-card': i % 2 == 0, 'user-right-card': i % 2 != 0}"
     >

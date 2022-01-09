@@ -1,5 +1,5 @@
 <div class="div-flex">
-  <div class="margin-auto grid-container">
+  <div [ngClass]="{grid_container : seance.id > 0}" class="margin-auto">
     <div class="div-height-100">
       <mat-card class="seance-form-card mat-elevation-z7">
         <mat-card-title>
@@ -51,11 +51,10 @@
       </mat-card>
     </div>
 
-    <div class="div-height-100">
+    <div *ngIf="seance.id > 0" class="div-height-100">
       <mat-card class="seance-form-card mat-elevation-z7">
         <mat-card-title>
           {{ "SEANCE.USER_SUBSCRIBED_LIST" | translate }}
-          <mat-icon (click)="addGuest()" class="remove-subscribed-icon">add</mat-icon>
         </mat-card-title>
         <mat-card-content>
           <div *ngFor="let user of seance.users" class="user-line-container">
@@ -67,33 +66,21 @@
 
       <mat-card class="seance-form-card mat-elevation-z7">
         <mat-accordion class="example-headers-align" multi>
-          <mat-expansion-panel>
+          <mat-expansion-panel class="user-add-panel">
             <mat-expansion-panel-header>
               {{ "SEANCE.ADD_MEMBER" | translate }}
             </mat-expansion-panel-header>
 
             <form>
               <div class="form-field-container">
-                <mat-form-field>
-                  <mat-label>{{ "SEANCE.MEMBER_NAME" | translate }}</mat-label>
-                  <input
-                    [formControl]="userSearchFieldFormControl"
-                    [matAutocomplete]="userNameAuto"
-                    matInput
-                    type="text"
-                  />
-
-                  <mat-autocomplete #userNameAuto="matAutocomplete" autoActiveFirstOption>
-                    <mat-option (onSelectionChange)="addUser(user.id)" *ngFor="let user of usersList"
-                                [value]="user.forename + ' ' + user.lastname">
-                      {{user.forename}} {{user.lastname}}
-                    </mat-option>
-                  </mat-autocomplete>
-
-                </mat-form-field>
+                <app-auto-complete-search-users
+                  (selectionChangeEmitter)="changeSelectedUser($event)"
+                  [userSearchFieldFormControl]="userSearchFieldFormControl"
+                >
+                </app-auto-complete-search-users>
               </div>
               <div class="form-field-container text-centered">
-                <button (click)="addGuest()" class="form-button" mat-raised-button>
+                <button (click)="addUser()" class="form-button" mat-raised-button>
                   {{"SEANCE.BUTTON_ADD_MEMBER" | translate}}
                 </button>
               </div>
@@ -103,7 +90,7 @@
       </mat-card>
     </div>
 
-    <div class="div-height-100">
+    <div *ngIf="seance.id > 0" class="div-height-100">
       <mat-card *ngIf="seance.guests?.length > 0 " class="seance-form-card mat-elevation-z7">
         <mat-card-title class="margin-top-20">
           {{ "SEANCE.GUEST_SUBSCRIBED_LIST" | translate }}
@@ -127,9 +114,9 @@
       </mat-card>
 
       <mat-card class="seance-form-card mat-elevation-z7">
-        <mat-accordion class="example-headers-align" multi>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
+        <mat-accordion multi>
+          <mat-expansion-panel class="guest-add-panel">
+            <mat-expansion-panel-header class="guest-add-panel-header">
               {{ "SEANCE.ADD_GUEST" | translate }}
             </mat-expansion-panel-header>
 

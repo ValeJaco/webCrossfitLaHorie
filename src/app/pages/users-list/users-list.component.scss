@@ -6,6 +6,24 @@
   color: papayawhip;
 }
 
+.search-user-field-container {
+  grid-column: 1 / span 2
+}
+
+.search-user-field-card {
+  margin: 10px;
+  padding: 10px;
+  background-color: papayawhip;
+}
+
+.user-list-filters-action-div {
+  margin-top: 5px;
+}
+
+.search-user-field-card mat-form-field {
+  width: 100%;
+}
+
 .user-card:hover {
   background-color: #71a417;
 }
@@ -15,6 +33,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 0;
   grid-auto-rows: minmax(50px, auto);
+  min-width: 800px;
 }
 
 

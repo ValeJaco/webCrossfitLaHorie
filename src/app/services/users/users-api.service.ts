@@ -31,8 +31,8 @@ export class UsersApiService {
     );
   }
 
-  getUsersByName(searchedName: string): Observable<UsersListResponse> {
-    const url = `${environment.API_URL}/usersByName?searchedName=${searchedName}`;
+  getUsersByName(searchedName: string, resultSize: number = 20): Observable<UsersListResponse> {
+    const url = `${environment.API_URL}/usersByName?searchedName=${searchedName}&resultSize=${resultSize}`;
     return this.apiService.get(url).pipe(
       map((response: UsersListResponse) => {
         return response;

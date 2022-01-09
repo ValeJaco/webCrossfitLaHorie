@@ -1,0 +1,18 @@
+<mat-form-field>
+  <mat-label>{{ "USER.SEARCHED_NAME" | translate }}</mat-label>
+  <input
+    [formControl]="userSearchFieldFormControl"
+    [matAutocomplete]="userNameAuto"
+    autocomplete="off"
+    matInput
+    type="text"
+  />
+
+  <mat-autocomplete #userNameAuto="matAutocomplete" autoActiveFirstOption>
+    <mat-option (onSelectionChange)="changeSelectedUser(user.id)" *ngFor="let user of usersList"
+                [value]="user.forename + ' ' + user.lastname">
+      {{user.forename}} {{user.lastname}}
+    </mat-option>
+  </mat-autocomplete>
+
+</mat-form-field>

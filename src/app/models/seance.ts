@@ -4,6 +4,7 @@ import {FormControl, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {DatePipe} from "@angular/common";
 import {Guest} from "./guest";
+import {UsersWaiting} from "./users-waiting";
 
 export class Seance {
 
@@ -15,6 +16,7 @@ export class Seance {
   location: string;
   coachId: number;
   users: User[];
+  usersWaiting: UsersWaiting[];
   guests: Guest[];
 
   nameFormControl: FormControl;
@@ -38,6 +40,7 @@ export class Seance {
       this.location = seance.location;
       this.coachId = seance.coachId;
       this.users = initGenericArrayFromJson(User, seance.users);
+      this.usersWaiting = initGenericArrayFromJson(UsersWaiting, seance.usersWaiting);
       this.guests = initGenericArrayFromJson(Guest, seance.guests);
     }
   }
@@ -81,9 +84,27 @@ export class Seance {
     return subArray;
   }
 
-  seanceToApi(): string {
+  isUserSubscribed(userId: number): boolean {
+    const lala = this.users.findIndex(user => user.id === userId) > -1;
+    console.log(this.id + " - " + userId + " - " + lala)
+    return lala;
+  }
 
+  waitingListPosition(userId: number): number {
+    return this.waitingListIndex(userId) + 1;
+  }
+
+  waitingListIndex(userId: number): number {
+    return this.usersWaiting.findIndex(userWaiting => userWaiting.userId === userId);
+  }
+
+  isUserSubscribedToWaitingList(userId: number): boolean {
+    return this.waitingListIndex(userId) > -1;
+  }
+
+  seanceToApi(): string {
     this.startDate = new Date(new Date(this.startDate).toJSON());
+    this.name = this.name.toUpperCase();
     return JSON.stringify(
       this,
       [
