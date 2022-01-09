@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {UserFormComponent} from "./pages/user-form/user-form.component";
-import {SeanceFormComponent} from "./pages/seance-form/seance-form.component";
+import {UserDetailsComponent} from "./pages/user-details/user-details.component";
+import {SeanceDetailsComponent} from "./pages/seance-details/seance-details.component";
 import {AuthGuard} from "./security/auth.guard";
 import {UsersListComponent} from "./pages/users-list/users-list.component";
 import {SeancesListComponent} from "./pages/seances-list/seances-list.component";
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'seances/:id',
-    component: SeanceFormComponent,
+    component: SeanceDetailsComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'users/:id',
-    component: UserFormComponent,
+    component: UserDetailsComponent,
     canActivate: [AuthGuard]
   },
   {

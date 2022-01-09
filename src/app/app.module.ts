@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {UserFormComponent} from './pages/user-form/user-form.component';
+import {UserDetailsComponent} from './pages/user-details/user-details.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
@@ -15,7 +15,7 @@ import {MainContainerComponent} from './main-container/main-container.component'
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {SeanceFormComponent} from './pages/seance-form/seance-form.component';
+import {SeanceDetailsComponent} from './pages/seance-details/seance-details.component';
 import {MatListModule} from "@angular/material/list";
 import {UsersListComponent} from './pages/users-list/users-list.component';
 import {MatCardModule} from "@angular/material/card";
@@ -29,15 +29,19 @@ import {MAT_DATE_LOCALE} from "@angular/material/core";
 import localeFr from '@angular/common/locales/fr';
 import {AuthentificationComponent} from './pages/authentification/authentification.component';
 import {AuthInterceptor} from "./security/auth.interceptor";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormComponent,
+    UserDetailsComponent,
     MainContainerComponent,
-    SeanceFormComponent,
+    SeanceDetailsComponent,
     UsersListComponent,
     CustomSnackBarComponent,
     SeancesListComponent,
@@ -68,7 +72,11 @@ registerLocaleData(localeFr);
     MatCardModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatExpansionModule,
+    MatAutocompleteModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -30,15 +30,29 @@
                 {{seance.users.length}}/{{seance.maxSpot}}
               </mat-card-content>
               <mat-card-footer>
-                <mat-icon (click)="subscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-green">
-                  add_circle
-                </mat-icon>
-                <mat-icon (click)="unsubscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-red">
-                  remove_circle
-                </mat-icon>
-                <mat-icon (click)="goToSeanceDetail(seance.id)" class="show-pointer seance-mgt-icons hover-orange">
-                  edit
-                </mat-icon>
+                <button mat-icon-button>
+                  <mat-icon (click)="subscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-green">
+                    add_circle
+                  </mat-icon>
+                </button>
+                <button mat-icon-button>
+                  <mat-icon (click)="unsubscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-red">
+                    remove_circle
+                  </mat-icon>
+                </button>
+                <button [matMenuTriggerFor]="menu" aria-label="Seance Menu" mat-icon-button>
+                  <mat-icon class="hover-orange">more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" class="seance-pop-up-menu">
+                  <button (click)="goToSeanceDetail(seance.id)" mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>{{"SEANCE.EDIT_SEANCE" | translate}}</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>{{"SEANCE.VIEW_SUBSCRIBED_USER" | translate}}</span>
+                  </button>
+                </mat-menu>
               </mat-card-footer>
             </mat-card>
           </ng-container>

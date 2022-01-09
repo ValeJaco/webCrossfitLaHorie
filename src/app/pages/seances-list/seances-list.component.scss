@@ -73,6 +73,10 @@
   background-color: #94812B;
 }
 
+::ng-deep .mat-menu-panel {
+  background-color: #596643;
+}
+
 .seance-card mat-card-title {
   font-size: 16px;
   min-height: 40px;

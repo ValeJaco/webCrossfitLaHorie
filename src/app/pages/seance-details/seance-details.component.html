@@ -1,0 +1,160 @@
+<div class="div-flex">
+  <div class="margin-auto grid-container">
+    <div class="div-height-100">
+      <mat-card class="seance-form-card mat-elevation-z7">
+        <mat-card-title>
+          {{ "SEANCE.SEANCE_DETAILS" | translate }}
+        </mat-card-title>
+        <mat-card-content>
+          <form class="form-standard">
+            <div class="div-flex">
+              <div class="margin-auto">
+                <div class="form-field-container">
+                  <mat-form-field>
+                    <mat-label>{{ "SEANCE.NAME" | translate }}</mat-label>
+                    <input [formControl]="seance.nameFormControl" matInput type="text"/>
+                  </mat-form-field>
+                </div>
+                <div class="form-field-container">
+                  <mat-form-field>
+                    <mat-label>{{ "SEANCE.MAX_SPOT" | translate }}</mat-label>
+                    <input [formControl]="seance.maxSpotFormControl" matInput type="text"/>
+                  </mat-form-field>
+                </div>
+                <div class="form-field-container">
+                  <mat-form-field>
+                    <mat-label>{{ "SEANCE.START_DATE" | translate }}</mat-label>
+                    <input [formControl]="seance.startDateFormControl" matInput type="datetime-local"/>
+                  </mat-form-field>
+                </div>
+                <div class="form-field-container">
+                  <mat-form-field>
+                    <mat-label>{{ "SEANCE.DURATION" | translate }}</mat-label>
+                    <input [formControl]="seance.durationFormControl" matInput type="number"/>
+                  </mat-form-field>
+                </div>
+                <div class="form-field-container">
+                  <mat-form-field>
+                    <mat-label>{{ "SEANCE.LOCATION" | translate }}</mat-label>
+                    <input [formControl]="seance.locationFormControl" matInput type="text"/>
+                  </mat-form-field>
+                </div>
+                <div class="form-field-container grid-col-2 text-centered">
+                  <button (click)="postSeanceForm()" class="form-button" mat-raised-button>
+                    {{"SEANCE.BUTTON_SAVE" | translate}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="div-height-100">
+      <mat-card class="seance-form-card mat-elevation-z7">
+        <mat-card-title>
+          {{ "SEANCE.USER_SUBSCRIBED_LIST" | translate }}
+          <mat-icon (click)="addGuest()" class="remove-subscribed-icon">add</mat-icon>
+        </mat-card-title>
+        <mat-card-content>
+          <div *ngFor="let user of seance.users" class="user-line-container">
+            <mat-icon (click)="removeUser(user.id)" class="remove-subscribed-icon">remove_circle_outline</mat-icon>
+            {{user.forename}} {{user.lastname}}
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="seance-form-card mat-elevation-z7">
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              {{ "SEANCE.ADD_MEMBER" | translate }}
+            </mat-expansion-panel-header>
+
+            <form>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "SEANCE.MEMBER_NAME" | translate }}</mat-label>
+                  <input
+                    [formControl]="userSearchFieldFormControl"
+                    [matAutocomplete]="userNameAuto"
+                    matInput
+                    type="text"
+                  />
+
+                  <mat-autocomplete #userNameAuto="matAutocomplete" autoActiveFirstOption>
+                    <mat-option (onSelectionChange)="addUser(user.id)" *ngFor="let user of usersList"
+                                [value]="user.forename + ' ' + user.lastname">
+                      {{user.forename}} {{user.lastname}}
+                    </mat-option>
+                  </mat-autocomplete>
+
+                </mat-form-field>
+              </div>
+              <div class="form-field-container text-centered">
+                <button (click)="addGuest()" class="form-button" mat-raised-button>
+                  {{"SEANCE.BUTTON_ADD_MEMBER" | translate}}
+                </button>
+              </div>
+            </form>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card>
+    </div>
+
+    <div class="div-height-100">
+      <mat-card *ngIf="seance.guests?.length > 0 " class="seance-form-card mat-elevation-z7">
+        <mat-card-title class="margin-top-20">
+          {{ "SEANCE.GUEST_SUBSCRIBED_LIST" | translate }}
+        </mat-card-title>
+        <mat-card-content>
+          <div *ngFor="let guest of seance.guests" class="user-line-container noselect">
+            <mat-icon (click)="removeGuest(guest.id)" class="remove-subscribed-icon">remove_circle_outline</mat-icon>
+            <span class="no-wrap">{{guest.guestName}}</span>
+            <span class="spacer"></span>
+            <mat-icon *ngIf="guest.comment?.length > 0" class="seance-tooltip-icon"
+                      matTooltip="{{guest.comment}}"
+                      matTooltipPosition="right">message
+            </mat-icon>
+            <mat-icon class="seance-tooltip-icon"
+                      matTooltip="{{guest.coachName}}"
+                      matTooltipPosition="right">account_circle
+            </mat-icon>
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="seance-form-card mat-elevation-z7">
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              {{ "SEANCE.ADD_GUEST" | translate }}
+            </mat-expansion-panel-header>
+
+            <form>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "SEANCE.GUEST_NAME" | translate }}</mat-label>
+                  <input [formControl]="guestNameFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container">
+                <mat-form-field>
+                  <mat-label>{{ "SEANCE.GUEST_COMMENT" | translate }}</mat-label>
+                  <input [formControl]="guestCommentFormControl" matInput type="text"/>
+                </mat-form-field>
+              </div>
+              <div class="form-field-container text-centered">
+                <button (click)="addGuest()" class="form-button" mat-raised-button>
+                  {{"SEANCE.BUTTON_ADD_GUEST" | translate}}
+                </button>
+              </div>
+            </form>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card>
+    </div>
+  </div>
+</div>

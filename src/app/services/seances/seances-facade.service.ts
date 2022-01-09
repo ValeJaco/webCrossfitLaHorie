@@ -46,4 +46,11 @@ export class SeancesFacadeService {
     return this.seancesApiService.updateSeance(seanceId, {userToRemoveId: userToRemoveId});
   }
 
+  addGuestToSeance(jsonGuest: any): Observable<SeanceResponse> {
+    return this.seancesApiService.addGuestToSeance(jsonGuest);
+  }
+
+  removeGuestFromSeance(guestToRemoveId: number): Observable<SeanceResponse> {
+    return this.seancesApiService.removeGuestFromSeance(guestToRemoveId);
+  }
 }

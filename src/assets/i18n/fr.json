@@ -23,7 +23,19 @@
     "DURATION": "Durée",
     "LOCATION": "Localisation",
     "COACH": "Coach",
-    "BUTTON_SAVE": "Sauvegarder"
+    "BUTTON_SAVE": "Sauvegarder",
+    "VIEW_SUBSCRIBED_USER": "Supprimer la séance",
+    "EDIT_SEANCE": "Modifier la séance",
+    "SEANCE_DETAILS": "Détails de la séance",
+    "USER_SUBSCRIBED_LIST": "Liste des inscrits",
+    "GUEST_SUBSCRIBED_LIST": "Liste des invités",
+    "ADD_GUEST": "Ajouter un(e) invité(e)",
+    "GUEST_NAME": "Nom",
+    "GUEST_COMMENT": "Commentaire (facultatif)",
+    "BUTTON_ADD_GUEST": "Enregistrer l'invité(e)",
+    "MEMBER_NAME": "Prénom Nom",
+    "BUTTON_ADD_MEMBER": "Ajouter à la séance",
+    "ADD_MEMBER": "Ajouter un membre"
   },
   "ROLES": {
     "ROLE_COACH": "Coach",
@@ -34,14 +46,15 @@
     "CREATE_USER_OK": "Création du nouvel utilisateur effectuée",
     "UPDATE_USER_OK": "Mise à jour de l'utilisateur effectuée",
     "CREATE_SEANCE_OK": "Création de la séance effectuée",
-    "UPDATE_SEANCE_OK": "Mise à jour de la séance",
+    "UPDATE_SEANCE_OK": "Mise à jour de la séance effectuée",
     "CREATE_USER_NOK": "Échec de la création du nouvel utilisateur",
     "UPDATE_USER_NOK": "Échec de la mise à jour de l'utilisateur",
     "CREATE_SEANCE_NOK": "Échec de la création de la séance",
     "UPDATE_SEANCE_NOK": "Échec de la mise à jour de la séance",
     "AUTHENTIFICATION_NOK": "Les informations de connexion sont erronées",
     "UNSUBSCRIBE_OK": "Désinscription à la séance effectuée",
-    "SUBSCRIBE_OK": "Inscription à la séance effectuée"
+    "SUBSCRIBE_OK": "Inscription à la séance effectuée",
+    "GUESS_ADDED_OK": "Invité(e) ajouté(e)"
   },
   "SIDENAV": {
     "SEANCES_LIST": "Liste des séances",

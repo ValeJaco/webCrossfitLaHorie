@@ -16,6 +16,10 @@ export class UsersFacadeService {
     return this.usersApiService.getUsers();
   }
 
+  getUsersByName(searchedName: string): Observable<UsersListResponse> {
+    return this.usersApiService.getUsersByName(searchedName);
+  }
+
   getUserById(userId: number): Observable<UserResponse> {
     return this.usersApiService.getUserById(userId);
   }

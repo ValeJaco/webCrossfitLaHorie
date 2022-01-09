@@ -1,0 +1,55 @@
+.seance-form-card {
+  background-color: #94812B;
+  color: papayawhip;
+  margin: 20px;
+}
+
+.div-height-100 {
+  height: 100%;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.guest-form-card mat-card-title {
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0;
+  grid-row: auto;
+  align-items: center;
+}
+
+.remove-subscribed-icon {
+  cursor: pointer;
+  position: relative;
+  top: -2px;
+  margin-right: 5px;
+}
+
+.remove-subscribed-icon:hover {
+  color: darkred;
+}
+
+.seance-tooltip-icon {
+  cursor: pointer;
+  position: relative;
+  top: -2px;
+  margin-right: 5px;
+}
+
+.user-line-container:hover {
+  background-color: #71a417;
+}
+
+.user-line-container {
+  vertical-align: center;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  width: 100%;
+  display: flex;
+}

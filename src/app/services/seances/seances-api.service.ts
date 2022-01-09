@@ -47,4 +47,20 @@ export class SeancesApiService {
       }));
   }
 
+  addGuestToSeance(jsonGuest: any): Observable<SeanceResponse> {
+    return this.apiService
+      .post(`${environment.API_URL}/seances/guests`, jsonGuest)
+      .pipe(map((response: SeanceResponse) => {
+        return response;
+      }));
+  }
+
+  removeGuestFromSeance(guestId: number): Observable<SeanceResponse> {
+    return this.apiService
+      .delete(`${environment.API_URL}/seances/guests/${guestId}`)
+      .pipe(map((response: SeanceResponse) => {
+        return response;
+      }));
+  }
+
 }

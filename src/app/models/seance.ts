@@ -3,6 +3,7 @@ import {initGenericArrayFromJson} from "../utils/utils";
 import {FormControl, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {DatePipe} from "@angular/common";
+import {Guest} from "./guest";
 
 export class Seance {
 
@@ -14,6 +15,7 @@ export class Seance {
   location: string;
   coachId: number;
   users: User[];
+  guests: Guest[];
 
   nameFormControl: FormControl;
   maxSpotFormControl: FormControl;
@@ -36,6 +38,7 @@ export class Seance {
       this.location = seance.location;
       this.coachId = seance.coachId;
       this.users = initGenericArrayFromJson(User, seance.users);
+      this.guests = initGenericArrayFromJson(Guest, seance.guests);
     }
   }
 
