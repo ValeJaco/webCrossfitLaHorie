@@ -6,7 +6,7 @@ export class SeanceFilters {
     let filters = "";
 
     if (this.startDate) {
-      filters += this.startDate.toJSON();
+      filters += "startDate=" + this.startDate.toJSON();
     }
 
     if (filters.length > 0) {
