@@ -40,6 +40,10 @@ export class MainContainerComponent implements OnInit {
     return this.securityFacadeService.getJwtTokenObject();
   }
 
+  hasRoleCoach(): boolean {
+    return this.securityFacadeService.hasRoleCoach();
+  }
+
   logOut() {
     this.securityFacadeService.logOut();
     this.router.navigate(['/auth']);

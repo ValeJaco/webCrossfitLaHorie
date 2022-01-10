@@ -8,7 +8,6 @@ import {SecurityFacadeService} from "../../services/security/security-facade.ser
 import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {SeanceFilters} from "../../filters/seance-filters";
-import {RolesEnum} from "../../constants/rolesEnum";
 import {JwtToken} from "../../models/jwt-token";
 
 @Component({
@@ -36,7 +35,7 @@ export class SeancesListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.showSeanceMenu = this.hasRole(RolesEnum.ROLE_COACH);
+    this.showSeanceMenu = this.hasRoleCoach();
 
     const filters = new SeanceFilters();
     filters.startDate = this.startDate;
@@ -114,12 +113,12 @@ export class SeancesListComponent implements OnInit {
     this.router.navigate(['/seances/new']);
   }
 
-  hasRole(roleName: string): boolean {
-    return this.securityFacadeService.hasRole(roleName);
-  }
-
   getJwtTokenObject(): JwtToken {
     return this.securityFacadeService.getJwtTokenObject();
+  }
+
+  hasRoleCoach(): boolean {
+    return this.securityFacadeService.hasRoleCoach();
   }
 
 }

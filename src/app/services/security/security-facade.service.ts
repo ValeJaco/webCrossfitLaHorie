@@ -5,6 +5,7 @@ import {ResponseEnum} from "../../constants/response-enum";
 import {BehaviorSubject, Observable} from "rxjs";
 import jwtDecode from 'jwt-decode';
 import {JwtToken} from "../../models/jwt-token";
+import {RolesEnum} from "../../constants/rolesEnum";
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +36,17 @@ export class SecurityFacadeService {
     return jwtDecode<JwtToken>(this.getAuthToken());
   }
 
-  hasRole(roleName: string): boolean {
-    return this.getJwtTokenObject().roles.findIndex(role => role === roleName) > -1;
-  }
+  hasRoleCoach(): boolean {
+    return this.hasRole(RolesEnum.ROLE_COACH);
+  };
+
+  hasRoleOffice(): boolean {
+    return this.hasRole(RolesEnum.ROLE_OFFICE);
+  };
+
+  hasRoleMember(): boolean {
+    return this.hasRole(RolesEnum.ROLE_MEMBER);
+  };
 
   logIn(username: string, password: string): Observable<boolean> {
     this.securityApiService.logIn(username, password).subscribe(response => {
@@ -49,5 +58,9 @@ export class SecurityFacadeService {
       }
     });
     return this.authResponse.asObservable();
+  }
+
+  private hasRole(roleName: string): boolean {
+    return this.getJwtTokenObject().roles.findIndex(role => role === roleName) > -1;
   }
 }

@@ -33,7 +33,9 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import { AutoCompleteSearchUsersComponent } from './components/auto-complete-search-users/auto-complete-search-users.component';
+import {AutoCompleteSearchUsersComponent} from './components/auto-complete-search-users/auto-complete-search-users.component';
+import {PlanningManagementComponent} from './pages/planning-management/planning-management.component';
+import {MatTableModule} from "@angular/material/table";
 
 registerLocaleData(localeFr);
 
@@ -47,7 +49,8 @@ registerLocaleData(localeFr);
     CustomSnackBarComponent,
     SeancesListComponent,
     AuthentificationComponent,
-    AutoCompleteSearchUsersComponent
+    AutoCompleteSearchUsersComponent,
+    PlanningManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,8 @@ registerLocaleData(localeFr);
     MatMenuModule,
     MatTooltipModule,
     MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatTableModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

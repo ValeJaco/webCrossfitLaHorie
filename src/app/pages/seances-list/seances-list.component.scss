@@ -1,3 +1,30 @@
+.grid-container-seance {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 0;
+}
+
+.left-seance-container {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: minmax(45px, auto);
+}
+
+.middle-seance-container {
+  grid-column: span 6;
+}
+
+.right-seance-container {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: minmax(45px, auto);
+}
+
+.right-seance-container div {
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -72,6 +99,20 @@
 .seance-card {
   margin: 10px;
   background-color: #94812B;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.seance-card mat-card-title {
+  margin-top: 10px;
+}
+
+.seance-card mat-card-content {
+}
+
+.seance-card mat-card-footer {
+  position: relative;
+  margin-bottom: 0;
 }
 
 ::ng-deep .mat-menu-panel {
@@ -90,8 +131,6 @@
 
 .seance-mgt-icons {
   font-size: 26px;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 .hover-green:hover {
@@ -106,10 +145,10 @@
   color: darkorange;
 }
 
-.card_subscribed_to_waiting {
-  border: solid blue 3px;
+.is_subscribed_to_waiting {
+  background-color: #31b9b9;
 }
 
-.card_subscribed {
-  border: solid green 3px;
+.is_subscribed {
+  background-color: #1cab1c;
 }

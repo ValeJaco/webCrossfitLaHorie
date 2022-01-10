@@ -46,6 +46,9 @@
     "ROLE_MEMBER": "Membre",
     "ROLE_OFFICE": "Bureau"
   },
+  "PLANNING": {
+    "NO_SEANCE_FOR_DAY": "Aucune séance n'est planifiée pour ce jour de la semaine"
+  },
   "SNACKBAR": {
     "CREATE_USER_OK": "Création du nouvel utilisateur effectuée",
     "UPDATE_USER_OK": "Mise à jour de l'utilisateur effectuée",
@@ -66,11 +69,30 @@
     "TOOLBAR_TITLE": "Crossfit La Horie",
     "MENU": "Menu",
     "LOG_OUT": "Se déconnecter",
-    "WELCOME": "Bienvenue"
+    "WELCOME": "Bienvenue",
+    "PLANNING_MANAGEMENT": "Gestion planning"
   },
   "AUTH": {
     "USERNAME": "Email",
     "PASSWORD": "Mot de passe",
     "LOG_IN": "Se connecter"
+  },
+  "UTILS": {
+    "DAY_NAME_1": "Lundi",
+    "DAY_NAME_2": "Mardi",
+    "DAY_NAME_3": "Mercredi",
+    "DAY_NAME_4": "Jeudi",
+    "DAY_NAME_5": "Vendredi",
+    "DAY_NAME_6": "Samedi",
+    "DAY_NAME_0": "Dimanche"
+  },
+  "COLUMN": {
+    "SEANCE_NAME": "Nom séance",
+    "START_TIME": "Heure début",
+    "DURATION": "Durée",
+    "MAX_SPOT": "Places",
+    "COACH": "Coach",
+    "LOCATION": "Localisation",
+    "ACTIONS": ""
   }
 }
