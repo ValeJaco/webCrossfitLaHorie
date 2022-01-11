@@ -49,7 +49,7 @@
 }
 
 .calendar-arrow mat-icon {
-  color: #bda37c;
+  color: var(--skin-yellow);
   text-align: center;
   font-size: 30px;
 }
@@ -93,12 +93,12 @@
 
 .day-title-card {
   margin: 10px;
-  background-color: #94812B;
+  background-color: var(--military-yellow);;
 }
 
 .seance-card {
   margin: 10px;
-  background-color: #94812B;
+  background-color: var(--military-yellow);;
   padding: 0;
   border-radius: 5px;
 }
@@ -116,7 +116,7 @@
 }
 
 ::ng-deep .mat-menu-panel {
-  background-color: #596643;
+  background-color: var(--military-green);
 }
 
 .seance-card mat-card-title {
@@ -146,9 +146,9 @@
 }
 
 .is_subscribed_to_waiting {
-  background-color: #31b9b9;
+  background-color: var(--waiting-queue-blue);
 }
 
 .is_subscribed {
-  background-color: #1cab1c;
+  background-color: var(--subscribed-green);
 }

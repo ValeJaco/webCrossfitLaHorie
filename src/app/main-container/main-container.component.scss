@@ -16,7 +16,7 @@
 }
 
 .main-toolbar {
-  background-color: #596643;
+  background-color: var(--military-green);
   color: papayawhip;
   position: sticky;
   position: -webkit-sticky; /* For macOS/iOS Safari */
@@ -25,6 +25,6 @@
 }
 
 .sidenav, .sidenav a {
-  background-color: #596643;
+  background-color: var(--military-green);
   color: papayawhip;
 }

@@ -23,7 +23,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   alignment: center;
-  background-color: #bda37c;
+  background-color: var(--skin-yellow);
 }
 
 .form-button:hover {
@@ -43,8 +43,8 @@
   text-align: center;
 }
 
-.main-body {
-  background-color: #2f2c2c;
+body {
+  background-color: var(--black-light);
   color: papayawhip;
 }
 

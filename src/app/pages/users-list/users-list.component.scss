@@ -2,7 +2,7 @@
   min-width: 250px;
   margin: 10px;
   padding: 10px;
-  background-color: #94812B;
+  background-color: var(--military-yellow);;
   color: papayawhip;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .user-card:hover {
-  background-color: #71a417;
+  background-color: var(--hover-green);;
 }
 
 .grid-container {

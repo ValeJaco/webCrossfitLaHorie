@@ -1,5 +1,5 @@
 .seance-form-card {
-  background-color: #94812B;
+  background-color: var(--military-yellow);;
   color: papayawhip;
   margin: 20px;
 }
@@ -39,7 +39,7 @@
 }
 
 .user-line-container:hover {
-  background-color: #71a417;
+  background-color: var(--hover-green);
 }
 
 .user-line-container {
@@ -55,9 +55,9 @@
 .mat-expansion-panel-header:hover,
 .mat-expansion-panel-header.mat-expanded,
 .mat-expansion-panel-header.mat-expanded:hover {
-  background-color: #bda37c;
+  background-color: var(--skin-yellow);
 }
 
 ::ng-deep .mat-expansion-panel-body {
-  background-color: #94812B;
+  background-color: var(--military-yellow);
 }
