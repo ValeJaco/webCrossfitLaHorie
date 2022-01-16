@@ -39,7 +39,8 @@
     "BUTTON_ADD_MEMBER": "Ajouter à la séance",
     "ADD_MEMBER": "Ajouter un membre",
     "CREATE_NEW_SEANCE": "Créer une nouvelle séance",
-    "WAIT_LIST_POSITION": "File d'attente : "
+    "WAIT_LIST_POSITION": "File d'attente : ",
+    "UNSUBSCRIBE_HOURS_LIMIT": "Heures avant désinscription"
   },
   "ROLES": {
     "ROLE_COACH": "Coach",
@@ -47,7 +48,12 @@
     "ROLE_OFFICE": "Bureau"
   },
   "PLANNING": {
-    "NO_SEANCE_FOR_DAY": "Aucune séance n'est planifiée pour ce jour de la semaine"
+    "NO_SEANCE_FOR_DAY": "Aucune séance n'est planifiée pour ce jour de la semaine",
+    "PLANNING_LIST": "Liste des plannings",
+    "CREATE_PLANNING": "Création d'un planning",
+    "BUTTON_CREATE_PLANNING": "Créer",
+    "NAME": "Nom du planning",
+    "DETAILS_PLANNING": "Détails du planning"
   },
   "SNACKBAR": {
     "CREATE_USER_OK": "Création du nouvel utilisateur effectuée",
@@ -61,7 +67,17 @@
     "AUTHENTIFICATION_NOK": "Les informations de connexion sont erronées",
     "UNSUBSCRIBE_OK": "Désinscription à la séance effectuée",
     "SUBSCRIBE_OK": "Inscription à la séance effectuée",
-    "GUESS_ADDED_OK": "Invité(e) ajouté(e)"
+    "GUESS_ADDED_OK": "Invité(e) ajouté(e)",
+    "SEANCE_PLANNING_CREATED_OK": "Séance ajoutée au planing",
+    "SEANCE_PLANNING_CREATED_NOK": "Echec de lors de l'ajout de la séance",
+    "SEANCE_PLANNING_DELETED_OK": "Suppression de la séance effectuée",
+    "SEANCE_PLANNING_DELETED_NOK": "Erreur lors de la suppression de la séance",
+    "SEANCE_PLANNING_UPDATED_OK": "Séance modifiée avec succès",
+    "SEANCE_PLANNING_UPDATED_NOK": "Echec de la modification de la séance",
+    "SET_PLANNING_ACTIVE_OK": "Modification du planning actif effectuée",
+    "SET_PLANNING_ACTIVE_NOK": "Erreur lors de la mise à jour du planning actif",
+    "PLANNING_NAME_UPDATED_OK": "Modification du non effectuée",
+    "PLANNING_NAME_UPDATED_NOK": "Echec lors de la modification du nom"
   },
   "SIDENAV": {
     "SEANCES_LIST": "Liste des séances",
@@ -93,6 +109,12 @@
     "MAX_SPOT": "Places",
     "COACH": "Coach",
     "LOCATION": "Localisation",
-    "ACTIONS": ""
+    "ACTIONS": "",
+    "UNSUBSCRIBE_HOURS_LIMIT": "H. Limite"
+  },
+  "TOOLTIP": {
+    "PLANNING_IS_ACTIVE": "Planning actif",
+    "EDIT_PLANNING": "Modifier le planning",
+    "PLANNING_SET_TO_ACTIVE": "Définir comme planning actif"
   }
 }

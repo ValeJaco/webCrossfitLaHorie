@@ -1,6 +1,6 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
-.div-flex {
+.flex-div {
   display: flex;
 }
 
@@ -60,6 +60,18 @@ body {
   background: darkorange;
 }
 
+.hover-green:hover {
+  color: green;
+}
+
+.hover-red:hover {
+  color: darkred;
+}
+
+.hover-orange:hover {
+  color: darkorange;
+}
+
 .no-wrap {
   white-space: nowrap;
 }
@@ -77,4 +89,10 @@ body {
 .margin-top-20 {
   margin-top: 20px;
 }
+
+.mat-tooltip {
+  background-color: var(--grey-light-full-opacity);
+  font-size: 12px;
+}
+
 

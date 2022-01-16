@@ -1,0 +1,72 @@
+.planning-mgt-day-main-container {
+  width: 1024px;
+  margin-top: 10px;
+  color: papayawhip;
+}
+
+.planning-seance-table {
+  width: 100%;
+  background-color: var(--military-yellow);
+}
+
+.planning-seance-table input {
+  background-color: papayawhip;
+}
+
+.planning-mgt-day-seance-container {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.planning-input {
+  width: 80%;
+}
+
+th.mat-header-cell {
+  font-weight: bold;
+}
+
+.planning-seance-table {
+  font-weight: 500;
+}
+
+.edited_line input {
+  background-color: whitesmoke;
+  border-width: 2px;
+  border-style: inset;
+  border-color: #767676FF;
+  border-image: initial;
+  cursor: text;
+}
+
+.read_only_line input {
+  background-color: var(--military-yellow);
+  border: none;
+  cursor: default;
+}
+
+.planning-input-number {
+  width: 50px;
+}
+
+.day-name-h2 {
+  width: 110px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.seance-planning-creation-icon {
+  position: relative;
+  top: 5px;
+}
+
+.seance-planning-creation-icon:hover {
+  color: var(--skin-yellow)
+}
+
+.card-update-planning {
+  background-color: var(--military-yellow);
+  width: 30%;
+  margin: 20px auto 0;
+}

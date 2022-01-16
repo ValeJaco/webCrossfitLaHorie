@@ -8,8 +8,6 @@ import {RESPONSE_OBSERVE_OPTION} from "../constants/constants";
 })
 export class ApiService {
 
-  STATUS_OK = 200;
-
   constructor(private http: HttpClient) {
   }
 
@@ -38,9 +36,7 @@ export class ApiService {
 
     options.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.http.get(url, options).pipe(
-      catchError(this.errorHandler)
-    );
+    return this.http.get(url, options);
   }
 
   /**

@@ -1,4 +1,4 @@
-<div class="div-flex">
+<div class="flex-div">
   <div [ngClass]="{grid_container : seance.id > 0}" class="margin-auto">
     <div class="div-height-100">
       <mat-card class="seance-form-card mat-elevation-z7">
@@ -7,7 +7,7 @@
         </mat-card-title>
         <mat-card-content>
           <form class="form-standard">
-            <div class="div-flex">
+            <div class="flex-div">
               <div class="margin-auto">
                 <div class="form-field-container">
                   <mat-form-field>
@@ -18,7 +18,13 @@
                 <div class="form-field-container">
                   <mat-form-field>
                     <mat-label>{{ "SEANCE.MAX_SPOT" | translate }}</mat-label>
-                    <input [formControl]="seance.maxSpotFormControl" matInput type="text"/>
+                    <input [formControl]="seance.maxSpotFormControl" matInput type="number"/>
+                  </mat-form-field>
+                </div>
+                <div class="form-field-container">
+                  <mat-form-field>
+                    <mat-label>{{ "SEANCE.UNSUBSCRIBE_HOURS_LIMIT" | translate }}</mat-label>
+                    <input [formControl]="seance.unsubcriptionHoursLimitFormControl" matInput type="number"/>
                   </mat-form-field>
                 </div>
                 <div class="form-field-container">
@@ -58,7 +64,8 @@
         </mat-card-title>
         <mat-card-content>
           <div *ngFor="let user of seance.users" class="user-line-container">
-            <mat-icon (click)="removeUser(user.id)" class="remove-subscribed-icon">remove_circle_outline</mat-icon>
+            <mat-icon (click)="removeUser(user.id)" class="remove-subscribed-icon show-pointer">remove_circle_outline
+            </mat-icon>
             {{user.forename}} {{user.lastname}}
           </div>
         </mat-card-content>
@@ -97,14 +104,16 @@
         </mat-card-title>
         <mat-card-content>
           <div *ngFor="let guest of seance.guests" class="user-line-container noselect">
-            <mat-icon (click)="removeGuest(guest.id)" class="remove-subscribed-icon">remove_circle_outline</mat-icon>
+            <mat-icon (click)="removeGuest(guest.id)" class="remove-subscribed-icon show-pointer">
+              remove_circle_outline
+            </mat-icon>
             <span class="no-wrap">{{guest.guestName}}</span>
             <span class="spacer"></span>
-            <mat-icon *ngIf="guest.comment?.length > 0" class="seance-tooltip-icon"
+            <mat-icon *ngIf="guest.comment?.length > 0" class="seance-tooltip-icon show-pointer"
                       matTooltip="{{guest.comment}}"
                       matTooltipPosition="right">message
             </mat-icon>
-            <mat-icon class="seance-tooltip-icon"
+            <mat-icon class="seance-tooltip-icon show-pointer"
                       matTooltip="{{guest.coachName}}"
                       matTooltipPosition="right">account_circle
             </mat-icon>

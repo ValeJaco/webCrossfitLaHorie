@@ -31,6 +31,7 @@
   grid-gap: 0;
   grid-row: auto;
   align-items: center;
+  min-width: 1440px;
 }
 
 .day-of-week {
@@ -55,12 +56,12 @@
 }
 
 .calendar-arrow mat-icon:hover {
-  cursor: pointer;
   color: papayawhip;
 }
 
 .calendar-arrow-spacer {
   grid-column: span 1;
+  text-align: center;
 }
 
 .day-of-week-0 {
@@ -93,12 +94,13 @@
 
 .day-title-card {
   margin: 10px;
-  background-color: var(--military-yellow);;
+  background-color: var(--military-yellow);
+  min-width: 180px;
 }
 
 .seance-card {
   margin: 10px;
-  background-color: var(--military-yellow);;
+  background-color: var(--military-yellow);
   padding: 0;
   border-radius: 5px;
 }
@@ -131,18 +133,6 @@
 
 .seance-mgt-icons {
   font-size: 26px;
-}
-
-.hover-green:hover {
-  color: green;
-}
-
-.hover-red:hover {
-  color: darkred;
-}
-
-.hover-orange:hover {
-  color: darkorange;
 }
 
 .is_subscribed_to_waiting {

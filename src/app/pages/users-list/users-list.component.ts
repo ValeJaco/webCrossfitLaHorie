@@ -30,7 +30,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.loadUsers("");
   }
 
-  goToUserDetail(userId: number) {
+  goToUserDetails(userId: number) {
     this.router.navigate(['/users/' + userId]);
   }
 

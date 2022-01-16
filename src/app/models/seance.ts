@@ -15,6 +15,7 @@ export class Seance {
   duration: number;
   location: string;
   coachId: number;
+  unsubcriptionHoursLimit: number;
   users: User[];
   usersWaiting: UsersWaiting[];
   guests: Guest[];
@@ -25,6 +26,7 @@ export class Seance {
   durationFormControl: FormControl;
   locationFormControl: FormControl;
   coachIdFormControl: FormControl;
+  unsubcriptionHoursLimitFormControl: FormControl;
 
   constructor(seance?: any) {
     this.copy(seance);
@@ -39,6 +41,7 @@ export class Seance {
       this.duration = seance.duration;
       this.location = seance.location;
       this.coachId = seance.coachId;
+      this.unsubcriptionHoursLimit = seance.unsubcriptionHoursLimit;
       this.users = initGenericArrayFromJson(User, seance.users);
       this.usersWaiting = initGenericArrayFromJson(UsersWaiting, seance.usersWaiting);
       this.guests = initGenericArrayFromJson(Guest, seance.guests);
@@ -56,6 +59,7 @@ export class Seance {
     this.durationFormControl = new FormControl(this.duration, [Validators.required]);
     this.locationFormControl = new FormControl(this.location);
     this.coachIdFormControl = new FormControl(this.coachId);
+    this.unsubcriptionHoursLimitFormControl = new FormControl(this.unsubcriptionHoursLimit, [Validators.required]);
   }
 
   initializeFormControllerSubscription(): Subscription[] {
@@ -79,6 +83,9 @@ export class Seance {
     }))
     subArray.push(this.coachIdFormControl.valueChanges.subscribe(value => {
       this.coachId = value;
+    }))
+    subArray.push(this.unsubcriptionHoursLimitFormControl.valueChanges.subscribe(value => {
+      this.unsubcriptionHoursLimit = value;
     }))
 
     return subArray;
@@ -112,7 +119,8 @@ export class Seance {
         'maxSpot',
         'startDate',
         'duration',
-        'location'
+        'location',
+        'unsubcriptionHoursLimit'
       ]);
   }
 }

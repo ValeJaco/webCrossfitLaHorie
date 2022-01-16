@@ -20,7 +20,7 @@ import {JwtToken} from "../../models/jwt-token";
 export class SeancesListComponent implements OnInit {
 
   seancesList = new Map<string, Seance[]>();
-  startDate = new Date('2021-12-18');
+  startDate = new Date('2022-07-25');
   timeZone = environment.TIMEZONE;
   nbDaysToShow = 7;
   showSeanceMenu = false;
@@ -57,7 +57,7 @@ export class SeancesListComponent implements OnInit {
     this.seancesFacadeService.loadSeances(filters.filtersToApi());
   }
 
-  goToSeanceDetail(seanceId: number) {
+  goToSeanceDetails(seanceId: number) {
     this.router.navigate(['/seances/' + seanceId]);
   }
 

@@ -1,7 +1,7 @@
-<div class="div-flex">
+<div class="flex-div">
   <div class="margin-auto grid-container">
-    <div class="calendar-arrow">
-      <mat-icon (click)="goTPreviousDay()" class="image-180">play_circle_filled</mat-icon>
+    <div class="calendar-arrow show-pointer">
+      <mat-icon (click)="goTPreviousDay()" class="image-180 show-pointer">play_circle_filled</mat-icon>
     </div>
     <div class="calendar-arrow-spacer">
       <button (click)="goToNewSeance()" *ngIf="hasRoleCoach()" class="form-button" mat-raised-button>
@@ -9,7 +9,7 @@
       </button>
     </div>
     <div class="calendar-arrow">
-      <mat-icon (click)="goToNextDay()">play_circle_filled</mat-icon>
+      <mat-icon (click)="goToNextDay()" class="show-pointer">play_circle_filled</mat-icon>
     </div>
 
     <mat-card *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
@@ -83,7 +83,7 @@
                     <mat-icon class="hover-orange">more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu" class="seance-pop-up-menu">
-                    <button (click)="goToSeanceDetail(seance.id)" mat-menu-item>
+                    <button (click)="goToSeanceDetails(seance.id)" mat-menu-item>
                       <mat-icon>edit</mat-icon>
                       <span>{{"SEANCE.EDIT_SEANCE" | translate}}</span>
                     </button>

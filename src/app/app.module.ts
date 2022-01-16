@@ -34,8 +34,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AutoCompleteSearchUsersComponent} from './components/auto-complete-search-users/auto-complete-search-users.component';
-import {PlanningManagementComponent} from './pages/planning-management/planning-management.component';
+import {PlanningListComponent} from './pages/planning-list/planning-list.component';
 import {MatTableModule} from "@angular/material/table";
+import { PlanningDetailsComponent } from './pages/planning-details/planning-details.component';
 
 registerLocaleData(localeFr);
 
@@ -50,7 +51,8 @@ registerLocaleData(localeFr);
     SeancesListComponent,
     AuthentificationComponent,
     AutoCompleteSearchUsersComponent,
-    PlanningManagementComponent
+    PlanningListComponent,
+    PlanningDetailsComponent
   ],
   imports: [
     BrowserModule,

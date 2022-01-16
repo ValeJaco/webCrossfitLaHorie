@@ -1,0 +1,42 @@
+<div class="flex-div">
+  <div class="margin-auto">
+    <mat-card class="card-update-planning">
+      <mat-card-title>{{ "PLANNING.PLANNING_LIST" | translate}}</mat-card-title>
+      <div *ngFor="let currentPlanning of plannings" class="flex-div planning-list-div">
+        {{ currentPlanning.name }}
+        <span class="spacer"></span>
+        <mat-icon (click)="goToPlanningDetails(currentPlanning.id)" class="hover-orange show-pointer"
+                  matTooltip='{{ "TOOLTIP.EDIT_PLANNING" |translate}}'>
+          edit
+        </mat-icon>
+        <mat-icon (click)="setDefaultPlanning(currentPlanning)" *ngIf="!currentPlanning.isActive"
+                  class="hover-green show-pointer"
+                  matTooltip='{{ "TOOLTIP.PLANNING_SET_TO_ACTIVE" |translate}}'>
+          settings_backup_restore
+        </mat-icon>
+        <mat-icon *ngIf="currentPlanning.isActive" class="planning-active-icon"
+                  matTooltip='{{ "TOOLTIP.PLANNING_IS_ACTIVE" |translate}}'>
+          font_download
+        </mat-icon>
+      </div>
+    </mat-card>
+    <mat-card class="card-create-planning">
+      <mat-card-title>{{ "PLANNING.CREATE_PLANNING" | translate}}</mat-card-title>
+      <mat-card-content>
+        <form>
+          <div class="form-field-container">
+            <mat-form-field>
+              <mat-label>{{ "PLANNING.NAME" | translate }}</mat-label>
+              <input [formControl]="nameFormControl" matInput type="text"/>
+            </mat-form-field>
+          </div>
+          <div class="form-field-container text-centered">
+            <button (click)="createPlanning()" class="form-button" mat-raised-button>
+              {{"PLANNING.BUTTON_CREATE_PLANNING" | translate}}
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

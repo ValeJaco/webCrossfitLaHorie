@@ -6,33 +6,39 @@ import {AuthGuard} from "./security/auth.guard";
 import {UsersListComponent} from "./pages/users-list/users-list.component";
 import {SeancesListComponent} from "./pages/seances-list/seances-list.component";
 import {AuthentificationComponent} from "./pages/authentification/authentification.component";
-import {PlanningManagementComponent} from "./pages/planning-management/planning-management.component";
+import {PlanningListComponent} from "./pages/planning-list/planning-list.component";
+import {PlanningDetailsComponent} from "./pages/planning-details/planning-details.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'seances', pathMatch: 'full'},
-  {
-    path: 'seances',
-    component: SeancesListComponent,
-    canActivate: [AuthGuard]
-  },
   {
     path: 'seances/:id',
     component: SeanceDetailsComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'planning',
-    component: PlanningManagementComponent,
+    path: 'seances',
+    component: SeancesListComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'users',
-    component: UsersListComponent,
+    path: 'planning/:id',
+    component: PlanningDetailsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'planning',
+    component: PlanningListComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'users/:id',
     component: UserDetailsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'users',
+    component: UsersListComponent,
     canActivate: [AuthGuard]
   },
   {
