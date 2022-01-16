@@ -86,7 +86,8 @@
     "MENU": "Menu",
     "LOG_OUT": "Se déconnecter",
     "WELCOME": "Bienvenue",
-    "PLANNING_MANAGEMENT": "Gestion planning"
+    "PLANNING_MANAGEMENT": "Gestion planning",
+    "MY_SEANCES_LIST": "Mes séances à venir"
   },
   "AUTH": {
     "USERNAME": "Email",

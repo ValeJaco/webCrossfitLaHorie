@@ -92,9 +92,7 @@ export class Seance {
   }
 
   isUserSubscribed(userId: number): boolean {
-    const lala = this.users.findIndex(user => user.id === userId) > -1;
-    console.log(this.id + " - " + userId + " - " + lala)
-    return lala;
+    return this.users.findIndex(user => user.id === userId) > -1;
   }
 
   waitingListPosition(userId: number): number {

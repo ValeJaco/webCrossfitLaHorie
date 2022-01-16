@@ -9,21 +9,33 @@ import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {SeanceFilters} from "../../filters/seance-filters";
 import {JwtToken} from "../../models/jwt-token";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-seances-list',
   templateUrl: './seances-list.component.html',
   styleUrls: ['./seances-list.component.scss'],
-  providers: [DatePipe]
+  providers: [DatePipe],
+  animations: [
+    trigger('fadeSlideInOut', [
+      transition(':enter', [
+        style({opacity: 0, transform: 'translateY(10px)'}),
+        animate('500ms', style({opacity: 1, transform: 'translateY(0)'})),
+      ]),
+      transition(':leave', [
+        animate('500ms', style({opacity: 0, transform: 'translateY(10px)'})),
+      ]),
+    ]),
+  ],
 })
+
 
 export class SeancesListComponent implements OnInit {
 
   seancesList = new Map<string, Seance[]>();
-  startDate = new Date('2022-07-25');
+  startDate = new Date('2022-01-10');
   timeZone = environment.TIMEZONE;
   nbDaysToShow = 7;
-  showSeanceMenu = false;
 
   constructor(
     private seancesFacadeService: SeancesFacadeService,
@@ -34,8 +46,6 @@ export class SeancesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.showSeanceMenu = this.hasRoleCoach();
 
     const filters = new SeanceFilters();
     filters.startDate = this.startDate;
@@ -88,7 +98,7 @@ export class SeancesListComponent implements OnInit {
     );
   }
 
-  unsubscribeToSeance(seanceId: number) {
+  unsubscribeFromSeance(seanceId: number) {
     this.seancesFacadeService.removeUserFromSeance(
       seanceId,
       this.securityFacadeService.getJwtTokenObject().userId

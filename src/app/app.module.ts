@@ -37,6 +37,8 @@ import {AutoCompleteSearchUsersComponent} from './components/auto-complete-searc
 import {PlanningListComponent} from './pages/planning-list/planning-list.component';
 import {MatTableModule} from "@angular/material/table";
 import { PlanningDetailsComponent } from './pages/planning-details/planning-details.component';
+import { MyIncomingSeancesComponent } from './pages/my-incoming-seances/my-incoming-seances.component';
+import { SeanceCardComponent } from './components/seance-card/seance-card.component';
 
 registerLocaleData(localeFr);
 
@@ -52,7 +54,9 @@ registerLocaleData(localeFr);
     AuthentificationComponent,
     AutoCompleteSearchUsersComponent,
     PlanningListComponent,
-    PlanningDetailsComponent
+    PlanningDetailsComponent,
+    MyIncomingSeancesComponent,
+    SeanceCardComponent
   ],
   imports: [
     BrowserModule,

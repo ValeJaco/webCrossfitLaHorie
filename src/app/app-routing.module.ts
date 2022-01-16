@@ -8,6 +8,7 @@ import {SeancesListComponent} from "./pages/seances-list/seances-list.component"
 import {AuthentificationComponent} from "./pages/authentification/authentification.component";
 import {PlanningListComponent} from "./pages/planning-list/planning-list.component";
 import {PlanningDetailsComponent} from "./pages/planning-details/planning-details.component";
+import {MyIncomingSeancesComponent} from "./pages/my-incoming-seances/my-incoming-seances.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'seances', pathMatch: 'full'},
@@ -21,6 +22,12 @@ const routes: Routes = [
     component: SeancesListComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'mySeances',
+    component: MyIncomingSeancesComponent,
+    canActivate: [AuthGuard]
+  },
+
   {
     path: 'planning/:id',
     component: PlanningDetailsComponent,

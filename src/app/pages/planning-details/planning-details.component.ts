@@ -142,12 +142,10 @@ export class PlanningDetailsComponent implements OnInit {
   }
 
   removeSeanceFromPlanning(seancePlanning: SeancePlanning): void {
-    console.log(seancePlanning);
     this.seancesPlanningFacadeService
       .deleteSeancePlanning(seancePlanning.id)
       .pipe(take(1)).subscribe({
       next: (response) => {
-        console.log(response.body);
         this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_OK");
         const seanceToDeleteIndexInPlanning = this.planning.seancesPlanning.findIndex(sp => sp.id === seancePlanning.id);
         const seanceToDeleteIndexInMap = this.seancesList.get(seancePlanning.dayOfWeek).findIndex(sp => sp.id === seancePlanning.id);
@@ -162,7 +160,6 @@ export class PlanningDetailsComponent implements OnInit {
         }
 
       }, error: err => {
-        console.log(err);
         this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_NOK");
       }
     });

@@ -31,6 +31,24 @@ export class SeancesApiService {
     );
   }
 
+  getIncomingSeancesByUserId(userId: number): Observable<SeancesListResponse> {
+    const url = `${environment.API_URL}/incomingSeances/${userId}`;
+    return this.apiService.get(url).pipe(
+      map((response: SeancesListResponse) => {
+        return response;
+      })
+    );
+  }
+
+  getAllSeancesByUserId(userId: number): Observable<SeancesListResponse> {
+    const url = `${environment.API_URL}/allSeances/${userId}`;
+    return this.apiService.get(url).pipe(
+      map((response: SeancesListResponse) => {
+        return response;
+      })
+    );
+  }
+
   createSeance(jsonSeance: any): Observable<SeanceResponse> {
     return this.apiService
       .post(`${environment.API_URL}/seances`, jsonSeance)

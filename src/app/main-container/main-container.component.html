@@ -30,6 +30,9 @@
       <mat-nav-list (click)="toggleMenu()">
         <a [routerLink]="['/seances']" mat-list-item>{{ "SIDENAV.SEANCES_LIST" | translate }}</a>
       </mat-nav-list>
+      <mat-nav-list (click)="toggleMenu()">
+        <a [routerLink]="['/mySeances']" mat-list-item>{{ "SIDENAV.MY_SEANCES_LIST" | translate }}</a>
+      </mat-nav-list>
       <mat-nav-list (click)="toggleMenu()" *ngIf="hasRoleCoach()">
         <a [routerLink]="['/planning']" mat-list-item>{{ "SIDENAV.PLANNING_MANAGEMENT" | translate }}</a>
       </mat-nav-list>

@@ -22,6 +22,14 @@ export class SeancesFacadeService {
       })
   }
 
+  getIncomingSeancesByUserId(userId: number): Observable<SeancesListResponse> {
+    return this.seancesApiService.getIncomingSeancesByUserId(userId);
+  }
+
+  getAllSeancesByUserId(userId: number): Observable<SeancesListResponse> {
+    return this.seancesApiService.getAllSeancesByUserId(userId);
+  }
+
   getSeances(): Observable<SeancesListResponse> {
     return this.seancesStorageService.getSeances();
   }
