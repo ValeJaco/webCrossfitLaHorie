@@ -1,73 +1,75 @@
-<mat-card *ngIf="showDate" class="seance-card-day-date">
-  {{seance.startDate | date: 'EEEE d MMMM' :timeZone:'fr' }}
-</mat-card>
-<mat-card
-  class="seance-card mat-elevation-z3 grid-container-seance">
+<div @smoothAppearing>
+  <mat-card *ngIf="showDate" class="seance-card-day-date">
+    {{seance.startDate | date: 'EEEE d MMMM' :timeZone:'fr' }}
+  </mat-card>
+  <mat-card
+    class="seance-card mat-elevation-z3 grid-container-seance">
 
-  <div [ngClass]="{
+    <div [ngClass]="{
                 is_subscribed : seance.isUserSubscribed(getJwtTokenObject().userId),
                 is_subscribed_to_waiting : seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)
                 }" class="left-seance-container">
-    <div></div>
-    <div *ngIf="seance.isUserSubscribed(getJwtTokenObject().userId)">
-      <mat-icon class="seance-mgt-icons">check</mat-icon>
+      <div></div>
+      <div *ngIf="seance.isUserSubscribed(getJwtTokenObject().userId)">
+        <mat-icon class="seance-mgt-icons">check</mat-icon>
+      </div>
+      <div *ngIf="seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)">
+        <mat-icon class="seance-mgt-icons">alarm_on</mat-icon>
+      </div>
+      <div>
+        <ng-container *ngIf="seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)">
+          {{ seance.waitingListPosition(getJwtTokenObject().userId) }}
+        </ng-container>
+      </div>
     </div>
-    <div *ngIf="seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)">
-      <mat-icon class="seance-mgt-icons">alarm_on</mat-icon>
+    <div class="middle-seance-container">
+      <mat-card-title>{{seance.name}}</mat-card-title>
+      <mat-card-content>
+        {{seance.startDate | date: 'HH:mm':timeZone:'fr' }}
+      </mat-card-content>
+      <mat-card-footer>
+        {{seance.users.length}}/{{seance.maxSpot}}
+      </mat-card-footer>
     </div>
-    <div>
-      <ng-container *ngIf="seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)">
-        {{ seance.waitingListPosition(getJwtTokenObject().userId) }}
-      </ng-container>
-    </div>
-  </div>
-  <div class="middle-seance-container">
-    <mat-card-title>{{seance.name}}</mat-card-title>
-    <mat-card-content>
-      {{seance.startDate | date: 'HH:mm':timeZone:'fr' }}
-    </mat-card-content>
-    <mat-card-footer>
-      {{seance.users.length}}/{{seance.maxSpot}}
-    </mat-card-footer>
-  </div>
-  <div class="right-seance-container">
-    <div>
-      <button *ngIf="
+    <div class="right-seance-container">
+      <div>
+        <button *ngIf="
                 !seance.isUserSubscribed(getJwtTokenObject().userId) &&
                 !seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)"
-              mat-icon-button
-      >
-        <mat-icon (click)="subscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-green">
-          add_circle
-        </mat-icon>
-      </button>
-    </div>
-    <div>
-      <button *ngIf="
+                mat-icon-button
+        >
+          <mat-icon (click)="subscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-green">
+            add_circle
+          </mat-icon>
+        </button>
+      </div>
+      <div>
+        <button *ngIf="
                 seance.isUserSubscribed(getJwtTokenObject().userId) ||
                 seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)"
-              mat-icon-button
-      >
-        <mat-icon (click)="unsubscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-red">
-          remove_circle
-        </mat-icon>
-      </button>
-    </div>
-    <div>
-      <button *ngIf="this.hasRoleCoach()" [matMenuTriggerFor]="menu" aria-label="Seance Menu"
-              mat-icon-button>
-        <mat-icon class="hover-orange">more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button (click)="goToSeanceDetails(seance.id)" mat-menu-item>
-          <mat-icon>edit</mat-icon>
-          <span>{{"SEANCE.EDIT_SEANCE" | translate}}</span>
+                mat-icon-button
+        >
+          <mat-icon (click)="unsubscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-red">
+            remove_circle
+          </mat-icon>
         </button>
-        <button mat-menu-item>
-          <mat-icon>delete</mat-icon>
-          <span>{{"SEANCE.VIEW_SUBSCRIBED_USER" | translate}}</span>
+      </div>
+      <div>
+        <button *ngIf="this.hasRoleCoach()" [matMenuTriggerFor]="menu" aria-label="Seance Menu"
+                mat-icon-button>
+          <mat-icon class="hover-orange">more_vert</mat-icon>
         </button>
-      </mat-menu>
+        <mat-menu #menu="matMenu">
+          <button (click)="goToSeanceDetails(seance.id)" mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>{{"SEANCE.EDIT_SEANCE" | translate}}</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>{{"SEANCE.VIEW_SUBSCRIBED_USER" | translate}}</span>
+          </button>
+        </mat-menu>
+      </div>
     </div>
-  </div>
-</mat-card>
+  </mat-card>
+</div>

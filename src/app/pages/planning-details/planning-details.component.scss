@@ -6,8 +6,13 @@
 
 .planning-seance-table {
   width: 100%;
+  background-color: transparent;
+}
+
+.planning-seance-table-rows {
   background-color: var(--military-yellow);
 }
+
 
 .planning-seance-table input {
   background-color: papayawhip;

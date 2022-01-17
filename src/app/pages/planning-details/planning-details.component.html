@@ -1,4 +1,4 @@
-<div class="flex-div">
+<div @smoothAppearing class="flex-div">
   <div class="margin-auto">
 
     <mat-card class="card-update-planning">
@@ -27,7 +27,7 @@
         <div class="planning-mgt-day-seance-container">
           <ng-container *ngIf="seancesList.get( (index + 1) % 7 )?.length > 0">
 
-            <table [dataSource]="seancesList.get( (index + 1) % 7 )"
+            <table @slideInOutLeftToRight [dataSource]="seancesList.get( (index + 1) % 7 )"
                    class="mat-elevation-z8 planning-seance-table"
                    mat-table
             >
@@ -101,9 +101,13 @@
                   </mat-icon>
                 </td>
               </ng-container>
-              <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-              <tr *matRowDef="let row; columns: displayedColumns;"
-                  [ngClass]="{read_only_line: row.readOnly,edited_line: !row.readOnly}" mat-row></tr>
+              <tr *matHeaderRowDef="displayedColumns"
+                  class="planning-seance-table-rows"
+                  mat-header-row></tr>
+              <tr *matRowDef="let row; columns: displayedColumns;" @slideInOutLeftToRight
+                  [ngClass]="{read_only_line: row.readOnly,edited_line: !row.readOnly}"
+                  class="planning-seance-table-rows" mat-row>
+              </tr>
             </table>
           </ng-container>
           <ng-container *ngIf="!seancesList.get( (index + 1) % 7 ) || seancesList.get( (index + 1) % 7 )?.length <= 0">

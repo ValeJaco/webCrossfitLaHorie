@@ -6,11 +6,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {RolesEnum} from "../../constants/rolesEnum";
 import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
+import {smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  styleUrls: ['./user-details.component.scss'],
+  animations: [smoothAppearing]
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
 

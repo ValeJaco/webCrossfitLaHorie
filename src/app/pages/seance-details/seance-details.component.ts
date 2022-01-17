@@ -9,11 +9,13 @@ import {SnackBarService} from "../../services/snack-bar.service";
 import {Guest} from "../../models/guest";
 import {SecurityFacadeService} from "../../services/security/security-facade.service";
 import {FormControl, Validators} from "@angular/forms";
+import {smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-seance-details',
   templateUrl: './seance-details.component.html',
-  styleUrls: ['./seance-details.component.scss']
+  styleUrls: ['./seance-details.component.scss'],
+  animations: [smoothAppearing]
 })
 export class SeanceDetailsComponent implements OnInit {
 

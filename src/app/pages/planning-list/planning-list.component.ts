@@ -7,11 +7,13 @@ import {Router} from "@angular/router";
 import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {initGenericArrayFromJson} from "../../utils/utils";
+import {smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-planning-management',
   templateUrl: './planning-list.component.html',
-  styleUrls: ['./planning-list.component.scss']
+  styleUrls: ['./planning-list.component.scss'],
+  animations: [smoothAppearing]
 })
 export class PlanningListComponent implements OnInit, OnDestroy {
 

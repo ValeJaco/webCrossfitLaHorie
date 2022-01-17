@@ -10,7 +10,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MainContainerComponent} from './main-container/main-container.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
@@ -36,9 +36,9 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AutoCompleteSearchUsersComponent} from './components/auto-complete-search-users/auto-complete-search-users.component';
 import {PlanningListComponent} from './pages/planning-list/planning-list.component';
 import {MatTableModule} from "@angular/material/table";
-import { PlanningDetailsComponent } from './pages/planning-details/planning-details.component';
-import { MyIncomingSeancesComponent } from './pages/my-incoming-seances/my-incoming-seances.component';
-import { SeanceCardComponent } from './components/seance-card/seance-card.component';
+import {PlanningDetailsComponent} from './pages/planning-details/planning-details.component';
+import {MyIncomingSeancesComponent} from './pages/my-incoming-seances/my-incoming-seances.component';
+import {SeanceCardComponent} from './components/seance-card/seance-card.component';
 
 registerLocaleData(localeFr);
 
@@ -66,7 +66,6 @@ registerLocaleData(localeFr);
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -89,6 +88,9 @@ registerLocaleData(localeFr);
     MatExpansionModule,
     MatAutocompleteModule,
     MatTableModule
+  ],
+  exports: [
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

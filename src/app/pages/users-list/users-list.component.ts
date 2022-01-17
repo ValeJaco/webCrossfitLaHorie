@@ -5,11 +5,13 @@ import {User} from "../../models/user";
 import {UsersFacadeService} from "../../services/users/users-facade.service";
 import {Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
+import {smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.scss']
+  styleUrls: ['./users-list.component.scss'],
+  animations: [smoothAppearing]
 })
 export class UsersListComponent implements OnInit, OnDestroy {
 

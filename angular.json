@@ -80,6 +80,20 @@
               ],
               "outputHashing": "all"
             },
+            "local": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -99,6 +113,9 @@
             },
             "development": {
               "browserTarget": "webCrossfitLaHorie:build:development"
+            },
+            "local": {
+              "browserTarget": "webCrossfitLaHorie:build:local"
             }
           },
           "defaultConfiguration": "development"

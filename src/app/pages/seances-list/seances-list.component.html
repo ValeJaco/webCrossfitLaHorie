@@ -12,7 +12,7 @@
       <mat-icon (click)="goToNextDay()" class="show-pointer">play_circle_filled</mat-icon>
     </div>
 
-    <mat-card *ngFor="let number of [].constructor(nbDaysToShow); let index = index" @fadeSlideInOut
+    <mat-card *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
               class="text-centered day-title-card">
       <mat-card-content>
         {{ getDateForCalendar(index) | date: 'EEEE - dd/MM':timeZone:'fr' }}

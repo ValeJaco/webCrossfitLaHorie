@@ -3,11 +3,13 @@ import {Seance} from "../../models/seance";
 import {JwtToken} from "../../models/jwt-token";
 import {SecurityFacadeService} from "../../services/security/security-facade.service";
 import {environment} from "../../../environments/environment";
+import {smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-seance-card',
   templateUrl: './seance-card.component.html',
-  styleUrls: ['./seance-card.component.scss']
+  styleUrls: ['./seance-card.component.scss'],
+  animations: [smoothAppearing]
 })
 export class SeanceCardComponent implements OnInit {
 

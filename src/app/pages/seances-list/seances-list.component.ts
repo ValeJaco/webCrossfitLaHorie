@@ -9,24 +9,14 @@ import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {SeanceFilters} from "../../filters/seance-filters";
 import {JwtToken} from "../../models/jwt-token";
-import {animate, style, transition, trigger} from "@angular/animations";
+import {smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-seances-list',
   templateUrl: './seances-list.component.html',
   styleUrls: ['./seances-list.component.scss'],
   providers: [DatePipe],
-  animations: [
-    trigger('fadeSlideInOut', [
-      transition(':enter', [
-        style({opacity: 0, transform: 'translateY(10px)'}),
-        animate('500ms', style({opacity: 1, transform: 'translateY(0)'})),
-      ]),
-      transition(':leave', [
-        animate('500ms', style({opacity: 0, transform: 'translateY(10px)'})),
-      ]),
-    ]),
-  ],
+  animations: [smoothAppearing]
 })
 
 

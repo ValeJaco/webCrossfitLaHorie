@@ -4,11 +4,13 @@ import {SecurityFacadeService} from "../../services/security/security-facade.ser
 import {Router} from "@angular/router";
 import {take} from "rxjs";
 import {SnackBarService} from "../../services/snack-bar.service";
+import {smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-authentification',
   templateUrl: './authentification.component.html',
-  styleUrls: ['./authentification.component.scss']
+  styleUrls: ['./authentification.component.scss'],
+  animations: [smoothAppearing]
 })
 export class AuthentificationComponent implements OnInit {
 

@@ -14,7 +14,6 @@ import {MatDrawer} from "@angular/material/sidenav";
 export class MainContainerComponent implements OnInit {
 
   @ViewChild('drawer', {static: false}) public drawer: MatDrawer;
-  menuVisible = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

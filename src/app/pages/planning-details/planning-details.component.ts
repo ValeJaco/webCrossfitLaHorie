@@ -7,11 +7,13 @@ import {ResponseEnum} from "../../constants/response-enum";
 import {SeancePlanning} from "../../models/seance-planning";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {FormControl, Validators} from "@angular/forms";
+import {slideInOutLeftToRight, smoothAppearing} from "../../utils/animations";
 
 @Component({
   selector: 'app-planning-details',
   templateUrl: './planning-details.component.html',
-  styleUrls: ['./planning-details.component.scss']
+  styleUrls: ['./planning-details.component.scss'],
+  animations: [smoothAppearing, slideInOutLeftToRight]
 })
 export class PlanningDetailsComponent implements OnInit {
 
@@ -190,6 +192,7 @@ export class PlanningDetailsComponent implements OnInit {
     newSeance.dayOfWeek = dayOfWeek;
     newSeance.name = "test";
     newSeance.startTime = "18:30:00";
+    newSeance.unsubcriptionHoursLimit = 6;
     newSeance.duration = 90;
     newSeance.maxSpot = 12;
     newSeance.readOnly = false;
