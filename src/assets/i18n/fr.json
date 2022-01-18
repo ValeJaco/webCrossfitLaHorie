@@ -76,7 +76,7 @@
     "SEANCE_PLANNING_UPDATED_NOK": "Echec de la modification de la séance",
     "SET_PLANNING_ACTIVE_OK": "Modification du planning actif effectuée",
     "SET_PLANNING_ACTIVE_NOK": "Erreur lors de la mise à jour du planning actif",
-    "PLANNING_NAME_UPDATED_OK": "Modification du non effectuée",
+    "PLANNING_NAME_UPDATED_OK": "Nom du planning modifié",
     "PLANNING_NAME_UPDATED_NOK": "Echec lors de la modification du nom"
   },
   "SIDENAV": {
