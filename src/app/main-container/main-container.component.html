@@ -12,7 +12,8 @@
 
   <ng-container *ngIf="isLoggedIn()">
     <span class="spacer"></span>
-    <span>{{ "SIDENAV.WELCOME" | translate }} {{ getJwtTokenObject().foreName }}</span>
+    <span>{{ getJwtTokenObject().foreName }}</span>
+    <mat-icon class='toolbar-account-icon'>account_circle</mat-icon>
   </ng-container>
 </mat-toolbar>
 <mat-drawer-container class="sidenav-container">
@@ -31,10 +32,12 @@
         <a [routerLink]="['/seances']" mat-list-item>{{ "SIDENAV.SEANCES_LIST" | translate }}</a>
       </mat-nav-list>
       <mat-nav-list (click)="toggleMenu()">
-        <a [routerLink]="['/mySeances']" mat-list-item>{{ "SIDENAV.MY_SEANCES_LIST" | translate }}</a>
+        <a [routerLink]="['/mySeances']"
+           mat-list-item>{{ "SIDENAV.MY_SEANCES_LIST" | translate }}</a>
       </mat-nav-list>
       <mat-nav-list (click)="toggleMenu()" *ngIf="hasRoleCoach()">
-        <a [routerLink]="['/planning']" mat-list-item>{{ "SIDENAV.PLANNING_MANAGEMENT" | translate }}</a>
+        <a [routerLink]="['/planning']"
+           mat-list-item>{{ "SIDENAV.PLANNING_MANAGEMENT" | translate }}</a>
       </mat-nav-list>
       <mat-nav-list (click)="logOut()">
         <a mat-list-item>{{ "SIDENAV.LOG_OUT" | translate }}</a>

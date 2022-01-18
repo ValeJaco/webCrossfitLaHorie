@@ -38,7 +38,8 @@
                 !seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)"
                 mat-icon-button
         >
-          <mat-icon (click)="subscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-green">
+          <mat-icon (click)="subscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-green"
+                    matTooltip='{{ "TOOLTIP.SUBSCRIBE" |translate}}'>
             add_circle
           </mat-icon>
         </button>
@@ -49,7 +50,8 @@
                 seance.isUserSubscribedToWaitingList(getJwtTokenObject().userId)"
                 mat-icon-button
         >
-          <mat-icon (click)="unsubscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-red">
+          <mat-icon (click)="unsubscribeToSeance(seance.id)" class="show-pointer seance-mgt-icons hover-red"
+                    matTooltip='{{ "TOOLTIP.UNSUBSCRIBE" |translate}}'>
             remove_circle
           </mat-icon>
         </button>
@@ -57,7 +59,7 @@
       <div>
         <button *ngIf="this.hasRoleCoach()" [matMenuTriggerFor]="menu" aria-label="Seance Menu"
                 mat-icon-button>
-          <mat-icon class="hover-orange">more_vert</mat-icon>
+          <mat-icon class="hover-orange" matTooltip='{{ "TOOLTIP.SEANCE_COACH_MENU" |translate}}'>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button (click)="goToSeanceDetails(seance.id)" mat-menu-item>

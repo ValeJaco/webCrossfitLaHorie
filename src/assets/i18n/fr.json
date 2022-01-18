@@ -85,7 +85,6 @@
     "TOOLBAR_TITLE": "Crossfit La Horie",
     "MENU": "Menu",
     "LOG_OUT": "Se déconnecter",
-    "WELCOME": "Bienvenue",
     "PLANNING_MANAGEMENT": "Gestion planning",
     "MY_SEANCES_LIST": "Mes séances à venir"
   },
@@ -116,6 +115,17 @@
   "TOOLTIP": {
     "PLANNING_IS_ACTIVE": "Planning actif",
     "EDIT_PLANNING": "Modifier le planning",
-    "PLANNING_SET_TO_ACTIVE": "Définir comme planning actif"
+    "PLANNING_SET_TO_ACTIVE": "Définir comme planning actif",
+    "SEANCE_COACH_MENU": "Menu séance",
+    "UNSUBSCRIBE": "Se désinscrire",
+    "SUBSCRIBE": "S'inscrire à la séance",
+    "PREVIOUS_DAY": "Vers le jour précédent",
+    "NEXT_DAY": "Vers le prochain jour",
+    "EDIT_PLANNING_NAME": "Modifier le nom du planning",
+    "EDIT_SEANCE_PLANNING": "Modifier la séance du planning",
+    "DELETE_SEANCE_PLANNING": "Supprimer la séance du planning",
+    "VALID_SEANCE_PLANNING_CREATION": "Valider la création de séance",
+    "SAVE_PLANNING_NAME": "Enregistrer la modification",
+    "ADD_NEW_SEANCE_ROW": "Ajouter une séance pour ce jour"
   }
 }

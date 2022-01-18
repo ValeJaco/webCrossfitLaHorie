@@ -6,21 +6,29 @@
       <div class="form-field-container flex-div">
         <mat-form-field>
           <mat-label>{{ "PLANNING.NAME" | translate }}</mat-label>
-          <input [formControl]="nameFormControl" [readonly]="planning.readOnly" matInput type="text"/>
+          <input [formControl]="nameFormControl" [readonly]="planning.readOnly" matInput
+                 type="text"/>
         </mat-form-field>
         <span class="spacer"></span>
-        <mat-icon (click)="editPlanningName()" *ngIf="planning.readOnly" class="hover-orange show-pointer">edit
+        <mat-icon (click)="editPlanningName()" *ngIf="planning.readOnly"
+                  class="hover-orange show-pointer"
+                  matTooltip="{{ 'TOOLTIP.EDIT_PLANNING_NAME' | translate }}">edit
         </mat-icon>
-        <mat-icon (click)="savePlanningName()" *ngIf="!planning.readOnly" class="hover-green show-pointer">check
+        <mat-icon (click)="savePlanningName()" *ngIf="!planning.readOnly"
+                  class="hover-green show-pointer"
+                  matTooltip="{{ 'TOOLTIP.SAVE_PLANNING_NAME' | translate }}">check
         </mat-icon>
       </div>
     </mat-card>
 
-    <div *ngFor="let number of [].constructor(nbDaysToShow); let index = index" class="planning-mgt-day-main-container">
+    <div *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
+         class="planning-mgt-day-main-container">
       <div class="day-name-h2">
         {{ "UTILS.DAY_NAME_" + (index + 1) % 7 | translate}}
       </div>
-      <mat-icon (click)="createNewSeance( (index + 1) % 7 )" class="seance-planning-creation-icon show-pointer">
+      <mat-icon (click)="createNewSeance( (index + 1) % 7 )"
+                class="seance-planning-creation-icon show-pointer"
+                matTooltip="{{ 'TOOLTIP.ADD_NEW_SEANCE_ROW' | translate }}">
         add_circle
       </mat-icon>
       <form>
@@ -34,7 +42,8 @@
               <ng-container matColumnDef="seanceName">
                 <th *matHeaderCellDef mat-header-cell>{{ "COLUMN.SEANCE_NAME" | translate }}</th>
                 <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.nameFormController" [readOnly]="element.readOnly" class="planning-input"
+                  <input [formControl]="element.nameFormController" [readOnly]="element.readOnly"
+                         class="planning-input"
                          name="seanceName"
                          type="text"/>
                 </td>
@@ -42,7 +51,8 @@
               <ng-container matColumnDef="startTime">
                 <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.START_TIME" | translate }} </th>
                 <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.startTimeFormController" [readOnly]="element.readOnly"
+                  <input [formControl]="element.startTimeFormController"
+                         [readOnly]="element.readOnly"
                          class="planning-input" name="startTime"
                          type="time"/>
                 </td>
@@ -50,7 +60,8 @@
               <ng-container matColumnDef="duration">
                 <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.DURATION" | translate }} </th>
                 <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.durationFormController" [readOnly]="element.readOnly"
+                  <input [formControl]="element.durationFormController"
+                         [readOnly]="element.readOnly"
                          class="planning-input-number" name="dureeSeance"
                          type="number"/>
                 </td>
@@ -64,9 +75,11 @@
                 </td>
               </ng-container>
               <ng-container matColumnDef="unsubscribeHoursLimit">
-                <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.UNSUBSCRIBE_HOURS_LIMIT" | translate }} </th>
+                <th *matHeaderCellDef
+                    mat-header-cell> {{ "COLUMN.UNSUBSCRIBE_HOURS_LIMIT" | translate }} </th>
                 <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.unsubcriptionHoursLimitFormControl" [readOnly]="element.readOnly"
+                  <input [formControl]="element.unsubcriptionHoursLimitFormControl"
+                         [readOnly]="element.readOnly"
                          class="planning-input-number" name="maxSpot"
                          type="number"/>
                 </td>
@@ -82,7 +95,8 @@
               <ng-container matColumnDef="location">
                 <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.LOCATION" | translate }} </th>
                 <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.locationFormController" [readOnly]="element.readOnly"
+                  <input [formControl]="element.locationFormController"
+                         [readOnly]="element.readOnly"
                          class="planning-input" name="location"
                          type="text"/>
                 </td>
@@ -91,13 +105,18 @@
                 <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.ACTIONS" | translate }} </th>
                 <td *matCellDef="let element" mat-cell>
                   <mat-icon (click)="editSeancePlanning(element)" *ngIf="element.readOnly"
-                            class="hover-orange show-pointer">edit
+                            class="hover-orange show-pointer"
+                            matTooltip="{{ 'TOOLTIP.EDIT_SEANCE_PLANNING' | translate }}">edit
                   </mat-icon>
                   <mat-icon (click)="addSeanceToPlanning(element)" *ngIf="!element.readOnly"
-                            class="hover-green show-pointer">check
+                            class="hover-green show-pointer"
+                            matTooltip="{{ 'TOOLTIP.VALID_SEANCE_PLANNING_CREATION' | translate }}">
+                    check
                   </mat-icon>
-                  <mat-icon (click)="removeSeanceFromPlanning(element)" *ngIf="element.id && element.id > 0"
-                            class="hover-red show-pointer">delete
+                  <mat-icon (click)="removeSeanceFromPlanning(element)"
+                            *ngIf="element.id && element.id > 0"
+                            class="hover-red show-pointer"
+                            matTooltip="{{ 'TOOLTIP.DELETE_SEANCE_PLANNING' | translate }}">delete
                   </mat-icon>
                 </td>
               </ng-container>
@@ -110,7 +129,8 @@
               </tr>
             </table>
           </ng-container>
-          <ng-container *ngIf="!seancesList.get( (index + 1) % 7 ) || seancesList.get( (index + 1) % 7 )?.length <= 0">
+          <ng-container
+            *ngIf="!seancesList.get( (index + 1) % 7 ) || seancesList.get( (index + 1) % 7 )?.length <= 0">
             {{"PLANNING.NO_SEANCE_FOR_DAY" | translate }}
           </ng-container>
         </div>
