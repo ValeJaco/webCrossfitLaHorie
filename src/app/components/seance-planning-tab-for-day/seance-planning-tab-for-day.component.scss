@@ -1,0 +1,37 @@
+.seance-planning-tab-group {
+  background-color: var(--military-yellow);
+  color: var(--papayawhip);
+  padding: 10px;
+  border-radius: 0 0 5px 5px;
+}
+
+::ng-deep .mat-tab-body-content {
+  background-color: var(--skin-yellow);
+  color: var(--papayawhip);
+}
+
+::ng-deep .mat-tab-label:hover {
+  background-color: var(--hover-green);
+}
+
+::ng-deep .mat-tab-label-container {
+  background-color: var(--military-green);
+}
+
+::ng-deep .mat-tab-header {
+  border-bottom: none;
+  background-color: var(--military-green);
+}
+
+::ng-deep .mat-tab-label {
+  border-right: 2px solid var(--grey-x-light);
+}
+
+::ng-deep .mat-tab-label-active {
+  background-color: var(--skin-yellow);
+  opacity: 1 !important;
+}
+
+::ng-deep .mat-ink-bar {
+  display: none;
+}

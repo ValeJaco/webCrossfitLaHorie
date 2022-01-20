@@ -5,33 +5,44 @@
 }
 
 .left-seance-container {
-  grid-column: span 2;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: minmax(45px, auto);
+  text-align: left;
 }
 
 .middle-seance-container {
-  grid-column: span 6;
+  grid-column: span 7;
 }
 
 .right-seance-container {
-  grid-column: span 2;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: minmax(45px, auto);
 }
 
-.is_subscribed_to_waiting {
-  background-color: var(--waiting-queue-blue);
+.is-subscribed-to-waiting {
+  background: linear-gradient(90deg, var(--waiting-queue-blue) 20%, var(--military-yellow) 90%);
+
+  border-radius: 5px 0 0 5px;
 }
 
-.is_subscribed {
-  background-color: var(--subscribed-green);
+.is-subscribed {
+  background: linear-gradient(90deg, var(--subscribed-green) 20%, var(--military-yellow) 90%);
+  border-radius: 5px 0 0 5px;
 }
 
 .seance-mgt-icons {
   font-size: 26px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.place_in_queue_number {
+  margin-left: 14px;
+  font-weight: bold;
+  color: var(--black-light);
+  margin-top: 12px;
 }
 
 ::ng-deep .mat-menu-panel {
@@ -39,32 +50,24 @@
 }
 
 .seance-card {
-  margin: 0px 10px 10px;
   background-color: var(--military-yellow);
   padding: 0;
-  border-radius: 0 0 5px 5px;
-  width: 210px;
-  text-align: center;
+  border-radius: 5px;
 }
 
 .seance-card mat-card-title {
+  margin-top: 5px;
+  padding: 3px 3px 3px 15px;
+  font-size: 18px;
+}
+
+.seance-card mat-card-content {
   margin-top: 10px;
-  padding: 2px;
-  font-size: 16px;
-  min-height: 40px;
+  line-height: 0.6;
+  padding: 3px 3px 3px 15px;
 }
 
-.seance-card mat-card-footer {
-  position: relative;
-  margin-bottom: 0;
+.seance-menu-icon {
+  margin-left: 5px;
 }
 
-.seance-card-day-date {
-  background-color: var(--military-green);
-  color: papayawhip;
-  margin: 10px 10px 0;
-  padding: 5px;
-  border-radius: 5px 5px 0 0;
-  width: 200px;
-  text-align: center;
-}

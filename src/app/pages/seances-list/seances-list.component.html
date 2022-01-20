@@ -1,43 +1,28 @@
 <div class="flex-div">
-  <div class="margin-auto grid-container">
-    <div class="calendar-arrow show-pointer">
-      <mat-icon (click)="goTPreviousDay()" class="image-180 show-pointer"
-                matTooltip='{{ "TOOLTIP.PREVIOUS_DAY" |translate}}'>play_circle_filled
-      </mat-icon>
-    </div>
-    <div class="calendar-arrow-spacer">
-      <button (click)="goToNewSeance()" *ngIf="hasRoleCoach()" class="form-button" mat-raised-button>
+  <div class="margin-auto seance-div-main-container width-100 max-width-800 ">
+    <div class="text-centered">
+      <button (click)="goToNewSeance()" *ngIf="hasRoleCoach()" class="form-button"
+              mat-raised-button>
         {{"SEANCE.CREATE_NEW_SEANCE" | translate}}
       </button>
     </div>
-    <div class="calendar-arrow">
-      <mat-icon (click)="goToNextDay()" class="show-pointer" matTooltip='{{ "TOOLTIP.NEXT_DAY" |translate}}'>
-        play_circle_filled
-      </mat-icon>
-    </div>
-
-    <mat-card *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
-              class="text-centered day-title-card">
-      <mat-card-content>
-        {{ getDateForCalendar(index) | date: 'EEEE - dd/MM':timeZone:'fr' }}
-      </mat-card-content>
-    </mat-card>
-
-    <div *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
-         class="text-centered day-of-week day-of-week-{{ index }}"
-    >
+    <div class='margin-bottom-10 width-100'></div>
+    <ng-container *ngFor="let number of [].constructor(nbDaysToShow); let index = index">
       <ng-container *ngIf='seancesList.get( getDateKey(getDateForCalendar(index)) )'>
-        <div class="seances-of-day-container">
-          <ng-container
-            *ngFor='let seance of seancesList.get( getDateKey(getDateForCalendar(index)) )'>
-            <app-seance-card (goToSeanceDetailChangeEmitter)="goToSeanceDetails($event)"
-                             (subscribeToSeanceChangeEmitter)="subscribeToSeance($event)"
-                             (unsubscribeFromSeanceChangeEmitter)="unsubscribeFromSeance($event)"
-                             [seance]="seance">
-            </app-seance-card>
-          </ng-container>
+        <mat-toolbar class="seance-day-toolbar margin-auto margin-top-10">
+          {{ getDateForCalendar(index) | date: 'EEEE - dd/MM':timeZone:'fr' }}
+        </mat-toolbar>
+
+        <div *ngFor='let seance of seancesList.get( getDateKey(getDateForCalendar(index)) )'
+             class='width-100 margin-top-10 flex-div'>
+          <app-seance-card (goToSeanceDetailChangeEmitter)="goToSeanceDetails($event)"
+                           (subscribeToSeanceChangeEmitter)="subscribeToSeance($event)"
+                           (unsubscribeFromSeanceChangeEmitter)="unsubscribeFromSeance($event)"
+                           [seance]="seance"
+                           class='width-85 margin-auto'>
+          </app-seance-card>
         </div>
       </ng-container>
-    </div>
+    </ng-container>
   </div>
 </div>

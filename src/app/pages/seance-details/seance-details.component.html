@@ -1,88 +1,87 @@
 <div @smoothAppearing class="flex-div">
-  <div [ngClass]="{grid_container : seance.id > 0}" class="margin-auto">
-    <div class="div-height-100">
-      <mat-card class="seance-form-card mat-elevation-z7">
-        <mat-card-title>
-          {{ "SEANCE.SEANCE_DETAILS" | translate }}
-        </mat-card-title>
-        <mat-card-content>
-          <form class="form-standard">
-            <div class="flex-div">
-              <div class="margin-auto">
-                <div class="form-field-container">
-                  <mat-form-field>
-                    <mat-label>{{ "SEANCE.NAME" | translate }}</mat-label>
-                    <input [formControl]="seance.nameFormControl" matInput type="text"/>
-                  </mat-form-field>
-                </div>
-                <div class="form-field-container">
-                  <mat-form-field>
-                    <mat-label>{{ "SEANCE.MAX_SPOT" | translate }}</mat-label>
-                    <input [formControl]="seance.maxSpotFormControl" matInput type="number"/>
-                  </mat-form-field>
-                </div>
-                <div class="form-field-container">
-                  <mat-form-field>
-                    <mat-label>{{ "SEANCE.UNSUBSCRIBE_HOURS_LIMIT" | translate }}</mat-label>
-                    <input [formControl]="seance.unsubcriptionHoursLimitFormControl" matInput type="number"/>
-                  </mat-form-field>
-                </div>
-                <div class="form-field-container">
-                  <mat-form-field>
-                    <mat-label>{{ "SEANCE.START_DATE" | translate }}</mat-label>
-                    <input [formControl]="seance.startDateFormControl" matInput type="datetime-local"/>
-                  </mat-form-field>
-                </div>
-                <div class="form-field-container">
-                  <mat-form-field>
-                    <mat-label>{{ "SEANCE.DURATION" | translate }}</mat-label>
-                    <input [formControl]="seance.durationFormControl" matInput type="number"/>
-                  </mat-form-field>
-                </div>
-                <div class="form-field-container">
-                  <mat-form-field>
-                    <mat-label>{{ "SEANCE.LOCATION" | translate }}</mat-label>
-                    <input [formControl]="seance.locationFormControl" matInput type="text"/>
-                  </mat-form-field>
-                </div>
-                <div class="form-field-container grid-col-2 text-centered">
-                  <button (click)="postSeanceForm()" class="form-button" mat-raised-button>
-                    {{"SEANCE.BUTTON_SAVE" | translate}}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <div [ngClass]="{grid_container : seance.id > 0}" class="width-100 ">
+    <mat-card
+      class="seance-form-card max-width-800 mat-elevation-z7 margin-auto text-centered">
+      <mat-card-title>
+        {{ "SEANCE.SEANCE_DETAILS" | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        <form class="form-standard">
+          <div class="form-field-container">
+            <mat-form-field>
+              <mat-label>{{ "SEANCE.NAME" | translate }}</mat-label>
+              <input [formControl]="seance.nameFormControl" matInput type="text"/>
+            </mat-form-field>
+          </div>
+          <div class="form-field-container">
+            <mat-form-field>
+              <mat-label>{{ "SEANCE.MAX_SPOT" | translate }}</mat-label>
+              <input [formControl]="seance.maxSpotFormControl" matInput type="number"/>
+            </mat-form-field>
+          </div>
+          <div class="form-field-container">
+            <mat-form-field>
+              <mat-label>{{ "SEANCE.UNSUBSCRIBE_HOURS_LIMIT" | translate }}</mat-label>
+              <input [formControl]="seance.unsubcriptionHoursLimitFormControl" matInput
+                     type="number"/>
+            </mat-form-field>
+          </div>
+          <div class="form-field-container">
+            <mat-form-field>
+              <mat-label>{{ "SEANCE.START_DATE" | translate }}</mat-label>
+              <input [formControl]="seance.startDateFormControl" matInput
+                     type="datetime-local"/>
+            </mat-form-field>
+          </div>
+          <div class="form-field-container">
+            <mat-form-field>
+              <mat-label>{{ "SEANCE.DURATION" | translate }}</mat-label>
+              <input [formControl]="seance.durationFormControl" matInput type="number"/>
+            </mat-form-field>
+          </div>
+          <div class="form-field-container">
+            <mat-form-field>
+              <mat-label>{{ "SEANCE.LOCATION" | translate }}</mat-label>
+              <input [formControl]="seance.locationFormControl" matInput type="text"/>
+            </mat-form-field>
+          </div>
+          <div class="form-field-container grid-col-2 text-centered">
+            <button (click)="postSeanceForm()" class="form-button" mat-raised-button>
+              {{"SEANCE.BUTTON_SAVE" | translate}}
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
 
-    <div *ngIf="seance.id > 0" class="div-height-100">
-      <mat-card class="seance-form-card mat-elevation-z7">
+    <ng-container *ngIf="seance.id > 0">
+      <mat-card *ngIf="seance.users?.length > 0 "
+                class="seance-form-card max-width-800 mat-elevation-z7 margin-auto margin-top-20">
         <mat-card-title>
           {{ "SEANCE.USER_SUBSCRIBED_LIST" | translate }}
         </mat-card-title>
         <mat-card-content>
           <div *ngFor="let user of seance.users" class="user-line-container">
-            <mat-icon (click)="removeUser(user.id)" class="remove-subscribed-icon show-pointer">remove_circle_outline
+            <mat-icon (click)="removeUser(user.id)" class="remove-subscribed-icon show-pointer">
+              remove_circle_outline
             </mat-icon>
             {{user.forename}} {{user.lastname}}
           </div>
         </mat-card-content>
       </mat-card>
 
-      <mat-card class="seance-form-card mat-elevation-z7">
-        <mat-accordion class="example-headers-align" multi>
-          <mat-expansion-panel class="user-add-panel">
+      <mat-card class="seance-form-card max-width-800 mat-elevation-z7 margin-auto margin-top-20">
+        <mat-accordion multi>
+          <mat-expansion-panel>
             <mat-expansion-panel-header>
               {{ "SEANCE.ADD_MEMBER" | translate }}
             </mat-expansion-panel-header>
-
             <form>
-              <div class="form-field-container">
+              <div class="form-field-container text-centered">
                 <app-auto-complete-search-users
                   (selectionChangeEmitter)="changeSelectedUser($event)"
                   [userSearchFieldFormControl]="userSearchFieldFormControl"
+                  [usersToExclude]='seance.users'
                 >
                 </app-auto-complete-search-users>
               </div>
@@ -95,10 +94,9 @@
           </mat-expansion-panel>
         </mat-accordion>
       </mat-card>
-    </div>
 
-    <div *ngIf="seance.id > 0" class="div-height-100">
-      <mat-card *ngIf="seance.guests?.length > 0 " class="seance-form-card mat-elevation-z7">
+      <mat-card *ngIf="seance.guests?.length > 0 "
+                class="seance-form-card max-width-800 mat-elevation-z7 margin-auto margin-top-20">
         <mat-card-title class="margin-top-20">
           {{ "SEANCE.GUEST_SUBSCRIBED_LIST" | translate }}
         </mat-card-title>
@@ -122,13 +120,12 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card class="seance-form-card mat-elevation-z7">
+      <mat-card class="seance-form-card max-width-800 mat-elevation-z7 margin-auto  margin-top-20">
         <mat-accordion multi>
           <mat-expansion-panel class="guest-add-panel">
             <mat-expansion-panel-header class="guest-add-panel-header">
               {{ "SEANCE.ADD_GUEST" | translate }}
             </mat-expansion-panel-header>
-
             <form>
               <div class="form-field-container">
                 <mat-form-field>
@@ -151,6 +148,6 @@
           </mat-expansion-panel>
         </mat-accordion>
       </mat-card>
-    </div>
+    </ng-container>
   </div>
 </div>

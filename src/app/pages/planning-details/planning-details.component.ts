@@ -119,7 +119,7 @@ export class PlanningDetailsComponent implements OnInit {
     seancePlanning.readOnly = false;
   }
 
-  addSeanceToPlanning(seancePlanning: SeancePlanning): void {
+  validateSeancePlanningForm(seancePlanning: SeancePlanning): void {
     if (seancePlanning.id > 0) {
       this.seancesPlanningFacadeService
         .patchSeancePlanning(seancePlanning.id, seancePlanning.seancePlanningToApi())
@@ -147,7 +147,7 @@ export class PlanningDetailsComponent implements OnInit {
     this.seancesPlanningFacadeService
       .deleteSeancePlanning(seancePlanning.id)
       .pipe(take(1)).subscribe({
-      next: (response) => {
+      next: () => {
         this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_OK");
         const seanceToDeleteIndexInPlanning = this.planning.seancesPlanning.findIndex(sp => sp.id === seancePlanning.id);
         const seanceToDeleteIndexInMap = this.seancesList.get(seancePlanning.dayOfWeek).findIndex(sp => sp.id === seancePlanning.id);
@@ -161,7 +161,7 @@ export class PlanningDetailsComponent implements OnInit {
           this.seancesList.set(seancePlanning.dayOfWeek, [...this.seancesList.get(seancePlanning.dayOfWeek)]);
         }
 
-      }, error: err => {
+      }, error: () => {
         this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_NOK");
       }
     });
@@ -205,4 +205,5 @@ export class PlanningDetailsComponent implements OnInit {
     }
     this.seancesList.set(dayOfWeek, [...this.seancesList.get(dayOfWeek), newSeance]);
   }
+
 }

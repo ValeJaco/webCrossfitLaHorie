@@ -23,9 +23,9 @@ import {smoothAppearing} from "../../utils/animations";
 export class SeancesListComponent implements OnInit {
 
   seancesList = new Map<string, Seance[]>();
-  startDate = new Date('2022-01-10');
+  startDate = new Date(); // new Date('2022-01-10');
   timeZone = environment.TIMEZONE;
-  nbDaysToShow = 7;
+  nbDaysToShow = 15;
 
   constructor(
     private seancesFacadeService: SeancesFacadeService,

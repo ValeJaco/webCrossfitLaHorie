@@ -1,6 +1,5 @@
-<div @smoothAppearing class="flex-div">
-  <div class="margin-auto">
-
+<div @smoothAppearing class="flex-div width-100">
+  <div class="margin-auto planning-form-card width-100 max-width-800">
     <mat-card class="card-update-planning">
       <mat-card-title>{{ "PLANNING.DETAILS_PLANNING" | translate}}</mat-card-title>
       <div class="form-field-container flex-div">
@@ -20,118 +19,44 @@
         </mat-icon>
       </div>
     </mat-card>
-
     <div *ngFor="let number of [].constructor(nbDaysToShow); let index = index"
-         class="planning-mgt-day-main-container">
-      <div class="day-name-h2">
-        {{ "UTILS.DAY_NAME_" + (index + 1) % 7 | translate}}
+         class="planning-mgt-day-main-container margin-auto margin-top-10">
+      <div class="seance-planning-day-name flex-div">
+        <div class='no-wrap day-name-seance-number'>
+          {{ "UTILS.DAY_NAME_" + (index + 1) % 7 | translate}}
+          <span *ngIf="seancesList.get( (index + 1) % 7 )?.length == 1"
+                class='seance-planning-day-seance-number'>
+            &nbsp;-&nbsp;
+            {{ seancesList.get((index + 1) % 7).length }}
+            {{ "PLANNING.SEANCE_NUMBER_FOR_DAY" | translate }}
+          </span>
+          <span *ngIf="seancesList.get( (index + 1) % 7 )?.length > 1"
+                class='seance-planning-day-seance-number'>
+            &nbsp;-&nbsp;
+            {{ seancesList.get((index + 1) % 7).length }}
+            {{ "PLANNING.SEANCES_NUMBER_FOR_DAY" | translate }}
+          </span>
+        </div>
+        <span class='spacer'></span>
+        <mat-icon (click)="createNewSeance( (index + 1) % 7 )"
+                  class="seance-planning-creation-icon show-pointer"
+                  matTooltip="{{ 'TOOLTIP.ADD_NEW_SEANCE_ROW' | translate }}">
+          add_circle
+        </mat-icon>
       </div>
-      <mat-icon (click)="createNewSeance( (index + 1) % 7 )"
-                class="seance-planning-creation-icon show-pointer"
-                matTooltip="{{ 'TOOLTIP.ADD_NEW_SEANCE_ROW' | translate }}">
-        add_circle
-      </mat-icon>
       <form>
         <div class="planning-mgt-day-seance-container">
           <ng-container *ngIf="seancesList.get( (index + 1) % 7 )?.length > 0">
-
-            <table @slideInOutLeftToRight [dataSource]="seancesList.get( (index + 1) % 7 )"
-                   class="mat-elevation-z8 planning-seance-table"
-                   mat-table
-            >
-              <ng-container matColumnDef="seanceName">
-                <th *matHeaderCellDef mat-header-cell>{{ "COLUMN.SEANCE_NAME" | translate }}</th>
-                <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.nameFormController" [readOnly]="element.readOnly"
-                         class="planning-input"
-                         name="seanceName"
-                         type="text"/>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="startTime">
-                <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.START_TIME" | translate }} </th>
-                <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.startTimeFormController"
-                         [readOnly]="element.readOnly"
-                         class="planning-input" name="startTime"
-                         type="time"/>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="duration">
-                <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.DURATION" | translate }} </th>
-                <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.durationFormController"
-                         [readOnly]="element.readOnly"
-                         class="planning-input-number" name="dureeSeance"
-                         type="number"/>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="maxSpot">
-                <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.MAX_SPOT" | translate }} </th>
-                <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.maxSpotFormController" [readOnly]="element.readOnly"
-                         class="planning-input-number" name="maxSpot"
-                         type="number"/>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="unsubscribeHoursLimit">
-                <th *matHeaderCellDef
-                    mat-header-cell> {{ "COLUMN.UNSUBSCRIBE_HOURS_LIMIT" | translate }} </th>
-                <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.unsubcriptionHoursLimitFormControl"
-                         [readOnly]="element.readOnly"
-                         class="planning-input-number" name="maxSpot"
-                         type="number"/>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="coach">
-                <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.COACH" | translate }} </th>
-                <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.coachIdFormController" [readOnly]="element.readOnly"
-                         class="planning-input" name="coachId"
-                         type="number"/>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="location">
-                <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.LOCATION" | translate }} </th>
-                <td *matCellDef="let element" mat-cell>
-                  <input [formControl]="element.locationFormController"
-                         [readOnly]="element.readOnly"
-                         class="planning-input" name="location"
-                         type="text"/>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="actions">
-                <th *matHeaderCellDef mat-header-cell> {{ "COLUMN.ACTIONS" | translate }} </th>
-                <td *matCellDef="let element" mat-cell>
-                  <mat-icon (click)="editSeancePlanning(element)" *ngIf="element.readOnly"
-                            class="hover-orange show-pointer"
-                            matTooltip="{{ 'TOOLTIP.EDIT_SEANCE_PLANNING' | translate }}">edit
-                  </mat-icon>
-                  <mat-icon (click)="addSeanceToPlanning(element)" *ngIf="!element.readOnly"
-                            class="hover-green show-pointer"
-                            matTooltip="{{ 'TOOLTIP.VALID_SEANCE_PLANNING_CREATION' | translate }}">
-                    check
-                  </mat-icon>
-                  <mat-icon (click)="removeSeanceFromPlanning(element)"
-                            *ngIf="element.id && element.id > 0"
-                            class="hover-red show-pointer"
-                            matTooltip="{{ 'TOOLTIP.DELETE_SEANCE_PLANNING' | translate }}">delete
-                  </mat-icon>
-                </td>
-              </ng-container>
-              <tr *matHeaderRowDef="displayedColumns"
-                  class="planning-seance-table-rows"
-                  mat-header-row></tr>
-              <tr *matRowDef="let row; columns: displayedColumns;" @slideInOutLeftToRight
-                  [ngClass]="{read_only_line: row.readOnly,edited_line: !row.readOnly}"
-                  class="planning-seance-table-rows" mat-row>
-              </tr>
-            </table>
+            <app-seance-planning-tab-for-day
+              (deleteSeancePlanningEmitter)='removeSeanceFromPlanning($event)'
+              (validateSeancePlanningFormEmitter)='validateSeancePlanningForm($event)'
+              [seancesPlanning]='seancesList.get( (index + 1) % 7 )'>
+            </app-seance-planning-tab-for-day>
           </ng-container>
           <ng-container
             *ngIf="!seancesList.get( (index + 1) % 7 ) || seancesList.get( (index + 1) % 7 )?.length <= 0">
-            {{"PLANNING.NO_SEANCE_FOR_DAY" | translate }}
+            <span
+              class='no-seance-for-day-test'>{{"PLANNING.NO_SEANCE_FOR_DAY" | translate }}</span>
           </ng-container>
         </div>
       </form>

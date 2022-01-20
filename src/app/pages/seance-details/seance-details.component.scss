@@ -1,7 +1,11 @@
+.planning-form-card {
+  background-color: var(--military-yellow);
+  color: var(--papayawhip);
+  width: 80%;
+}
+
 .seance-form-card {
-  background-color: var(--military-yellow);;
-  color: papayawhip;
-  margin: 20px;
+  background-color: var(--military-yellow);
 }
 
 .div-height-100 {
@@ -13,10 +17,6 @@
 }
 
 .grid_container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0;
-  grid-row: auto;
   align-items: center;
 }
 
@@ -48,7 +48,7 @@
   display: flex;
 }
 
-.mat-expansion-panel,
+::ng-deep .mat-expansion-panel,
 .mat-expansion-panel-header,
 .mat-expansion-panel-header:hover,
 .mat-expansion-panel-header.mat-expanded,

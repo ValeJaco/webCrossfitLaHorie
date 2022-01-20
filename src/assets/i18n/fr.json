@@ -9,15 +9,16 @@
     "ZIP_CODE": "Code postal",
     "CITY": "Ville",
     "SUBSCRIPTION_DATE": "Date d'inscription",
-    "BIRTHDATE": "Date d'anniversaire",
+    "BIRTHDATE": "Date de naissance",
     "RENEWAL_DATE": "date de renouvellement",
     "PAYMENT_METHOD": "Méthode de paiement",
     "FREE_ACCESS": "Free access",
     "BADGE_REFERENCE": "Numéro de badge",
     "BUTTON_SAVE": "Sauvegarder",
-    "SEARCHED_NAME": "Prénom Nom",
-    "RESET_FILTERS": "Réinitialiser la recherche",
-    "CREATE_NEW_USER": "Créer un nouvel utilisateur"
+    "SEARCHED_NAME": "Recherche par Prénom ou Nom",
+    "RESET_FILTERS": "Réinitialiser",
+    "CREATE_NEW_USER": "Créer membre",
+    "SUBSCRIBED_SINCE": "Inscrit depuis le"
   },
   "SEANCE": {
     "NAME": "Nom",
@@ -40,7 +41,8 @@
     "ADD_MEMBER": "Ajouter un membre",
     "CREATE_NEW_SEANCE": "Créer une nouvelle séance",
     "WAIT_LIST_POSITION": "File d'attente : ",
-    "UNSUBSCRIBE_HOURS_LIMIT": "Heures avant désinscription"
+    "UNSUBSCRIBE_HOURS_LIMIT": "Heures avant désinscription",
+    "START_TIME": "Heure début"
   },
   "ROLES": {
     "ROLE_COACH": "Coach",
@@ -48,12 +50,14 @@
     "ROLE_OFFICE": "Bureau"
   },
   "PLANNING": {
-    "NO_SEANCE_FOR_DAY": "Aucune séance n'est planifiée pour ce jour de la semaine",
+    "NO_SEANCE_FOR_DAY": "Pas de séance pour ce jour de la semaine",
     "PLANNING_LIST": "Liste des plannings",
     "CREATE_PLANNING": "Création d'un planning",
     "BUTTON_CREATE_PLANNING": "Créer",
     "NAME": "Nom du planning",
-    "DETAILS_PLANNING": "Détails du planning"
+    "DETAILS_PLANNING": "Détails du planning",
+    "SEANCE_NUMBER_FOR_DAY": "séance",
+    "SEANCES_NUMBER_FOR_DAY": "séances"
   },
   "SNACKBAR": {
     "CREATE_USER_OK": "Création du nouvel utilisateur effectuée",
@@ -104,7 +108,6 @@
   },
   "COLUMN": {
     "SEANCE_NAME": "Nom séance",
-    "START_TIME": "Heure début",
     "DURATION": "Durée",
     "MAX_SPOT": "Places",
     "COACH": "Coach",

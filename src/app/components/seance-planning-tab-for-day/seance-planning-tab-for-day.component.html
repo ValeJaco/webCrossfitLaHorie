@@ -1,0 +1,72 @@
+<mat-tab-group class='seance-planning-tab-group' mat-align-tabs="start">
+  <mat-tab *ngFor='let seancePlanning of seancesPlanning; let index = index'
+           class='seance-planning-tab'
+           label='{{ seancePlanning.id > 0 ? seancePlanning.startTime : "Nouvelle séance" }}'>
+    <form class="form-standard text-centered">
+      <div class="form-field-container">
+        <mat-form-field>
+          <mat-label>{{ "SEANCE.NAME" | translate }}</mat-label>
+          <input [formControl]="seancePlanning.nameFormControl" [readonly]='seancePlanning.readOnly'
+                 matInput type="text"/>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <mat-form-field>
+          <mat-label>{{ "SEANCE.MAX_SPOT" | translate }}</mat-label>
+          <input [formControl]="seancePlanning.maxSpotFormControl"
+                 [readonly]='seancePlanning.readOnly' matInput type="number"/>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <mat-form-field>
+          <mat-label>{{ "SEANCE.UNSUBSCRIBE_HOURS_LIMIT" | translate }}</mat-label>
+          <input [formControl]="seancePlanning.unsubcriptionHoursLimitFormControl"
+                 [readonly]='seancePlanning.readOnly' matInput
+                 type="number"/>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <mat-form-field>
+          <mat-label>{{ "SEANCE.START_TIME" | translate }}</mat-label>
+          <input [formControl]="seancePlanning.startTimeFormControl"
+                 [readonly]='seancePlanning.readOnly' matInput
+                 type="time"/>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <mat-form-field>
+          <mat-label>{{ "SEANCE.DURATION" | translate }}</mat-label>
+          <input [formControl]="seancePlanning.durationFormControl"
+                 [readonly]='seancePlanning.readOnly' matInput type="number"/>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <mat-form-field>
+          <mat-label>{{ "SEANCE.LOCATION" | translate }}</mat-label>
+          <input [formControl]="seancePlanning.locationFormControl"
+                 [readonly]='seancePlanning.readOnly' matInput type="text"/>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container text-centered seance-planning-action-grid-container">
+
+        <mat-icon (click)="editSeancePlanning(seancePlanning)"
+                  *ngIf="seancePlanning.readOnly"
+                  class="hover-orange show-pointer margin-auto"
+                  matTooltip="{{ 'TOOLTIP.EDIT_SEANCE_PLANNING' | translate }}">edit
+        </mat-icon>
+        <mat-icon (click)="validateSeancePlanningForm(seancePlanning)"
+                  *ngIf="!seancePlanning.readOnly"
+                  class="hover-green show-pointer margin-auto"
+                  matTooltip="{{ 'TOOLTIP.VALID_SEANCE_PLANNING_CREATION' | translate }}">
+          check
+        </mat-icon>
+        <mat-icon (click)="deleteSeancePlanning(seancePlanning)"
+                  *ngIf="seancePlanning.id && seancePlanning.id > 0"
+                  class="hover-red show-pointer margin-auto"
+                  matTooltip="{{ 'TOOLTIP.DELETE_SEANCE_PLANNING' | translate }}">delete
+        </mat-icon>
+      </div>
+    </form>
+
+  </mat-tab>
+</mat-tab-group>

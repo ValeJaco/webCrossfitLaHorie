@@ -9,9 +9,11 @@
 }
 
 .form-field-container {
-  padding: 10px;
-  margin: 5px;
-  min-width: 250px;
+  padding: 5px;
+}
+
+.form-field-container mat-form-field {
+  width: 90%;
 }
 
 .show-pointer {
@@ -27,7 +29,7 @@
 }
 
 .form-button:hover {
-  background-color: papayawhip;
+  background-color: var(--papayawhip);
 }
 
 .spacer {
@@ -35,17 +37,18 @@
   width: 100%;
 }
 
-.form-field-container mat-form-field {
-  width: 100%;
-}
 
 .text-centered {
   text-align: center;
 }
 
+.text-left {
+  text-align: left;
+}
+
 body {
   background-color: var(--black-light);
-  color: papayawhip;
+  color: var(--papayawhip);
 }
 
 .error-snackbar {
@@ -86,6 +89,14 @@ body {
                                    supported by Chrome, Edge, Opera and Firefox */
 }
 
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
 .margin-top-20 {
   margin-top: 20px;
 }
@@ -97,4 +108,38 @@ body {
 
 .form-standard mat-form-field {
   height: 20px;
+}
+
+.grid-column-span-2 {
+  grid-column: span 2;
+}
+
+.grid-column-span-4 {
+  grid-column: span 4;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.width-85 {
+  width: 85%;
+}
+
+.flash-test {
+  background-color: deepskyblue;
+}
+
+mat-icon {
+  color: var(--black-light);
+}
+
+.max-width-800 {
+  max-width: 800px;
+}
+
+.seance-planning-action-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px 0 10px;
 }

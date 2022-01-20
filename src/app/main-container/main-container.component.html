@@ -43,9 +43,10 @@
         <a mat-list-item>{{ "SIDENAV.LOG_OUT" | translate }}</a>
       </mat-nav-list>
     </ng-container>
-
   </mat-drawer>
-  <mat-drawer-content class="main-content-container">
-    <ng-content></ng-content>
+  <mat-drawer-content>
+    <div class='main-content-container'>
+      <ng-content></ng-content>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>

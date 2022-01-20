@@ -11,7 +11,7 @@ export const smoothAppearing =
 export const slideInOutLeftToRight =
   trigger('slideInOutLeftToRight', [
     transition(':enter', [
-      style({transform: 'translateX(-140%)', opacity: 0}),
+      style({transform: 'translateX(-120%)', opacity: 0}),
       animate('1.3s', style({transform: 'translateX(0%)', opacity: 1}))
     ]),
     transition(':leave', [

@@ -39,6 +39,8 @@ import {MatTableModule} from "@angular/material/table";
 import {PlanningDetailsComponent} from './pages/planning-details/planning-details.component';
 import {MyIncomingSeancesComponent} from './pages/my-incoming-seances/my-incoming-seances.component';
 import {SeanceCardComponent} from './components/seance-card/seance-card.component';
+import {SeancePlanningTabForDayComponent} from './components/seance-planning-tab-for-day/seance-planning-tab-for-day.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 registerLocaleData(localeFr);
 
@@ -56,7 +58,8 @@ registerLocaleData(localeFr);
     PlanningListComponent,
     PlanningDetailsComponent,
     MyIncomingSeancesComponent,
-    SeanceCardComponent
+    SeanceCardComponent,
+    SeancePlanningTabForDayComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ registerLocaleData(localeFr);
     MatTooltipModule,
     MatExpansionModule,
     MatAutocompleteModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ],
   exports: [
     BrowserAnimationsModule

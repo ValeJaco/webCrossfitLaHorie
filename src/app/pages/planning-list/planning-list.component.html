@@ -1,11 +1,12 @@
 <div @smoothAppearing class="flex-div">
-  <div class="margin-auto">
-    <mat-card class="card-update-planning">
+  <div class="margin-auto width-100 max-width-800">
+    <mat-card class="card-planning margin-auto">
       <mat-card-title>{{ "PLANNING.PLANNING_LIST" | translate}}</mat-card-title>
-      <div *ngFor="let currentPlanning of plannings" class="flex-div planning-list-div">
+      <div *ngFor="let currentPlanning of plannings" class="flex-div planning-list-div no-wrap">
         {{ currentPlanning.name }}
         <span class="spacer"></span>
-        <mat-icon (click)="goToPlanningDetails(currentPlanning.id)" class="hover-orange show-pointer"
+        <mat-icon (click)="goToPlanningDetails(currentPlanning.id)"
+                  class="hover-orange show-pointer"
                   matTooltip='{{ "TOOLTIP.EDIT_PLANNING" |translate}}'>
           edit
         </mat-icon>
@@ -20,7 +21,7 @@
         </mat-icon>
       </div>
     </mat-card>
-    <mat-card class="card-create-planning">
+    <mat-card class="card-planning margin-auto">
       <mat-card-title>{{ "PLANNING.CREATE_PLANNING" | translate}}</mat-card-title>
       <mat-card-content>
         <form>

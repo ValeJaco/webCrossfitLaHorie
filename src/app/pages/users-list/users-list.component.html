@@ -1,8 +1,7 @@
 <div @smoothAppearing class="flex-div">
-  <div class="margin-auto grid-container">
-
-    <div class="search-user-field-container">
-      <mat-card class="search-user-field-card">
+  <div class="margin-auto grid-container width-100 max-width-800">
+    <div class="grid-column-span-2">
+      <mat-card class="search-user-field-card margin-auto">
         <mat-form-field>
           <mat-label>{{ "USER.SEARCHED_NAME" | translate }}</mat-label>
           <input
@@ -25,11 +24,24 @@
       </button>
     </div>
     <div *ngFor="let user of userList; let i = index"
-         [ngClass]="{'user-left-card': i % 2 == 0, 'user-right-card': i % 2 != 0}"
+         class='grid-column-span-2 width-100 margin-top-10'
     >
-      <mat-card (click)="goToUserDetails(user.id)" class="user-card show-pointer mat-elevation-z7">
-        <mat-card-title>{{user.id}}</mat-card-title>
-        <mat-card-content>{{user.forename}} {{user.lastname}}</mat-card-content>
+      <mat-card (click)="goToUserDetails(user.id)"
+                class="margin-auto user-card show-pointer mat-elevation-z7">
+        <!--        <mat-card-title>{{user.id}}</mat-card-title>-->
+        <mat-card-content>
+          <div class='flex-div no-wrap'>
+            {{user.forename}} {{user.lastname}}
+            <ng-container *ngIf='user.subscriptionDate'>
+              <span class='spacer'></span>
+              <mat-icon class='user-list-calendar-icon'
+                        matTooltip='{{ "USER.SUBSCRIBED_SINCE" | translate }}'>
+                assignment
+              </mat-icon>
+              {{user.subscriptionDate | date: 'dd/MM/YYYY':timeZone:'fr' }}
+            </ng-container>
+          </div>
+        </mat-card-content>
       </mat-card>
     </div>
   </div>

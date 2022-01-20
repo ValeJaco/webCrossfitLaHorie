@@ -14,6 +14,9 @@ export class AutoCompleteSearchUsersComponent implements OnInit, OnDestroy {
   @Input()
   userSearchFieldFormControl: FormControl;
 
+  @Input()
+  usersToExclude: User[] = [];
+
   @Output()
   selectionChangeEmitter = new EventEmitter<number>();
 
@@ -38,6 +41,12 @@ export class AutoCompleteSearchUsersComponent implements OnInit, OnDestroy {
   loadUsersFromApi(searchedName: string) {
     this.usersFacade.getUsersByName(searchedName, this.resultSize).pipe(take(1)).subscribe(response => {
       this.usersList = response.body;
+      this.usersToExclude.forEach(userToExclude => {
+        const index = this.usersList.findIndex(user => user.id == userToExclude.id)
+        if (index > -1) {
+          this.usersList.splice(index, 1);
+        }
+      })
     })
   }
 

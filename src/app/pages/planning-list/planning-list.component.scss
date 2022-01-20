@@ -1,11 +1,7 @@
-.card-create-planning {
+.card-planning {
   margin-top: 20px;
   background-color: var(--military-yellow);
-}
-
-.card-update-planning {
-  margin-top: 20px;
-  background-color: var(--military-yellow);
+  width: 85%;
 }
 
 .planning-list-div {
@@ -18,5 +14,5 @@
 }
 
 .planning-active-icon {
-  color: greenyellow;
+  color: var(--military-green);
 }

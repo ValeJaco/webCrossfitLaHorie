@@ -17,12 +17,12 @@ export class SeancePlanning {
 
   readOnly = true;
 
-  nameFormController: FormControl;
-  maxSpotFormController: FormControl;
-  startTimeFormController: FormControl;
-  durationFormController: FormControl;
-  locationFormController: FormControl;
-  coachIdFormController: FormControl;
+  nameFormControl: FormControl;
+  maxSpotFormControl: FormControl;
+  startTimeFormControl: FormControl;
+  durationFormControl: FormControl;
+  locationFormControl: FormControl;
+  coachIdFormControl: FormControl;
   unsubcriptionHoursLimitFormControl: FormControl;
 
   constructor(seancePlanning?: SeancePlanning) {
@@ -47,12 +47,12 @@ export class SeancePlanning {
   }
 
   initializeFormController(): void {
-    this.nameFormController = new FormControl(this.name, [Validators.required]);
-    this.startTimeFormController = new FormControl(this.startTime, [Validators.required]);
-    this.durationFormController = new FormControl(this.duration, [Validators.required]);
-    this.maxSpotFormController = new FormControl(this.maxSpot, [Validators.required]);
-    this.coachIdFormController = new FormControl(this.coachId);
-    this.locationFormController = new FormControl(this.location);
+    this.nameFormControl = new FormControl(this.name, [Validators.required]);
+    this.startTimeFormControl = new FormControl(this.startTime, [Validators.required]);
+    this.durationFormControl = new FormControl(this.duration, [Validators.required]);
+    this.maxSpotFormControl = new FormControl(this.maxSpot, [Validators.required]);
+    this.coachIdFormControl = new FormControl(this.coachId);
+    this.locationFormControl = new FormControl(this.location);
     this.unsubcriptionHoursLimitFormControl = new FormControl(this.unsubcriptionHoursLimit, [Validators.required]);
   }
 
@@ -60,23 +60,23 @@ export class SeancePlanning {
 
     const subArray: Subscription[] = [];
 
-    subArray.push(this.nameFormController.valueChanges.subscribe(value => {
+    subArray.push(this.nameFormControl.valueChanges.subscribe(value => {
       this.name = value;
       console.log(value);
     }))
-    subArray.push(this.startTimeFormController.valueChanges.subscribe(value => {
+    subArray.push(this.startTimeFormControl.valueChanges.subscribe(value => {
       this.startTime = value + ":00";
     }))
-    subArray.push(this.durationFormController.valueChanges.subscribe(value => {
+    subArray.push(this.durationFormControl.valueChanges.subscribe(value => {
       this.duration = value;
     }))
-    subArray.push(this.maxSpotFormController.valueChanges.subscribe(value => {
+    subArray.push(this.maxSpotFormControl.valueChanges.subscribe(value => {
       this.maxSpot = value;
     }))
-    subArray.push(this.coachIdFormController.valueChanges.subscribe(value => {
+    subArray.push(this.coachIdFormControl.valueChanges.subscribe(value => {
       this.coachId = value;
     }))
-    subArray.push(this.locationFormController.valueChanges.subscribe(value => {
+    subArray.push(this.locationFormControl.valueChanges.subscribe(value => {
       this.location = value;
     }))
     subArray.push(this.unsubcriptionHoursLimitFormControl.valueChanges.subscribe(value => {

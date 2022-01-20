@@ -1,23 +1,18 @@
 .user-card {
-  min-width: 250px;
-  margin: 10px;
-  padding: 10px;
-  background-color: var(--military-yellow);;
-  color: papayawhip;
-}
-
-.search-user-field-container {
-  grid-column: 1 / span 2
+  width: 80%;
+  padding: 5px;
+  background-color: var(--military-yellow);
+  color: var(--papayawhip);
 }
 
 .search-user-field-card {
-  margin: 10px;
   padding: 10px;
-  background-color: papayawhip;
+  background-color: var(--papayawhip);
+  width: 80%;
 }
 
 .user-list-filters-action-div {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .search-user-field-card mat-form-field {
@@ -28,12 +23,20 @@
   background-color: var(--hover-green);;
 }
 
+.user-card mat-card-content {
+  margin-top: 4px;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 0;
   grid-auto-rows: minmax(50px, auto);
-  min-width: 800px;
+}
+
+.user-list-calendar-icon {
+  font-size: 19px;
+  margin-right: 4px;
 }
 
 

@@ -1,19 +1,7 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 0;
-  grid-auto-rows: minmax(50px, auto);
-  max-width: 800px;
-}
-
-.grid-col-2 {
-  grid-column: 1 / span 2;
-}
-
 .user-form-card {
   background-color: var(--military-yellow);;
-  color: papayawhip;
-  max-width: 900px;
+  color: var(--papayawhip);
+  width: 80%;
 }
 
 

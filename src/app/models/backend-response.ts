@@ -1,5 +1,6 @@
 export class BackendResponse {
 
+  body: any;
   ok: boolean;
   status: number;
   statusText: string;

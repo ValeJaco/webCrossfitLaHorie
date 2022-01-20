@@ -6,6 +6,7 @@ import {UsersFacadeService} from "../../services/users/users-facade.service";
 import {Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
 import {smoothAppearing} from "../../utils/animations";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-users-list',
@@ -18,6 +19,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   userList: User[];
   userSearchFieldFormControl: FormControl;
   userSearchFieldSubscription: Subscription;
+  timeZone = environment.TIMEZONE;
 
   constructor(private usersFacade: UsersFacadeService, private router: Router) {
   }
