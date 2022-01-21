@@ -1,11 +1,2 @@
-<div class="flex-div">
-  <div class="margin-auto">
-    <ng-container *ngFor='let seance of seancesList'>
-      <app-seance-card (goToSeanceDetailChangeEmitter)="goToSeanceDetails($event)"
-                       (unsubscribeFromSeanceChangeEmitter)="unsubscribeFromSeance($event)"
-                       [seance]="seance"
-                       [showDate]="true">
-      </app-seance-card>
-    </ng-container>
-  </div>
-</div>
+<app-seances-list
+  [userId]='getUserId()'></app-seances-list>

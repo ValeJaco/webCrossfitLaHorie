@@ -1,22 +1,26 @@
 <div @smoothAppearing class="flex-div width-100">
   <div class="margin-auto planning-form-card width-100 max-width-800">
     <mat-card class="card-update-planning">
-      <mat-card-title>{{ "PLANNING.DETAILS_PLANNING" | translate}}</mat-card-title>
-      <div class="form-field-container flex-div">
+      <mat-card-title>
+        <div class='flex-div no-wrap width-100'>
+          {{ "PLANNING.DETAILS_PLANNING" | translate}}
+          <span class="spacer"></span>
+          <mat-icon (click)="editPlanningName()" *ngIf="planning.readOnly"
+                    class="hover-orange show-pointer"
+                    matTooltip="{{ 'TOOLTIP.EDIT_PLANNING_NAME' | translate }}">edit
+          </mat-icon>
+          <mat-icon (click)="savePlanningName()" *ngIf="!planning.readOnly"
+                    class="hover-green show-pointer"
+                    matTooltip="{{ 'TOOLTIP.SAVE_PLANNING_NAME' | translate }}">check
+          </mat-icon>
+        </div>
+      </mat-card-title>
+      <div class="form-field-container text-centered">
         <mat-form-field>
           <mat-label>{{ "PLANNING.NAME" | translate }}</mat-label>
           <input [formControl]="nameFormControl" [readonly]="planning.readOnly" matInput
                  type="text"/>
         </mat-form-field>
-        <span class="spacer"></span>
-        <mat-icon (click)="editPlanningName()" *ngIf="planning.readOnly"
-                  class="hover-orange show-pointer"
-                  matTooltip="{{ 'TOOLTIP.EDIT_PLANNING_NAME' | translate }}">edit
-        </mat-icon>
-        <mat-icon (click)="savePlanningName()" *ngIf="!planning.readOnly"
-                  class="hover-green show-pointer"
-                  matTooltip="{{ 'TOOLTIP.SAVE_PLANNING_NAME' | translate }}">check
-        </mat-icon>
       </div>
     </mat-card>
     <div *ngFor="let number of [].constructor(nbDaysToShow); let index = index"

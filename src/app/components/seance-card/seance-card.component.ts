@@ -27,6 +27,8 @@ export class SeanceCardComponent implements OnInit {
   unsubscribeFromSeanceChangeEmitter = new EventEmitter<number>();
   @Output()
   goToSeanceDetailChangeEmitter = new EventEmitter<number>();
+  @Output()
+  deleteSeanceEmitter = new EventEmitter<number>();
 
   constructor(private securityFacadeService: SecurityFacadeService) {
   }
@@ -42,17 +44,21 @@ export class SeanceCardComponent implements OnInit {
     return this.securityFacadeService.hasRoleCoach();
   }
 
-  subscribeToSeance(id: number) {
-    this.subscribeToSeanceChangeEmitter.emit(id)
+  subscribeToSeance(seanceId: number) {
+    this.subscribeToSeanceChangeEmitter.emit(seanceId)
     this.seance = new Seance(this.seance);
   }
 
-  unsubscribeToSeance(id: number) {
-    this.unsubscribeFromSeanceChangeEmitter.emit(id)
+  unsubscribeToSeance(seanceId: number) {
+    this.unsubscribeFromSeanceChangeEmitter.emit(seanceId)
     this.seance = new Seance(this.seance);
   }
 
-  goToSeanceDetails(id: number) {
-    this.goToSeanceDetailChangeEmitter.emit(id);
+  goToSeanceDetails(seanceId: number) {
+    this.goToSeanceDetailChangeEmitter.emit(seanceId);
+  }
+
+  deleteSeance(seanceId: number) {
+    this.deleteSeanceEmitter.emit(seanceId);
   }
 }

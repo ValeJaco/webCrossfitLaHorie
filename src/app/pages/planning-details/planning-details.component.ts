@@ -8,6 +8,8 @@ import {SeancePlanning} from "../../models/seance-planning";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {FormControl, Validators} from "@angular/forms";
 import {slideInOutLeftToRight, smoothAppearing} from "../../utils/animations";
+import {ConfirmDialogComponent} from "../../components/confirm-dialog/confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-planning-details',
@@ -32,7 +34,8 @@ export class PlanningDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private seancesPlanningFacadeService: SeancesPlanningFacadeService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private dialog: MatDialog
   ) {
   }
 
@@ -144,27 +147,43 @@ export class PlanningDetailsComponent implements OnInit {
   }
 
   removeSeanceFromPlanning(seancePlanning: SeancePlanning): void {
-    this.seancesPlanningFacadeService
-      .deleteSeancePlanning(seancePlanning.id)
-      .pipe(take(1)).subscribe({
-      next: () => {
-        this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_OK");
-        const seanceToDeleteIndexInPlanning = this.planning.seancesPlanning.findIndex(sp => sp.id === seancePlanning.id);
-        const seanceToDeleteIndexInMap = this.seancesList.get(seancePlanning.dayOfWeek).findIndex(sp => sp.id === seancePlanning.id);
 
-        if (seanceToDeleteIndexInPlanning > -1) {
-          this.planning.seancesPlanning.splice(seanceToDeleteIndexInPlanning, 1);
-          this.planning.seancesPlanning = [...this.planning.seancesPlanning];
+    if (seancePlanning.id > 0) {
+      const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'CONFIRM_DELETE_SEANCE_TITLE',
+          message: 'CONFIRM_DELETE_SEANCE_MESSAGE'
         }
-        if (seanceToDeleteIndexInMap > -1) {
-          this.seancesList.get(seancePlanning.dayOfWeek).splice(seanceToDeleteIndexInMap, 1);
-          this.seancesList.set(seancePlanning.dayOfWeek, [...this.seancesList.get(seancePlanning.dayOfWeek)]);
-        }
+      });
+      confirmDialog.afterClosed().subscribe((result) => {
+        if (result === true) {
 
-      }, error: () => {
-        this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_NOK");
-      }
-    });
+          this.seancesPlanningFacadeService
+            .deleteSeancePlanning(seancePlanning.id)
+            .pipe(take(1)).subscribe({
+            next: () => {
+              this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_OK");
+              const seanceToDeleteIndexInPlanning = this.planning.seancesPlanning.findIndex(sp => sp.id === seancePlanning.id);
+              const seanceToDeleteIndexInMap = this.seancesList.get(seancePlanning.dayOfWeek).findIndex(sp => sp.id === seancePlanning.id);
+
+              if (seanceToDeleteIndexInPlanning > -1) {
+                this.planning.seancesPlanning.splice(seanceToDeleteIndexInPlanning, 1);
+                this.planning.seancesPlanning = [...this.planning.seancesPlanning];
+              }
+              if (seanceToDeleteIndexInMap > -1) {
+                this.seancesList.get(seancePlanning.dayOfWeek).splice(seanceToDeleteIndexInMap, 1);
+                this.seancesList.set(seancePlanning.dayOfWeek, [...this.seancesList.get(seancePlanning.dayOfWeek)]);
+              }
+            }, error: () => {
+              this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_DELETED_NOK");
+            }
+          });
+        }
+      });
+    } else {
+      this.planning.seancesPlanning = [...this.planning.seancesPlanning.filter(seancePlanning => seancePlanning.id > 0)];
+      this.seancesList.set(seancePlanning.dayOfWeek, [...this.seancesList.get(seancePlanning.dayOfWeek).filter(seancePlanning => seancePlanning.id > 0)]);
+    }
   }
 
 
@@ -190,12 +209,12 @@ export class PlanningDetailsComponent implements OnInit {
 
     newSeance.planningId = this.planning.id;
     newSeance.dayOfWeek = dayOfWeek;
-    newSeance.name = "test";
-    newSeance.startTime = "18:30:00";
-    newSeance.unsubcriptionHoursLimit = 6;
-    newSeance.duration = 90;
-    newSeance.maxSpot = 12;
     newSeance.readOnly = false;
+    // newSeance.name = "test";
+    // newSeance.startTime = "18:30:00";
+    // newSeance.unsubcriptionHoursLimit = 6;
+    // newSeance.duration = 60;
+    // newSeance.maxSpot = 12;
 
     newSeance.initializeFormController();
     this.addSubscriptionsToCurrentList(newSeance.initializeFormControllerSubscription())

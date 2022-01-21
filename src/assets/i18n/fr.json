@@ -81,7 +81,9 @@
     "SET_PLANNING_ACTIVE_OK": "Modification du planning actif effectuée",
     "SET_PLANNING_ACTIVE_NOK": "Erreur lors de la mise à jour du planning actif",
     "PLANNING_NAME_UPDATED_OK": "Nom du planning modifié",
-    "PLANNING_NAME_UPDATED_NOK": "Echec lors de la modification du nom"
+    "PLANNING_NAME_UPDATED_NOK": "Echec lors de la modification du nom",
+    "SEANCE_DELETED_OK": "Suppression de la séance effectuée",
+    "SEANCE_DELETED_NOK": "Erreur lors de la suppression de la séance"
   },
   "SIDENAV": {
     "SEANCES_LIST": "Liste des séances",
@@ -130,5 +132,13 @@
     "VALID_SEANCE_PLANNING_CREATION": "Valider la création de séance",
     "SAVE_PLANNING_NAME": "Enregistrer la modification",
     "ADD_NEW_SEANCE_ROW": "Ajouter une séance pour ce jour"
+  },
+  "CONFIRM_DIALOG": {
+    "CONFIRM_DELETE_SEANCE_TITLE": "Suppression séance",
+    "CONFIRM_DELETE_SEANCE_MESSAGE": "Souhaitez-vous supprimer cette séance ?",
+    "CANCEL": "Annuler",
+    "CONFIRM": "Confirmer",
+    "CONFIRM_UNSUBSCRIBE_MESSAGE": "Vous souhaitez vous désinscrire de la séance ?",
+    "CONFIRM_UNSUBSCRIBE_TITLE": "Désinscription"
   }
 }

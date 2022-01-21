@@ -62,7 +62,7 @@
             <mat-icon>edit</mat-icon>
             <span>{{"SEANCE.EDIT_SEANCE" | translate}}</span>
           </button>
-          <button mat-menu-item>
+          <button (click)='deleteSeance(seance.id)' mat-menu-item>
             <mat-icon>delete</mat-icon>
             <span>{{"SEANCE.VIEW_SUBSCRIBED_USER" | translate}}</span>
           </button>

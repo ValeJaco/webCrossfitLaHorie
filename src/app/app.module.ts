@@ -41,6 +41,8 @@ import {MyIncomingSeancesComponent} from './pages/my-incoming-seances/my-incomin
 import {SeanceCardComponent} from './components/seance-card/seance-card.component';
 import {SeancePlanningTabForDayComponent} from './components/seance-planning-tab-for-day/seance-planning-tab-for-day.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 registerLocaleData(localeFr);
 
@@ -59,7 +61,8 @@ registerLocaleData(localeFr);
     PlanningDetailsComponent,
     MyIncomingSeancesComponent,
     SeanceCardComponent,
-    SeancePlanningTabForDayComponent
+    SeancePlanningTabForDayComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,8 @@ registerLocaleData(localeFr);
     MatExpansionModule,
     MatAutocompleteModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ],
   exports: [
     BrowserAnimationsModule

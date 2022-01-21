@@ -14,8 +14,10 @@ import {smoothAppearing} from "../../utils/animations";
 })
 export class AuthentificationComponent implements OnInit {
 
-  usernameFormControl = new FormControl('Vale@lala.fr', [Validators.required])
-  passwordFormControl = new FormControl('lala', [Validators.required])
+  // usernameFormControl = new FormControl('Vale@lala.fr', [Validators.required])
+  // passwordFormControl = new FormControl('lala', [Validators.required])
+  usernameFormControl = new FormControl('', [Validators.required])
+  passwordFormControl = new FormControl('', [Validators.required])
 
   constructor(
     private securityFacadeService: SecurityFacadeService,

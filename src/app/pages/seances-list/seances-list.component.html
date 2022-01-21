@@ -15,7 +15,8 @@
 
         <div *ngFor='let seance of seancesList.get( getDateKey(getDateForCalendar(index)) )'
              class='width-100 margin-top-10 flex-div'>
-          <app-seance-card (goToSeanceDetailChangeEmitter)="goToSeanceDetails($event)"
+          <app-seance-card (deleteSeanceEmitter)='deleteSeance($event)'
+                           (goToSeanceDetailChangeEmitter)="goToSeanceDetails($event)"
                            (subscribeToSeanceChangeEmitter)="subscribeToSeance($event)"
                            (unsubscribeFromSeanceChangeEmitter)="unsubscribeFromSeance($event)"
                            [seance]="seance"

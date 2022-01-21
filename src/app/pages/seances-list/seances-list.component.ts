@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Seance} from "../../models/seance";
 import {SeancesFacadeService} from "../../services/seances/seances-facade.service";
 import {environment} from "../../../environments/environment";
@@ -10,6 +10,9 @@ import {SnackBarService} from "../../services/snack-bar.service";
 import {SeanceFilters} from "../../filters/seance-filters";
 import {JwtToken} from "../../models/jwt-token";
 import {smoothAppearing} from "../../utils/animations";
+import {Subscription, take} from "rxjs";
+import {ConfirmDialogComponent} from "../../components/confirm-dialog/confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-seances-list',
@@ -19,31 +22,40 @@ import {smoothAppearing} from "../../utils/animations";
   animations: [smoothAppearing]
 })
 
-
-export class SeancesListComponent implements OnInit {
+export class SeancesListComponent implements OnInit, OnDestroy {
 
   seancesList = new Map<string, Seance[]>();
   startDate = new Date(); // new Date('2022-01-10');
   timeZone = environment.TIMEZONE;
   nbDaysToShow = 15;
+  filters = new SeanceFilters();
+  seancesListSubscription: Subscription;
+
+  @Input()
+  userId: number;
 
   constructor(
     private seancesFacadeService: SeancesFacadeService,
     private router: Router,
     private securityFacadeService: SecurityFacadeService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private dialog: MatDialog
   ) {
+  }
+
+  ngOnDestroy(): void {
+    this.seancesListSubscription.unsubscribe()
   }
 
   ngOnInit(): void {
 
-    const filters = new SeanceFilters();
-    filters.startDate = this.startDate;
+    this.filters.startDate = this.startDate;
 
-    this.seancesFacadeService.getSeances()
+
+    this.seancesListSubscription = this.seancesFacadeService.getSeances()
       .subscribe(response => {
+        const tempMap = new Map<string, Seance[]>();
         if (response?.body && response.body.length > 0) {
-          const tempMap = new Map<string, Seance[]>();
           response.body.forEach(seance => {
             const dateSearchedKey = this.getDateKey(new Date(seance.startDate));
             if (!tempMap.get(dateSearchedKey)) {
@@ -51,10 +63,18 @@ export class SeancesListComponent implements OnInit {
             }
             tempMap.get(dateSearchedKey).push(new Seance(seance));
           })
-          this.seancesList = tempMap;
         }
-      })
-    this.seancesFacadeService.loadSeances(filters.filtersToApi());
+        this.seancesList = tempMap;
+      });
+    this.loadSeances();
+  }
+
+  loadSeances(): void {
+    if (this.userId > 0) {
+      this.seancesFacadeService.loadIncomingSeancesByUserId(this.userId, this.filters.filtersToApi());
+    } else {
+      this.seancesFacadeService.loadSeances(this.filters.filtersToApi());
+    }
   }
 
   goToSeanceDetails(seanceId: number) {
@@ -79,26 +99,36 @@ export class SeancesListComponent implements OnInit {
     this.seancesFacadeService.addUserToSeance(
       seanceId,
       this.securityFacadeService.getJwtTokenObject().userId
-    ).subscribe(response => {
+    ).pipe(take(1)).subscribe(response => {
         if (response.status === ResponseEnum.OK) {
           this.snackBarService.showSuccesSnackBar("SNACKBAR.SUBSCRIBE_OK");
-          this.seancesFacadeService.loadSeances();
+          this.loadSeances();
         }
       }
     );
   }
 
   unsubscribeFromSeance(seanceId: number) {
-    this.seancesFacadeService.removeUserFromSeance(
-      seanceId,
-      this.securityFacadeService.getJwtTokenObject().userId
-    ).subscribe(response => {
-        if (response.status === ResponseEnum.OK) {
-          this.snackBarService.showSuccesSnackBar("SNACKBAR.UNSUBSCRIBE_OK");
-          this.seancesFacadeService.loadSeances();
-        }
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'CONFIRM_UNSUBSCRIBE_TITLE',
+        message: 'CONFIRM_UNSUBSCRIBE_MESSAGE'
       }
-    );
+    });
+    confirmDialog.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.seancesFacadeService.removeUserFromSeance(
+          seanceId,
+          this.securityFacadeService.getJwtTokenObject().userId
+        ).pipe(take(1)).subscribe(response => {
+            if (response.status === ResponseEnum.OK) {
+              this.snackBarService.showSuccesSnackBar("SNACKBAR.UNSUBSCRIBE_OK");
+              this.loadSeances();
+            }
+          }
+        );
+      }
+    })
   }
 
   goTPreviousDay() {
@@ -121,4 +151,31 @@ export class SeancesListComponent implements OnInit {
     return this.securityFacadeService.hasRoleCoach();
   }
 
+  deleteSeance(seanceId: number) {
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'CONFIRM_DELETE_SEANCE_TITLE',
+        message: 'CONFIRM_DELETE_SEANCE_MESSAGE'
+      }
+    });
+    confirmDialog.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.seancesFacadeService.deleteSeance(
+          seanceId
+        ).pipe(take(1)).subscribe({
+            next: response => {
+              if (response.status === ResponseEnum.OK) {
+                this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_DELETED_OK");
+                this.loadSeances();
+              }
+            },
+            error: err => {
+              console.log(err);
+              this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_DELETED_NOK");
+            }
+          }
+        );
+      }
+    });
+  }
 }

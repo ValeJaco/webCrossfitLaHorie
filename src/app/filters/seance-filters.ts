@@ -10,7 +10,7 @@ export class SeanceFilters {
     }
 
     if (filters.length > 0) {
-      filters = "?" + filters;
+      filters = "&" + filters;
     }
 
     return filters;

@@ -23,7 +23,7 @@ export class SeancesApiService {
   }
 
   getSeances(filters = ""): Observable<SeancesListResponse> {
-    const url = `${environment.API_URL}/seances${filters}`;
+    const url = `${environment.API_URL}/seances?${filters}`;
     return this.apiService.get(url).pipe(
       map((response: SeancesListResponse) => {
         return response;
@@ -31,8 +31,16 @@ export class SeancesApiService {
     );
   }
 
-  getIncomingSeancesByUserId(userId: number): Observable<SeancesListResponse> {
-    const url = `${environment.API_URL}/incomingSeances/${userId}`;
+  deleteSeance(seanceId: number): Observable<SeanceResponse> {
+    return this.apiService
+      .delete(`${environment.API_URL}/seances/${seanceId}`)
+      .pipe(map((response: SeanceResponse) => {
+        return response;
+      }));
+  }
+
+  getIncomingSeancesByUserId(userId: number, filters: string): Observable<SeancesListResponse> {
+    const url = `${environment.API_URL}/incomingSeances/${userId}?${filters}`;
     return this.apiService.get(url).pipe(
       map((response: SeancesListResponse) => {
         return response;

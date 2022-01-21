@@ -22,8 +22,16 @@ export class SeancesFacadeService {
       })
   }
 
+  loadIncomingSeancesByUserId(userId: number, filters: string): void {
+    this.seancesApiService.getIncomingSeancesByUserId(userId, filters).pipe(take(1))
+      .subscribe(response => {
+
+        this.seancesStorageService.setSeances(response);
+      })
+  }
+
   getIncomingSeancesByUserId(userId: number): Observable<SeancesListResponse> {
-    return this.seancesApiService.getIncomingSeancesByUserId(userId);
+    return this.seancesApiService.getIncomingSeancesByUserId(userId, null);
   }
 
   getAllSeancesByUserId(userId: number): Observable<SeancesListResponse> {
@@ -32,6 +40,10 @@ export class SeancesFacadeService {
 
   getSeances(): Observable<SeancesListResponse> {
     return this.seancesStorageService.getSeances();
+  }
+
+  deleteSeance(seanceId: number): Observable<SeanceResponse> {
+    return this.seancesApiService.deleteSeance(seanceId);
   }
 
   getSeanceById(seanceId: number): Observable<SeanceResponse> {

@@ -1,5 +1,5 @@
-<mat-tab-group class='seance-planning-tab-group' mat-align-tabs="start">
-  <mat-tab *ngFor='let seancePlanning of seancesPlanning; let index = index'
+<mat-tab-group @smoothAppearing class='seance-planning-tab-group' mat-align-tabs="start">
+  <mat-tab *ngFor='let seancePlanning of seancesPlanning; let index = index' @smoothAppearing
            class='seance-planning-tab'
            label='{{ seancePlanning.id > 0 ? seancePlanning.startTime : "Nouvelle séance" }}'>
     <form class="form-standard text-centered">
@@ -61,7 +61,6 @@
           check
         </mat-icon>
         <mat-icon (click)="deleteSeancePlanning(seancePlanning)"
-                  *ngIf="seancePlanning.id && seancePlanning.id > 0"
                   class="hover-red show-pointer margin-auto"
                   matTooltip="{{ 'TOOLTIP.DELETE_SEANCE_PLANNING' | translate }}">delete
         </mat-icon>
