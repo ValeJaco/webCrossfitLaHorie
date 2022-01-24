@@ -4,7 +4,6 @@ import {UsersFacadeService} from "../../services/users/users-facade.service";
 import {Subscription, take} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RolesEnum} from "../../constants/rolesEnum";
-import {ResponseEnum} from "../../constants/response-enum";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {smoothAppearing} from "../../utils/animations";
 
@@ -48,17 +47,30 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  postUserForm(): void {
+  resetUserPassword(): void {
 
+    this.usersFacade.resetUserPassword(
+      this.user.id)
+      .pipe(take(1))
+      .subscribe({
+        next: (response) => {
+          this.snackBarService.showSuccesSnackBar("SNACKBAR.RESET_USER_PASSWORD_OK");
+        }, error: err => {
+          this.snackBarService.showErrorSnackBar("SNACKBAR.RESET_USER_PASSWORD_NOK");
+        }
+      });
+  }
+
+  postUserForm(): void {
     if (this.user.id > 0) {
       this.usersFacade.updateUser(
         this.user.id,
         this.user.userToApi())
         .pipe(take(1))
-        .subscribe(response => {
-          if (response.status === ResponseEnum.OK) {
+        .subscribe({
+          next: (response) => {
             this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_USER_OK");
-          } else {
+          }, error: err => {
             this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_USER_NOK");
           }
         });
@@ -66,11 +78,10 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
       this.usersFacade.createUser(
         this.user.userToApi())
         .pipe(take(1))
-        .subscribe(response => {
-          if (response.status === ResponseEnum.OK) {
-            this.user.id = response.body.id
+        .subscribe({
+          next: (response) => {
             this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_USER_OK");
-          } else {
+          }, error: err => {
             this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_USER_NOK");
           }
         });

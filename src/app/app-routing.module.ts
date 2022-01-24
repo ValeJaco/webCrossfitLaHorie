@@ -5,10 +5,11 @@ import {SeanceDetailsComponent} from "./pages/seance-details/seance-details.comp
 import {AuthGuard} from "./security/auth.guard";
 import {UsersListComponent} from "./pages/users-list/users-list.component";
 import {SeancesListComponent} from "./pages/seances-list/seances-list.component";
-import {AuthentificationComponent} from "./pages/authentification/authentification.component";
+import {AuthenticationComponent} from "./pages/authentification/authentication.component";
 import {PlanningListComponent} from "./pages/planning-list/planning-list.component";
 import {PlanningDetailsComponent} from "./pages/planning-details/planning-details.component";
 import {MyIncomingSeancesComponent} from "./pages/my-incoming-seances/my-incoming-seances.component";
+import {ChangePasswordComponent} from "./pages/change-password/change-password.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'seances', pathMatch: 'full'},
@@ -50,7 +51,11 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthentificationComponent
+    component: AuthenticationComponent
+  },
+  {
+    path: 'change',
+    component: ChangePasswordComponent
   }];
 
 @NgModule({

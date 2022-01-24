@@ -51,7 +51,6 @@ export class SeancesListComponent implements OnInit, OnDestroy {
 
     this.filters.startDate = this.startDate;
 
-
     this.seancesListSubscription = this.seancesFacadeService.getSeances()
       .subscribe(response => {
         const tempMap = new Map<string, Seance[]>();

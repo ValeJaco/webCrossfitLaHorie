@@ -39,6 +39,10 @@
         <a [routerLink]="['/planning']"
            mat-list-item>{{ "SIDENAV.PLANNING_MANAGEMENT" | translate }}</a>
       </mat-nav-list>
+      <mat-nav-list (click)="toggleMenu()">
+        <a [routerLink]="['/change']"
+           mat-list-item>{{ "SIDENAV.CHANGE_PASSWORD" | translate }}</a>
+      </mat-nav-list>
       <mat-nav-list (click)="logOut()">
         <a mat-list-item>{{ "SIDENAV.LOG_OUT" | translate }}</a>
       </mat-nav-list>

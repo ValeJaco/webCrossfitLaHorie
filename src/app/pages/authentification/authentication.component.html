@@ -1,5 +1,5 @@
 <div @smoothAppearing class="flex-div">
-  <div class="margin-auto grid-container">
+  <div class="margin-auto">
     <mat-card class="auth-form-card mat-elevation-z7">
       <form class="form-standard">
         <div class="flex-div">
@@ -16,8 +16,9 @@
                 <input [formControl]="passwordFormControl" matInput type="password"/>
               </mat-form-field>
             </div>
-            <div class="form-field-container grid-col-2 text-centered">
-              <button (click)="logIn()" [disabled]="passwordFormControl.invalid || usernameFormControl.invalid"
+            <div class="form-field-container text-centered">
+              <button (click)="logIn()"
+                      [disabled]="passwordFormControl.invalid || usernameFormControl.invalid"
                       class="form-button" mat-raised-button>
                 {{"AUTH.LOG_IN" | translate}}
               </button>

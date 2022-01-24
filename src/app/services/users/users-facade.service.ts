@@ -28,6 +28,14 @@ export class UsersFacadeService {
     return this.usersApiService.updateUser(userId, jsonUser);
   }
 
+  updateUserPassword(userId: number, jsonUser: any): Observable<UserResponse> {
+    return this.usersApiService.updateUserPassword(userId, jsonUser);
+  }
+
+  resetUserPassword(userId: number): Observable<UserResponse> {
+    return this.usersApiService.resetUserPassword(userId);
+  }
+
   createUser(jsonUser: any): Observable<UserResponse> {
     return this.usersApiService.createUser(jsonUser);
   }

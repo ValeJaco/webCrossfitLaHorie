@@ -96,10 +96,14 @@
               </mat-list-option>
             </mat-selection-list>
           </div>
-          <div class="form-field-container text-centered">
+          <div class="form-field-container text-centered grid-container">
             <button (click)="postUserForm()" [disabled]="!user.isValid(user)" class="form-button"
                     mat-raised-button>
               {{"USER.BUTTON_SAVE" | translate}}
+            </button>
+            <button (click)="resetUserPassword()" class="form-button"
+                    mat-raised-button>
+              {{"USER.BUTTON_RESET_PASSWORD" | translate}}
             </button>
           </div>
         </form>

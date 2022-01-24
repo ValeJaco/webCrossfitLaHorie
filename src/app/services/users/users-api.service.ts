@@ -55,4 +55,20 @@ export class UsersApiService {
         return response;
       }));
   }
+
+  updateUserPassword(userId: number, jsonUser: any): Observable<UserResponse> {
+    return this.apiService
+      .patch(`${environment.API_URL}/users/pwd/${userId}`, jsonUser)
+      .pipe(map((response: UserResponse) => {
+        return response;
+      }));
+  }
+
+  resetUserPassword(userId: number): Observable<UserResponse> {
+    return this.apiService
+      .patch(`${environment.API_URL}/users/resetPwd/${userId}`, null)
+      .pipe(map((response: UserResponse) => {
+        return response;
+      }));
+  }
 }

@@ -27,7 +27,7 @@ import {SeancesListComponent} from './pages/seances-list/seances-list.component'
 import {CommonModule, DatePipe, registerLocaleData} from "@angular/common";
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import localeFr from '@angular/common/locales/fr';
-import {AuthentificationComponent} from './pages/authentification/authentification.component';
+import {AuthenticationComponent} from './pages/authentification/authentication.component';
 import {AuthInterceptor} from "./security/auth.interceptor";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
@@ -43,6 +43,7 @@ import {SeancePlanningTabForDayComponent} from './components/seance-planning-tab
 import {MatTabsModule} from "@angular/material/tabs";
 import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {ChangePasswordComponent} from './pages/change-password/change-password.component';
 
 registerLocaleData(localeFr);
 
@@ -55,14 +56,15 @@ registerLocaleData(localeFr);
     UsersListComponent,
     CustomSnackBarComponent,
     SeancesListComponent,
-    AuthentificationComponent,
+    AuthenticationComponent,
     AutoCompleteSearchUsersComponent,
     PlanningListComponent,
     PlanningDetailsComponent,
     MyIncomingSeancesComponent,
     SeanceCardComponent,
     SeancePlanningTabForDayComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

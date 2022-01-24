@@ -15,6 +15,7 @@
     "FREE_ACCESS": "Free access",
     "BADGE_REFERENCE": "Numéro de badge",
     "BUTTON_SAVE": "Sauvegarder",
+    "BUTTON_RESET_PASSWORD": "Réinitialiser le MDP",
     "SEARCHED_NAME": "Recherche par Prénom ou Nom",
     "RESET_FILTERS": "Réinitialiser",
     "CREATE_NEW_USER": "Créer membre",
@@ -68,7 +69,7 @@
     "UPDATE_USER_NOK": "Échec de la mise à jour de l'utilisateur",
     "CREATE_SEANCE_NOK": "Échec de la création de la séance",
     "UPDATE_SEANCE_NOK": "Échec de la mise à jour de la séance",
-    "AUTHENTIFICATION_NOK": "Les informations de connexion sont erronées",
+    "AUTHENTICATION_NOK": "Les informations de connexion sont erronées",
     "UNSUBSCRIBE_OK": "Désinscription à la séance effectuée",
     "SUBSCRIBE_OK": "Inscription à la séance effectuée",
     "GUESS_ADDED_OK": "Invité(e) ajouté(e)",
@@ -83,7 +84,11 @@
     "PLANNING_NAME_UPDATED_OK": "Nom du planning modifié",
     "PLANNING_NAME_UPDATED_NOK": "Echec lors de la modification du nom",
     "SEANCE_DELETED_OK": "Suppression de la séance effectuée",
-    "SEANCE_DELETED_NOK": "Erreur lors de la suppression de la séance"
+    "SEANCE_DELETED_NOK": "Erreur lors de la suppression de la séance",
+    "UPDATE_PASSWORD_OK": "Modification du mot de passe effectuée",
+    "UPDATE_PASSWORD_NOK": "Le mot de passe actuel saisi est incorrect",
+    "RESET_USER_PASSWORD_NOK": "Erreur lors de la modification du mot de passe",
+    "RESET_USER_PASSWORD_OK": "Réinitialisation du mot de passe effectuée"
   },
   "SIDENAV": {
     "SEANCES_LIST": "Liste des séances",
@@ -92,12 +97,18 @@
     "MENU": "Menu",
     "LOG_OUT": "Se déconnecter",
     "PLANNING_MANAGEMENT": "Gestion planning",
-    "MY_SEANCES_LIST": "Mes séances à venir"
+    "MY_SEANCES_LIST": "Mes séances à venir",
+    "CHANGE_PASSWORD": "Changer mon MDP"
   },
   "AUTH": {
     "USERNAME": "Email",
     "PASSWORD": "Mot de passe",
-    "LOG_IN": "Se connecter"
+    "LOG_IN": "Se connecter",
+    "ACTUAL_PASSWORD": "MDP actuel",
+    "NEW_PASSWORD": "Nouveau MDP",
+    "NEW_PASSWORD_CONFIRM": "Confirmer le MDP",
+    "SAVE_PASSWORD_CHANGE": "Enregistrer",
+    "PASSWORD_NOT_MATCHING": "La confirmation ne correspond pas au nouveau MDP"
   },
   "UTILS": {
     "DAY_NAME_1": "Lundi",
@@ -131,7 +142,8 @@
     "DELETE_SEANCE_PLANNING": "Supprimer la séance du planning",
     "VALID_SEANCE_PLANNING_CREATION": "Valider la création de séance",
     "SAVE_PLANNING_NAME": "Enregistrer la modification",
-    "ADD_NEW_SEANCE_ROW": "Ajouter une séance pour ce jour"
+    "ADD_NEW_SEANCE_ROW": "Ajouter une séance pour ce jour",
+    "REQUIREMENT_FOR_PASSWORD": "MDP de 8 caractères minimum, doit contenir au moins un caractère spécial, une majuscule et une minuscule"
   },
   "CONFIRM_DIALOG": {
     "CONFIRM_DELETE_SEANCE_TITLE": "Suppression séance",

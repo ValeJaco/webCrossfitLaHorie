@@ -5,14 +5,15 @@ import {Router} from "@angular/router";
 import {take} from "rxjs";
 import {SnackBarService} from "../../services/snack-bar.service";
 import {smoothAppearing} from "../../utils/animations";
+import {SecurityStorageService} from "../../services/security/security-storage.service";
 
 @Component({
-  selector: 'app-authentification',
-  templateUrl: './authentification.component.html',
-  styleUrls: ['./authentification.component.scss'],
+  selector: 'app-authentication',
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.scss'],
   animations: [smoothAppearing]
 })
-export class AuthentificationComponent implements OnInit {
+export class AuthenticationComponent implements OnInit {
 
   // usernameFormControl = new FormControl('Vale@lala.fr', [Validators.required])
   // passwordFormControl = new FormControl('lala', [Validators.required])
@@ -22,7 +23,8 @@ export class AuthentificationComponent implements OnInit {
   constructor(
     private securityFacadeService: SecurityFacadeService,
     private router: Router,
-    private snackBarService: SnackBarService) {
+    private snackBarService: SnackBarService,
+    private securityStorageService: SecurityStorageService) {
   }
 
   ngOnInit(): void {
@@ -32,11 +34,12 @@ export class AuthentificationComponent implements OnInit {
     this.securityFacadeService.logIn(
       this.usernameFormControl.value,
       this.passwordFormControl.value
-    ).pipe(take(2)).subscribe(authOk => {
-      if (authOk === true) {
+    ).pipe(take(1)).subscribe({
+      next: (authOk) => {
+        this.securityStorageService.setJwtToken(authOk.body.jwt);
         this.router.navigate(['/'])
-      } else if (authOk === false) {
-        this.snackBarService.showErrorSnackBar("SNACKBAR.AUTHENTIFICATION_NOK");
+      }, error: err => {
+        this.snackBarService.showErrorSnackBar("SNACKBAR.AUTHENTICATION_NOK");
       }
     });
   }

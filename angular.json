@@ -42,7 +42,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/web-crossfit-la-horie",
+            "outputPath": "/merge/web-crossfit-la-horie",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -107,6 +107,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "webCrossfitLaHorie:build",
+            "ssl": true,
+            "sslKey": "/merge/privkey.pem",
+            "sslCert": "/merge/cert.pem"
+          },
           "configurations": {
             "production": {
               "browserTarget": "webCrossfitLaHorie:build:production"

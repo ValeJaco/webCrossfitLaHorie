@@ -1,4 +1,4 @@
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "custom-theme";
 
 .flex-div {
   display: flex;
@@ -101,6 +101,10 @@ body {
   margin-top: 20px;
 }
 
+.margin-top-40 {
+  margin-top: 40px;
+}
+
 .mat-tooltip {
   background-color: var(--grey-light-full-opacity);
   font-size: 12px;
@@ -116,6 +120,10 @@ body {
 
 .grid-column-span-4 {
   grid-column: span 4;
+}
+
+.grid-column-span-5 {
+  grid-column: span 5;
 }
 
 .width-100 {
@@ -134,6 +142,14 @@ mat-icon {
   color: var(--black-light);
 }
 
+.error-icon {
+  color: var(--error-red);
+}
+
+.valid-icon {
+  color: var(--valid-green);
+}
+
 .max-width-800 {
   max-width: 800px;
 }
@@ -143,3 +159,8 @@ mat-icon {
   grid-template-columns: repeat(2, 1fr);
   padding: 10px 0 10px;
 }
+
+mat-hint {
+  color: darkred !important;
+}
+
