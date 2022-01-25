@@ -92,10 +92,11 @@ export class SeanceDetailsComponent implements OnInit {
           this.seance.id,
           this.seance.seanceToApi())
           .pipe(take(1))
-          .subscribe(response => {
-            if (response.status === ResponseEnum.OK) {
+          .subscribe({
+            next: () => {
               this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_SEANCE_OK");
-            } else {
+            },
+            error: () => {
               this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_SEANCE_NOK");
             }
           });
@@ -103,12 +104,11 @@ export class SeanceDetailsComponent implements OnInit {
         this.seancesFacade.createSeance(
           this.seance.seanceToApi())
           .pipe(take(1))
-          .subscribe(response => {
-            if (response.status === ResponseEnum.OK) {
-              this.seance.id = response.body.id;
-              this.paramsSeanceId = this.seance.id;
+          .subscribe({
+            next: () => {
               this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_SEANCE_OK");
-            } else {
+            },
+            error: () => {
               this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_SEANCE_NOK");
             }
           });
