@@ -62,29 +62,33 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   }
 
   postUserForm(): void {
-    if (this.user.id > 0) {
-      this.usersFacade.updateUser(
-        this.user.id,
-        this.user.userToApi())
-        .pipe(take(1))
-        .subscribe({
-          next: (response) => {
-            this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_USER_OK");
-          }, error: err => {
-            this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_USER_NOK");
-          }
-        });
+    if (this.user.valid()) {
+      if (this.user.id > 0) {
+        this.usersFacade.updateUser(
+          this.user.id,
+          this.user.userToApi())
+          .pipe(take(1))
+          .subscribe({
+            next: (response) => {
+              this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_USER_OK");
+            }, error: err => {
+              this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_USER_NOK");
+            }
+          });
+      } else {
+        this.usersFacade.createUser(
+          this.user.userToApi())
+          .pipe(take(1))
+          .subscribe({
+            next: (response) => {
+              this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_USER_OK");
+            }, error: err => {
+              this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_USER_NOK");
+            }
+          });
+      }
     } else {
-      this.usersFacade.createUser(
-        this.user.userToApi())
-        .pipe(take(1))
-        .subscribe({
-          next: (response) => {
-            this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_USER_OK");
-          }, error: err => {
-            this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_USER_NOK");
-          }
-        });
+      this.snackBarService.showWarningSnackBar("SNACKBAR.FORM_INCORRECT_DATA");
     }
   }
 

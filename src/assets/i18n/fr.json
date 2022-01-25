@@ -15,7 +15,7 @@
     "FREE_ACCESS": "Free access",
     "BADGE_REFERENCE": "Numéro de badge",
     "BUTTON_SAVE": "Sauvegarder",
-    "BUTTON_RESET_PASSWORD": "Réinitialiser le MDP",
+    "BUTTON_RESET_PASSWORD": "Reset MDP",
     "SEARCHED_NAME": "Recherche par Prénom ou Nom",
     "RESET_FILTERS": "Réinitialiser",
     "CREATE_NEW_USER": "Créer membre",
@@ -88,7 +88,8 @@
     "UPDATE_PASSWORD_OK": "Modification du mot de passe effectuée",
     "UPDATE_PASSWORD_NOK": "Le mot de passe actuel saisi est incorrect",
     "RESET_USER_PASSWORD_NOK": "Erreur lors de la modification du mot de passe",
-    "RESET_USER_PASSWORD_OK": "Réinitialisation du mot de passe effectuée"
+    "RESET_USER_PASSWORD_OK": "Réinitialisation du mot de passe effectuée",
+    "FORM_INCORRECT_DATA": "Des valeurs du formulaire sont non autorisées ou manquantes"
   },
   "SIDENAV": {
     "SEANCES_LIST": "Liste des séances",

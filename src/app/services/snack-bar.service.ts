@@ -35,7 +35,7 @@ export class SnackBarService {
     this.showSnackBar(message, "success-snackbar", icon)
   }
 
-  showWarningSnackBar(message: string, icon: string = "Warning") {
+  showWarningSnackBar(message: string, icon: string = "warning") {
     this.showSnackBar(message, "warning-snackbar", icon)
   }
 

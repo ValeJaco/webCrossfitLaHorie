@@ -16,13 +16,13 @@
           <div class="form-field-container">
             <mat-form-field>
               <mat-label>{{ "SEANCE.MAX_SPOT" | translate }}</mat-label>
-              <input [formControl]="seance.maxSpotFormControl" matInput type="number"/>
+              <input [formControl]="seance.maxSpotFormControl" matInput min='1' type="number"/>
             </mat-form-field>
           </div>
           <div class="form-field-container">
             <mat-form-field>
               <mat-label>{{ "SEANCE.UNSUBSCRIBE_HOURS_LIMIT" | translate }}</mat-label>
-              <input [formControl]="seance.unsubcriptionHoursLimitFormControl" matInput
+              <input [formControl]="seance.unsubscriptionHoursLimitFormControl" matInput min='1'
                      type="number"/>
             </mat-form-field>
           </div>
@@ -36,7 +36,7 @@
           <div class="form-field-container">
             <mat-form-field>
               <mat-label>{{ "SEANCE.DURATION" | translate }}</mat-label>
-              <input [formControl]="seance.durationFormControl" matInput type="number"/>
+              <input [formControl]="seance.durationFormControl" matInput min='1' type="number"/>
             </mat-form-field>
           </div>
           <div class="form-field-container">

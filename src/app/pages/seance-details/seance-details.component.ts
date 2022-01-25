@@ -86,32 +86,35 @@ export class SeanceDetailsComponent implements OnInit {
   }
 
   postSeanceForm(): void {
-
-    if (this.seance.id > 0) {
-      this.seancesFacade.updateSeance(
-        this.seance.id,
-        this.seance.seanceToApi())
-        .pipe(take(1))
-        .subscribe(response => {
-          if (response.status === ResponseEnum.OK) {
-            this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_SEANCE_OK");
-          } else {
-            this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_SEANCE_NOK");
-          }
-        });
+    if (this.seance.valid()) {
+      if (this.seance.id > 0) {
+        this.seancesFacade.updateSeance(
+          this.seance.id,
+          this.seance.seanceToApi())
+          .pipe(take(1))
+          .subscribe(response => {
+            if (response.status === ResponseEnum.OK) {
+              this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_SEANCE_OK");
+            } else {
+              this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_SEANCE_NOK");
+            }
+          });
+      } else {
+        this.seancesFacade.createSeance(
+          this.seance.seanceToApi())
+          .pipe(take(1))
+          .subscribe(response => {
+            if (response.status === ResponseEnum.OK) {
+              this.seance.id = response.body.id;
+              this.paramsSeanceId = this.seance.id;
+              this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_SEANCE_OK");
+            } else {
+              this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_SEANCE_NOK");
+            }
+          });
+      }
     } else {
-      this.seancesFacade.createSeance(
-        this.seance.seanceToApi())
-        .pipe(take(1))
-        .subscribe(response => {
-          if (response.status === ResponseEnum.OK) {
-            this.seance.id = response.body.id;
-            this.paramsSeanceId = this.seance.id;
-            this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_SEANCE_OK");
-          } else {
-            this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_SEANCE_NOK");
-          }
-        });
+      this.snackBarService.showWarningSnackBar("SNACKBAR.FORM_INCORRECT_DATA");
     }
   }
 

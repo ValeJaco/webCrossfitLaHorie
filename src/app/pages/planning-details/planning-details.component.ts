@@ -123,27 +123,31 @@ export class PlanningDetailsComponent implements OnInit {
   }
 
   validateSeancePlanningForm(seancePlanning: SeancePlanning): void {
-    if (seancePlanning.id > 0) {
-      this.seancesPlanningFacadeService
-        .patchSeancePlanning(seancePlanning.id, seancePlanning.seancePlanningToApi())
-        .pipe(take(1)).subscribe({
-        next: () => {
-          this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_UPDATED_OK")
-        }, error: () => this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_UPDATED_NOK")
-      });
-    } else {
-      this.seancesPlanningFacadeService
-        .addSeancesToPlanning(seancePlanning.seancePlanningToApi())
-        .pipe(take(1)).subscribe({
-        next: (response) => {
-          this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_CREATED_OK")
-          seancePlanning.id = response.body.id;
-        },
-        error: () => this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_CREATED_NOK")
-      });
-    }
+    if (seancePlanning.valid()) {
+      if (seancePlanning.id > 0) {
+        this.seancesPlanningFacadeService
+          .patchSeancePlanning(seancePlanning.id, seancePlanning.seancePlanningToApi())
+          .pipe(take(1)).subscribe({
+          next: () => {
+            this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_UPDATED_OK")
+          }, error: () => this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_UPDATED_NOK")
+        });
+      } else {
+        this.seancesPlanningFacadeService
+          .addSeancesToPlanning(seancePlanning.seancePlanningToApi())
+          .pipe(take(1)).subscribe({
+          next: (response) => {
+            this.snackBarService.showSuccesSnackBar("SNACKBAR.SEANCE_PLANNING_CREATED_OK")
+            seancePlanning.id = response.body.id;
+          },
+          error: () => this.snackBarService.showErrorSnackBar("SNACKBAR.SEANCE_PLANNING_CREATED_NOK")
+        });
+      }
 
-    seancePlanning.readOnly = true;
+      seancePlanning.readOnly = true;
+    } else {
+      this.snackBarService.showWarningSnackBar("SNACKBAR.FORM_INCORRECT_DATA")
+    }
   }
 
   removeSeanceFromPlanning(seancePlanning: SeancePlanning): void {
@@ -212,7 +216,7 @@ export class PlanningDetailsComponent implements OnInit {
     newSeance.readOnly = false;
     // newSeance.name = "test";
     // newSeance.startTime = "18:30:00";
-    // newSeance.unsubcriptionHoursLimit = 6;
+    // newSeance.unsubscriptionHoursLimit = 6;
     // newSeance.duration = 60;
     // newSeance.maxSpot = 12;
 

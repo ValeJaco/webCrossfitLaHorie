@@ -64,6 +64,13 @@ export class User {
     }
   }
 
+  valid(): boolean {
+    return this.usernameFormControl.valid &&
+      this.forenameFormControl.valid &&
+      this.lastnameFormControl.valid &&
+      this.subscriptionDateFormControl.valid;
+  }
+
   initializeFormController(): void {
 
     this.usernameFormControl = new FormControl(this.username, [Validators.required]);
@@ -76,7 +83,7 @@ export class User {
     this.cityFormControl = new FormControl(this.city);
     this.subscriptionDateFormControl = new FormControl(this.subscriptionDate, [Validators.required]);
     this.birthDateFormControl = new FormControl(this.birthDate);
-    this.renewalDateFormControl = new FormControl(this.renewalDate, [Validators.required]);
+    this.renewalDateFormControl = new FormControl(this.renewalDate);
     this.paymentMethodFormControl = new FormControl(this.paymentMethod);
     this.freeAccessFormControl = new FormControl(this.freeAccess);
     this.badgeReferenceFormControl = new FormControl(this.badgeReference);

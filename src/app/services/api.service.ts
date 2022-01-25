@@ -69,11 +69,7 @@ export class ApiService {
 
     url = endpoint;
 
-    options.headers = new HttpHeaders();
-    options.headers.set('Content-Type', 'application/json; charset=utf-8');
-    options.headers.set('Access-Control-Allow-Origin', '*');
-    options.headers.set('Origin', '*');
-    options.headers.set('prout', 'lala');
+    options.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
     return this.http.post(url, body, options).pipe(
       catchError(this.errorHandler)

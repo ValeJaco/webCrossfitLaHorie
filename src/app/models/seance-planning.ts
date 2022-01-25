@@ -12,8 +12,8 @@ export class SeancePlanning {
   startTime: string;
   duration: number;
   location: string;
-  coachId: number;
-  unsubcriptionHoursLimit: number;
+  // coachId: number;
+  unsubscriptionHoursLimit: number;
 
   readOnly = true;
 
@@ -23,7 +23,7 @@ export class SeancePlanning {
   durationFormControl: FormControl;
   locationFormControl: FormControl;
   coachIdFormControl: FormControl;
-  unsubcriptionHoursLimitFormControl: FormControl;
+  unsubscriptionHoursLimitFormControl: FormControl;
 
   constructor(seancePlanning?: SeancePlanning) {
     this.copy(seancePlanning);
@@ -41,19 +41,28 @@ export class SeancePlanning {
       this.startTime = seancePlanning.startTime;
       this.duration = seancePlanning.duration;
       this.location = seancePlanning.location;
-      this.coachId = seancePlanning.coachId;
-      this.unsubcriptionHoursLimit = seancePlanning.unsubcriptionHoursLimit;
+      // this.coachId = seancePlanning.coachId;
+      this.unsubscriptionHoursLimit = seancePlanning.unsubscriptionHoursLimit;
     }
+  }
+
+  valid(): boolean {
+    return this.nameFormControl.valid &&
+      this.startTimeFormControl.valid &&
+      this.durationFormControl.valid &&
+      this.maxSpotFormControl.valid &&
+      this.locationFormControl.valid &&
+      this.unsubscriptionHoursLimitFormControl.valid
   }
 
   initializeFormController(): void {
     this.nameFormControl = new FormControl(this.name, [Validators.required]);
     this.startTimeFormControl = new FormControl(this.startTime, [Validators.required]);
-    this.durationFormControl = new FormControl(this.duration, [Validators.required]);
-    this.maxSpotFormControl = new FormControl(this.maxSpot, [Validators.required]);
-    this.coachIdFormControl = new FormControl(this.coachId);
+    this.durationFormControl = new FormControl(this.duration, [Validators.required, Validators.min(1)]);
+    this.maxSpotFormControl = new FormControl(this.maxSpot, [Validators.required, Validators.min(1)]);
+    // this.coachIdFormControl = new FormControl(this.coachId);
     this.locationFormControl = new FormControl(this.location);
-    this.unsubcriptionHoursLimitFormControl = new FormControl(this.unsubcriptionHoursLimit, [Validators.required]);
+    this.unsubscriptionHoursLimitFormControl = new FormControl(this.unsubscriptionHoursLimit, [Validators.required, Validators.min(1)]);
   }
 
   initializeFormControllerSubscription(): Subscription[] {
@@ -73,14 +82,14 @@ export class SeancePlanning {
     subArray.push(this.maxSpotFormControl.valueChanges.subscribe(value => {
       this.maxSpot = value;
     }))
-    subArray.push(this.coachIdFormControl.valueChanges.subscribe(value => {
-      this.coachId = value;
-    }))
+    // subArray.push(this.coachIdFormControl.valueChanges.subscribe(value => {
+    //   this.coachId = value;
+    // }))
     subArray.push(this.locationFormControl.valueChanges.subscribe(value => {
       this.location = value;
     }))
-    subArray.push(this.unsubcriptionHoursLimitFormControl.valueChanges.subscribe(value => {
-      this.unsubcriptionHoursLimit = value;
+    subArray.push(this.unsubscriptionHoursLimitFormControl.valueChanges.subscribe(value => {
+      this.unsubscriptionHoursLimit = value;
     }))
     return subArray;
   }
@@ -110,8 +119,7 @@ export class SeancePlanning {
         'startTime',
         'duration',
         'location',
-        'coachId',
-        'unsubcriptionHoursLimit'
+        'unsubscriptionHoursLimit'
       ]) + suffix;
   }
 }
