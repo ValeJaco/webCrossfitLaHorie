@@ -6,6 +6,7 @@ export class Planning {
   id: number;
   name: string;
   isActive: boolean;
+  postponedWeekNumber: number;
   seancesPlanning: SeancePlanning[];
   readOnly: boolean = true;
 
@@ -17,6 +18,7 @@ export class Planning {
     if (planning) {
       this.id = planning.id;
       this.name = planning.name;
+      this.postponedWeekNumber = planning.postponedWeekNumber;
       this.isActive = planning.isActive;
       this.seancesPlanning = initGenericArrayFromJson(SeancePlanning, planning.seancesPlanning);
     }
@@ -29,10 +31,12 @@ export class Planning {
     );
   }
 
-  planningNameToApi(): string {
+  planningToApi(): string {
     return JSON.stringify(
       this,
-      ['name']
+      [
+        'name',
+        'postponedWeekNumber']
     );
   }
 

@@ -58,7 +58,8 @@
     "NAME": "Nom du planning",
     "DETAILS_PLANNING": "Détails du planning",
     "SEANCE_NUMBER_FOR_DAY": "séance",
-    "SEANCES_NUMBER_FOR_DAY": "séances"
+    "SEANCES_NUMBER_FOR_DAY": "séances",
+    "POSTPONED_WEEK_NUMBER": "Nombre de semaines d'avance"
   },
   "SNACKBAR": {
     "CREATE_USER_OK": "Création du nouvel utilisateur effectuée",
@@ -81,8 +82,8 @@
     "SEANCE_PLANNING_UPDATED_NOK": "Echec de la modification de la séance",
     "SET_PLANNING_ACTIVE_OK": "Modification du planning actif effectuée",
     "SET_PLANNING_ACTIVE_NOK": "Erreur lors de la mise à jour du planning actif",
-    "PLANNING_NAME_UPDATED_OK": "Nom du planning modifié",
-    "PLANNING_NAME_UPDATED_NOK": "Echec lors de la modification du nom",
+    "PLANNING_NAME_UPDATED_OK": "Informations du planning modifiées",
+    "PLANNING_NAME_UPDATED_NOK": "Echec lors de la modification des informations",
     "SEANCE_DELETED_OK": "Suppression de la séance effectuée",
     "SEANCE_DELETED_NOK": "Erreur lors de la suppression de la séance",
     "UPDATE_PASSWORD_OK": "Modification du mot de passe effectuée",
@@ -138,7 +139,7 @@
     "SUBSCRIBE": "S'inscrire à la séance",
     "PREVIOUS_DAY": "Vers le jour précédent",
     "NEXT_DAY": "Vers le prochain jour",
-    "EDIT_PLANNING_NAME": "Modifier le nom du planning",
+    "EDIT_PLANNING_NAME": "Modifier les informations du planning",
     "EDIT_SEANCE_PLANNING": "Modifier la séance du planning",
     "DELETE_SEANCE_PLANNING": "Supprimer la séance du planning",
     "VALID_SEANCE_PLANNING_CREATION": "Valider la création de séance",

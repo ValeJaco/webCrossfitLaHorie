@@ -9,7 +9,7 @@
                     class="hover-orange show-pointer"
                     matTooltip="{{ 'TOOLTIP.EDIT_PLANNING_NAME' | translate }}">edit
           </mat-icon>
-          <mat-icon (click)="savePlanningName()" *ngIf="!planning.readOnly"
+          <mat-icon (click)="savePlanningInformations()" *ngIf="!planning.readOnly"
                     class="hover-green show-pointer"
                     matTooltip="{{ 'TOOLTIP.SAVE_PLANNING_NAME' | translate }}">check
           </mat-icon>
@@ -20,6 +20,12 @@
           <mat-label>{{ "PLANNING.NAME" | translate }}</mat-label>
           <input [formControl]="nameFormControl" [readonly]="planning.readOnly" matInput
                  type="text"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ "PLANNING.POSTPONED_WEEK_NUMBER" | translate }}</mat-label>
+          <input [formControl]="postponedWeekNumberFormControl"
+                 [readonly]="planning.readOnly" matInput
+                 type="number"/>
         </mat-form-field>
       </div>
     </mat-card>

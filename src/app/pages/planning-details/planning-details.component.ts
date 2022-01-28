@@ -25,8 +25,10 @@ export class PlanningDetailsComponent implements OnInit {
   paramsPlanningId: number;
   seancesPlanningFormSubscriptions: Subscription[] = [];
   planningNameSubscriptions: Subscription;
+  postponedWeekNumberSubscriptions: Subscription;
 
   nameFormControl: FormControl;
+  postponedWeekNumberFormControl: FormControl;
 
   displayedColumns = ['seanceName', 'startTime', 'duration', 'maxSpot', 'unsubscribeHoursLimit', 'coach', 'location', 'actions'];
 
@@ -94,6 +96,9 @@ export class PlanningDetailsComponent implements OnInit {
     if (this.planningNameSubscriptions) {
       this.planningNameSubscriptions.unsubscribe();
     }
+    if (this.postponedWeekNumberSubscriptions) {
+      this.postponedWeekNumberSubscriptions.unsubscribe();
+    }
   }
 
   unsubscribeFromseancesPlanningFormControllers(): void {
@@ -107,15 +112,19 @@ export class PlanningDetailsComponent implements OnInit {
     this.planning.readOnly = false;
   }
 
-  savePlanningName(): void {
-    this.seancesPlanningFacadeService
-      .patchPlanning(this.planning.id, this.planning.planningNameToApi())
-      .pipe(take(1)).subscribe({
-      next: () => {
-        this.snackBarService.showSuccesSnackBar("SNACKBAR.PLANNING_NAME_UPDATED_OK")
-      }, error: () => this.snackBarService.showErrorSnackBar("SNACKBAR.PLANNING_NAME_UPDATED_NOK")
-    });
-    this.planning.readOnly = true;
+  savePlanningInformations(): void {
+    if (this.nameFormControl.valid && this.postponedWeekNumberFormControl.valid) {
+      this.seancesPlanningFacadeService
+        .patchPlanning(this.planning.id, this.planning.planningToApi())
+        .pipe(take(1)).subscribe({
+        next: () => {
+          this.snackBarService.showSuccesSnackBar("SNACKBAR.PLANNING_NAME_UPDATED_OK")
+        }, error: () => this.snackBarService.showErrorSnackBar("SNACKBAR.PLANNING_NAME_UPDATED_NOK")
+      });
+      this.planning.readOnly = true;
+    } else {
+      this.snackBarService.showWarningSnackBar("SNACKBAR.FORM_INCORRECT_DATA")
+    }
   }
 
   editSeancePlanning(seancePlanning: SeancePlanning): void {
@@ -193,11 +202,15 @@ export class PlanningDetailsComponent implements OnInit {
 
   initializeFormController() {
     this.nameFormControl = new FormControl(this.planning.name, [Validators.required]);
+    this.postponedWeekNumberFormControl = new FormControl(this.planning.postponedWeekNumber, [Validators.required, Validators.min(2)]);
   }
 
   initializeFormControllerSubscription() {
     this.planningNameSubscriptions = this.nameFormControl.valueChanges.subscribe(value => {
       this.planning.name = value;
+    });
+    this.postponedWeekNumberSubscriptions = this.postponedWeekNumberFormControl.valueChanges.subscribe(value => {
+      this.planning.postponedWeekNumber = value;
     });
   }
 

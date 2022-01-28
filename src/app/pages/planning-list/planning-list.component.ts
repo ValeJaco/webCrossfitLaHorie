@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Planning} from "../../models/planning";
 import {FormControl, Validators} from "@angular/forms";
 import {Subscription, take} from "rxjs";
@@ -23,6 +23,8 @@ export class PlanningListComponent implements OnInit, OnDestroy {
   nameFormControl: FormControl;
   nameSubscription: Subscription;
 
+  @ViewChild('paypalRef', {static: true}) private paypalRef: ElementRef;
+
   constructor(
     private seancesFacadeService: SeancesPlanningFacadeService,
     private router: Router,
@@ -37,7 +39,43 @@ export class PlanningListComponent implements OnInit, OnDestroy {
     this.planning = new Planning();
     this.loadAllPlannings();
     this.initializeFormController();
-    this.initializeFormControllerSubscription()
+    this.initializeFormControllerSubscription();
+    console.log(window.paypal);
+
+
+    window.paypal.Buttons(
+      {
+        style: {
+          layout: 'horizontal',
+          color: 'blue',
+          shape: 'rect',
+          label: 'paypal'
+        },
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: 150,
+                  currency_code: 'EUR'
+                }
+              }
+            ]
+          })
+        },
+        onApprove: (date, actions) => {
+          return actions.order.capture().then((details) => {
+              console.log(details);
+              alert('Transaction OK');
+            }
+          )
+        },
+        onError: error => {
+          console.log(error);
+        }
+      }
+    ).render(this.paypalRef.nativeElement)
+
   }
 
   initializeFormController(): void {
@@ -51,7 +89,7 @@ export class PlanningListComponent implements OnInit, OnDestroy {
   }
 
   createPlanning(): void {
-    this.seancesFacadeService.createPlanning(this.planning.planningNameToApi()).subscribe(response => {
+    this.seancesFacadeService.createPlanning(this.planning.planningToApi()).subscribe(response => {
       if (response.status === ResponseEnum.OK) {
         this.nameFormControl.setValue("");
         this.goToPlanningDetails(response.body.id)
