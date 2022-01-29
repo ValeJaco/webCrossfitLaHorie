@@ -43,7 +43,8 @@
     "CREATE_NEW_SEANCE": "Créer une nouvelle séance",
     "WAIT_LIST_POSITION": "File d'attente : ",
     "UNSUBSCRIBE_HOURS_LIMIT": "Heures avant désinscription",
-    "START_TIME": "Heure début"
+    "START_TIME": "Heure début",
+    "SEANCE_FULL": "Seance complète"
   },
   "ROLES": {
     "ROLE_COACH": "Coach",

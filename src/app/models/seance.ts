@@ -14,6 +14,7 @@ export class Seance {
   startDate: Date;
   duration: number;
   location: string;
+  seanceType: string;
   coachId: number;
   unsubscriptionHoursLimit: number;
   users: User[];
@@ -40,6 +41,7 @@ export class Seance {
       this.startDate = seance.startDate;
       this.duration = seance.duration;
       this.location = seance.location;
+      this.seanceType = seance.seanceType;
       // this.coachId = seance.coachId;
       this.unsubscriptionHoursLimit = seance.unsubscriptionHoursLimit;
       this.users = initGenericArrayFromJson(User, seance.users);

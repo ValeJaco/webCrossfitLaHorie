@@ -170,7 +170,6 @@ export class PlanningDetailsComponent implements OnInit {
       });
       confirmDialog.afterClosed().subscribe((result) => {
         if (result === true) {
-
           this.seancesPlanningFacadeService
             .deleteSeancePlanning(seancePlanning.id)
             .pipe(take(1)).subscribe({
