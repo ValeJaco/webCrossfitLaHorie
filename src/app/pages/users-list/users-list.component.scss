@@ -1,13 +1,13 @@
 .user-card {
   width: 80%;
   padding: 5px;
-  background-color: var(--military-yellow);
-  color: var(--papayawhip);
+  background-color: var(--content-background);
+  color: var(--main-text-color);
 }
 
 .search-user-field-card {
   padding: 10px;
-  background-color: var(--papayawhip);
+  background-color: var(--main-text-color);
   width: 80%;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .user-card:hover {
-  background-color: var(--hover-green);;
+  background-color: var(--main-hover);
 }
 
 .user-card mat-card-content {

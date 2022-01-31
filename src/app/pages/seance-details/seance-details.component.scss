@@ -1,11 +1,12 @@
 .planning-form-card {
-  background-color: var(--military-yellow);
-  color: var(--papayawhip);
+  background-color: var(--content-background);
+  color: var(--main-text-color);
   width: 80%;
 }
 
 .seance-form-card {
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
+  color: var(--main-text-color)
 }
 
 .div-height-100 {
@@ -37,7 +38,7 @@
 }
 
 .user-line-container:hover {
-  background-color: var(--hover-green);
+  background-color: var(--main-hover);
 }
 
 .user-line-container {
@@ -53,9 +54,10 @@
 .mat-expansion-panel-header:hover,
 .mat-expansion-panel-header.mat-expanded,
 .mat-expansion-panel-header.mat-expanded:hover {
-  background-color: var(--skin-yellow);
+  background-color: var(--button);
+  color: var(--main-text-color)
 }
 
 ::ng-deep .mat-expansion-panel-body {
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
 }

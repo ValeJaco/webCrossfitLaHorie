@@ -53,9 +53,9 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
       this.user.id)
       .pipe(take(1))
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.snackBarService.showSuccesSnackBar("SNACKBAR.RESET_USER_PASSWORD_OK");
-        }, error: err => {
+        }, error: () => {
           this.snackBarService.showErrorSnackBar("SNACKBAR.RESET_USER_PASSWORD_NOK");
         }
       });
@@ -69,9 +69,10 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
           this.user.userToApi())
           .pipe(take(1))
           .subscribe({
-            next: (response) => {
+            next: () => {
               this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_USER_OK");
-            }, error: err => {
+              this.router.navigate(['/users']).then();
+            }, error: () => {
               this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_USER_NOK");
             }
           });
@@ -80,9 +81,10 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
           this.user.userToApi())
           .pipe(take(1))
           .subscribe({
-            next: (response) => {
+            next: () => {
               this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_USER_OK");
-            }, error: err => {
+              this.router.navigate(['/users']).then();
+            }, error: () => {
               this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_USER_NOK");
             }
           });

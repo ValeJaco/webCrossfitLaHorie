@@ -101,7 +101,8 @@
     "LOG_OUT": "Se déconnecter",
     "PLANNING_MANAGEMENT": "Gestion planning",
     "MY_SEANCES_LIST": "Mes séances à venir",
-    "CHANGE_PASSWORD": "Changer mon MDP"
+    "CHANGE_PASSWORD": "Changer mon MDP",
+    "SUBSCRIPTIONS_MANAGEMENT": "Gérer mon abonnnement"
   },
   "AUTH": {
     "USERNAME": "Email",

@@ -45,7 +45,7 @@ export class MainContainerComponent implements OnInit {
 
   logOut() {
     this.securityFacadeService.logOut();
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/auth']).then();
     this.toggleMenu();
   }
 
@@ -53,4 +53,7 @@ export class MainContainerComponent implements OnInit {
     this.drawer.toggle();
   }
 
+  getCurrentUrl(): string {
+    return this.router.url;
+  }
 }

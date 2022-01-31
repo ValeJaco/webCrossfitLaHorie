@@ -77,7 +77,7 @@ export class SeancesListComponent implements OnInit, OnDestroy {
   }
 
   goToSeanceDetails(seanceId: number) {
-    this.router.navigate(['/seances/' + seanceId]);
+    this.router.navigate(['/seances/' + seanceId]).then();
   }
 
   getDateKey(date: Date): string {
@@ -139,7 +139,7 @@ export class SeancesListComponent implements OnInit, OnDestroy {
   }
 
   goToNewSeance() {
-    this.router.navigate(['/seances/new']);
+    this.router.navigate(['/seances/new']).then();
   }
 
   getJwtTokenObject(): JwtToken {

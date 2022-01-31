@@ -56,7 +56,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/custom-theme.scss",
+              "src/cflh-theme.scss",
+              "src/pasapa-theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -148,7 +149,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/custom-theme.scss",
+              "src/cflh-theme.scss",
+              "src/pasapa-theme.scss",
               "src/styles.scss"
             ],
             "scripts": []

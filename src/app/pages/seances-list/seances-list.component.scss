@@ -12,9 +12,9 @@
   position: sticky;
   position: -webkit-sticky; /* For macOS/iOS Safari */
   top: 0; /* Sets the sticky toolbar to be on top */
-  background-color: var(--military-green);
+  background-color: var(--toolbar-background);
   z-index: 5;
   width: 90%;
-  color: var(--papayawhip);
+  color: var(--main-text-color);
 }
 

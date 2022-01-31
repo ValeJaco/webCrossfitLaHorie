@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Seance} from "../../models/seance";
 import {Subscription, take} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SeancesFacadeService} from "../../services/seances/seances-facade.service";
 import {DatePipe} from "@angular/common";
 import {ResponseEnum} from "../../constants/response-enum";
@@ -33,6 +33,7 @@ export class SeanceDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private seancesFacade: SeancesFacadeService,
     private datePipe: DatePipe,
     private snackBarService: SnackBarService,
@@ -95,6 +96,7 @@ export class SeanceDetailsComponent implements OnInit {
           .subscribe({
             next: () => {
               this.snackBarService.showSuccesSnackBar("SNACKBAR.UPDATE_SEANCE_OK");
+              this.router.navigate(['/seances']).then();
             },
             error: () => {
               this.snackBarService.showErrorSnackBar("SNACKBAR.UPDATE_SEANCE_NOK");

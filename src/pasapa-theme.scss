@@ -11,7 +11,7 @@
 
 /* For use in src/lib/core/theming/_palette.scss */
 $md-cflh-palette: (
-  500: #596643,
+  500: #b04103,
   contrast: (
     500: #ffffff
   )
@@ -19,7 +19,7 @@ $md-cflh-palette: (
 
 
 $md-cflh-red-palette: (
-  500: #8B0000,
+  500: #b04103,
   contrast: (
     500: #ffffff
   )
@@ -70,14 +70,19 @@ $warn: map.get($color-config, 'warn');
   --grey-x-light: rgba(186, 186, 186, 0.54);
   --grey-xxx-light: rgba(229, 228, 228, 0.54);
 
-  --black-light: #2f2c2c;
-  --military-green: #596643;
-  --military-yellow: #94812B;
-  --hover-green: #71a417;
-  --skin-yellow: #bda37c;
-  --waiting-queue-blue: #098585;
-  --subscribed-green: #056405;
-  --papayawhip: papayawhip;
+  --body-background-color: #efd3c5;
+  --actions-color: rgba(255, 233, 219, 0.7);
+  --actions-hover-color: rgba(255, 233, 219, 0.7);
+  --toolbar-background: #2e63a9;
+  --content-background: #0faf97;
+  --main-hover: rgba(243, 108, 20, 0.8);
+  --button: #2e63a9;
+  --mat-tab-content: #578dd0;
+  --waiting-queue-color: #fe6103;
+  --subscribed-color: #1cfd1c;
+  --main-text-color: #ffffff;
+  --button-hover: #00cfff;
   --error-red: #ce0b0b;
   --valid-green: #056405;
+  --current-menu: #01b30a;
 }

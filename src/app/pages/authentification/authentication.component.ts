@@ -37,8 +37,8 @@ export class AuthenticationComponent implements OnInit {
     ).pipe(take(1)).subscribe({
       next: (authOk) => {
         this.securityStorageService.setJwtToken(authOk.body.jwt);
-        this.router.navigate(['/'])
-      }, error: err => {
+        this.router.navigate(['/']).then();
+      }, error: () => {
         this.snackBarService.showErrorSnackBar("SNACKBAR.AUTHENTICATION_NOK");
       }
     });

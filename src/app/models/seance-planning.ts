@@ -12,6 +12,7 @@ export class SeancePlanning {
   startTime: string;
   duration: number;
   location: string;
+  seanceType: string = 'ROLE_MEMBER';
   // coachId: number;
   unsubscriptionHoursLimit: number;
 
@@ -41,6 +42,7 @@ export class SeancePlanning {
       this.startTime = seancePlanning.startTime;
       this.duration = seancePlanning.duration;
       this.location = seancePlanning.location;
+      this.seanceType = seancePlanning.seanceType;
       // this.coachId = seancePlanning.coachId;
       this.unsubscriptionHoursLimit = seancePlanning.unsubscriptionHoursLimit;
     }
@@ -119,7 +121,8 @@ export class SeancePlanning {
         'startTime',
         'duration',
         'location',
-        'unsubscriptionHoursLimit'
+        'unsubscriptionHoursLimit',
+        'seanceType'
       ]) + suffix;
   }
 }

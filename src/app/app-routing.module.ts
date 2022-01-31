@@ -10,6 +10,7 @@ import {PlanningListComponent} from "./pages/planning-list/planning-list.compone
 import {PlanningDetailsComponent} from "./pages/planning-details/planning-details.component";
 import {MyIncomingSeancesComponent} from "./pages/my-incoming-seances/my-incoming-seances.component";
 import {ChangePasswordComponent} from "./pages/change-password/change-password.component";
+import {SubscriptionManagementComponent} from "./pages/subscription-management/subscription-management.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'seances', pathMatch: 'full'},
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'change',
     component: ChangePasswordComponent
+  },
+  {
+    path: 'subscriptions',
+    component: SubscriptionManagementComponent
   }];
 
 @NgModule({

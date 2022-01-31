@@ -1,5 +1,3 @@
-<div #paypalRef></div>
-
 <div @smoothAppearing class="flex-div">
   <div class="margin-auto width-100 max-width-800">
     <mat-card class="card-planning margin-auto">
@@ -12,12 +10,13 @@
                   matTooltip='{{ "TOOLTIP.EDIT_PLANNING" |translate}}'>
           edit
         </mat-icon>
-        <mat-icon (click)="setDefaultPlanning(currentPlanning)" *ngIf="!currentPlanning.isActive"
+        <mat-icon (click)="toogleDefaultPlanning(currentPlanning)" *ngIf="!currentPlanning.isActive"
                   class="hover-green show-pointer"
                   matTooltip='{{ "TOOLTIP.PLANNING_SET_TO_ACTIVE" |translate}}'>
           settings_backup_restore
         </mat-icon>
-        <mat-icon *ngIf="currentPlanning.isActive" class="planning-active-icon"
+        <mat-icon (click)="toogleDefaultPlanning(currentPlanning)" *ngIf="currentPlanning.isActive"
+                  class="planning-active-icon show-pointer"
                   matTooltip='{{ "TOOLTIP.PLANNING_IS_ACTIVE" |translate}}'>
           font_download
         </mat-icon>

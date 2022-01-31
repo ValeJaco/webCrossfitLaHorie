@@ -1,7 +1,8 @@
 .card-planning {
   margin-top: 20px;
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
   width: 85%;
+  color: var(--main-text-color)
 }
 
 .planning-list-div {
@@ -10,9 +11,9 @@
 }
 
 .planning-list-div:hover {
-  background-color: var(--hover-green);
+  background-color: var(--main-hover);
 }
 
 .planning-active-icon {
-  color: var(--military-green);
+  color: var(--toolbar-background);
 }

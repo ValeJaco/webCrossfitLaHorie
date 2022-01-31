@@ -1,4 +1,4 @@
-@import "custom-theme";
+@import "cflh-theme";
 
 .flex-div {
   display: flex;
@@ -25,18 +25,18 @@
   margin-top: 10px;
   margin-bottom: 10px;
   alignment: center;
-  background-color: var(--skin-yellow);
+  background-color: var(--button);
+  color: var(--main-text-color)
 }
 
 .form-button:hover {
-  background-color: var(--papayawhip);
+  background-color: var(--button-hover);
 }
 
 .spacer {
   flex: 1 1 auto;
   width: 100%;
 }
-
 
 .text-centered {
   text-align: center;
@@ -47,8 +47,8 @@
 }
 
 body {
-  background-color: var(--black-light);
-  color: var(--papayawhip);
+  background-color: var(--body-background-color);
+  color: var(--main-text-color);
 }
 
 .error-snackbar {
@@ -139,7 +139,7 @@ body {
 }
 
 mat-icon {
-  color: var(--black-light);
+  color: var(--actions-color);
 }
 
 .error-icon {
@@ -162,5 +162,14 @@ mat-icon {
 
 mat-hint {
   color: darkred !important;
+}
+
+.mat-list-item:hover {
+  background-color: var(--main-text-color) !important;
+  color: var(--toolbar-background) !important;
+}
+
+.current-menu {
+  background-color: var(--button-hover) !important;
 }
 

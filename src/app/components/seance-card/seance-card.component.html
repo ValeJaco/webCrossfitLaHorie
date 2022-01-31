@@ -20,15 +20,15 @@
     <div class="middle-seance-container text-left">
       <mat-card-title>{{seance.name}}</mat-card-title>
       <mat-card-content>
-        <p>{{seance.startDate | date: 'HH:mm':timeZone:'fr' }}</p>
+        <p>
+          {{seance.startDate | date: 'HH:mm':timeZone:'fr' }}
+          <span *ngIf='seance.location?.length > 0 '> - {{ seance.location}}</span>
+        </p>
         <p *ngIf='seance.users.length + seance.guests.length >= seance.maxSpot'>
           {{ "SEANCE.SEANCE_FULL" |translate}}
         </p>
         <p *ngIf='seance.users.length + seance.guests.length < seance.maxSpot'>
           {{seance.users.length + seance.guests.length}}/{{seance.maxSpot}}
-        </p>
-        <p>
-          {{ seance.seanceType}}
         </p>
       </mat-card-content>
     </div>

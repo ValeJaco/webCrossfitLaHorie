@@ -1,6 +1,6 @@
 .cancelButton {
   color: var(--white);
-  background-color: var(--military-green);
+  background-color: var(--toolbar-background);
   text-transform: uppercase;
 }
 
@@ -17,5 +17,5 @@
 }
 
 ::ng-deep .mat-dialog-container {
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
 }

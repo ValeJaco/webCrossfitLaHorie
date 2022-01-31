@@ -22,13 +22,13 @@
 }
 
 .is-subscribed-to-waiting {
-  background: linear-gradient(90deg, var(--waiting-queue-blue) 20%, var(--military-yellow) 90%);
+  background: linear-gradient(90deg, var(--waiting-queue-color) 20%, var(--content-background) 90%);
 
   border-radius: 5px 0 0 5px;
 }
 
 .is-subscribed {
-  background: linear-gradient(90deg, var(--subscribed-green) 20%, var(--military-yellow) 90%);
+  background: linear-gradient(90deg, var(--subscribed-color) 20%, var(--content-background) 90%);
   border-radius: 5px 0 0 5px;
 }
 
@@ -41,18 +41,23 @@
 .place_in_queue_number {
   margin-left: 14px;
   font-weight: bold;
-  color: var(--black-light);
+  color: var(--actions-color);
   margin-top: 12px;
 }
 
 ::ng-deep .mat-menu-panel {
-  background-color: var(--military-green);
+  background-color: var(--toolbar-background);
+}
+
+::ng-deep .mat-menu-content {
+  color: var(--main-text-color) !important;
 }
 
 .seance-card {
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
   padding: 0;
   border-radius: 5px;
+  color: var(--main-text-color)
 }
 
 .seance-card mat-card-title {
@@ -69,5 +74,6 @@
 
 .seance-menu-icon {
   margin-left: 5px;
+  color: var(--main-text-color)
 }
 

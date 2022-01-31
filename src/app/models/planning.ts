@@ -6,7 +6,7 @@ export class Planning {
   id: number;
   name: string;
   isActive: boolean;
-  postponedWeekNumber: number;
+  postponedWeekNumber: number = 4;
   seancesPlanning: SeancePlanning[];
   readOnly: boolean = true;
 

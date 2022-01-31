@@ -1,6 +1,6 @@
 .planning-mgt-day-main-container {
-  color: var(--papayawhip);
-  background-color: var(--military-green);
+  color: var(--main-text-color);
+  background-color: var(--toolbar-background);
   width: 80%;
   border-radius: 5px;
   padding-top: 5px;
@@ -12,11 +12,11 @@
 }
 
 .planning-seance-table-rows {
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
 }
 
 .planning-seance-table input {
-  background-color: var(--papayawhip);
+  background-color: var(--main-text-color);
 }
 
 .planning-mgt-day-seance-container {
@@ -46,7 +46,7 @@ th.mat-header-cell {
 }
 
 .read_only_line input {
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
   border: none;
   cursor: default;
 }
@@ -75,13 +75,14 @@ th.mat-header-cell {
 }
 
 .seance-planning-creation-icon:hover {
-  color: var(--skin-yellow);
+  color: var(--main-hover);
 }
 
 .card-update-planning {
-  background-color: var(--military-yellow);
+  background-color: var(--content-background);
   width: 80%;
   margin: 20px auto 0;
+  color: var(--main-text-color)
 }
 
 .no-seance-for-day-test {

@@ -44,6 +44,8 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {ChangePasswordComponent} from './pages/change-password/change-password.component';
+import {SubscriptionManagementComponent} from './pages/subscription-management/subscription-management.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 registerLocaleData(localeFr);
 
@@ -64,7 +66,8 @@ registerLocaleData(localeFr);
     SeanceCardComponent,
     SeancePlanningTabForDayComponent,
     ConfirmDialogComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    SubscriptionManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +100,8 @@ registerLocaleData(localeFr);
     MatAutocompleteModule,
     MatTableModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   exports: [
     BrowserAnimationsModule

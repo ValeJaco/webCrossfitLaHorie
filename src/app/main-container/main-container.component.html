@@ -26,22 +26,34 @@
     <ng-container *ngIf="isLoggedIn()">
       <mat-toolbar class="sidenav">{{ "SIDENAV.MENU" | translate }}</mat-toolbar>
       <mat-nav-list (click)="toggleMenu()" *ngIf="hasRoleCoach()">
-        <a [routerLink]="['/users']" mat-list-item>{{ "SIDENAV.USERS_LIST" | translate }}</a>
+        <div><a [routerLink]="['/users']"
+                mat-list-item
+                routerLinkActive="current-menu">{{ "SIDENAV.USERS_LIST" | translate }}</a>
+        </div>
       </mat-nav-list>
       <mat-nav-list (click)="toggleMenu()">
-        <a [routerLink]="['/seances']" mat-list-item>{{ "SIDENAV.SEANCES_LIST" | translate }}</a>
+        <a [routerLink]="['/seances']" mat-list-item
+           routerLinkActive="current-menu">{{ "SIDENAV.SEANCES_LIST" | translate }}</a>
       </mat-nav-list>
       <mat-nav-list (click)="toggleMenu()">
         <a [routerLink]="['/mySeances']"
-           mat-list-item>{{ "SIDENAV.MY_SEANCES_LIST" | translate }}</a>
+           mat-list-item
+           routerLinkActive="current-menu">{{ "SIDENAV.MY_SEANCES_LIST" | translate }}</a>
       </mat-nav-list>
       <mat-nav-list (click)="toggleMenu()" *ngIf="hasRoleCoach()">
         <a [routerLink]="['/planning']"
-           mat-list-item>{{ "SIDENAV.PLANNING_MANAGEMENT" | translate }}</a>
+           mat-list-item
+           routerLinkActive="current-menu">{{ "SIDENAV.PLANNING_MANAGEMENT" | translate }}</a>
       </mat-nav-list>
       <mat-nav-list (click)="toggleMenu()">
         <a [routerLink]="['/change']"
-           mat-list-item>{{ "SIDENAV.CHANGE_PASSWORD" | translate }}</a>
+           mat-list-item
+           routerLinkActive="current-menu">{{ "SIDENAV.CHANGE_PASSWORD" | translate }}</a>
+      </mat-nav-list>
+      <mat-nav-list (click)="toggleMenu()">
+        <a [routerLink]="['/subscriptions']"
+           mat-list-item
+           routerLinkActive="current-menu">{{ "SIDENAV.SUBSCRIPTIONS_MANAGEMENT" | translate }}</a>
       </mat-nav-list>
       <mat-nav-list (click)="logOut()">
         <a mat-list-item>{{ "SIDENAV.LOG_OUT" | translate }}</a>

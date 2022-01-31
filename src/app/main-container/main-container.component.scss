@@ -20,8 +20,8 @@
 }
 
 .main-toolbar {
-  background-color: var(--military-green);
-  color: var(--papayawhip);
+  background-color: var(--toolbar-background);
+  color: var(--main-text-color);
   position: sticky;
   position: -webkit-sticky; /* For macOS/iOS Safari */
   top: 0; /* Sets the sticky toolbar to be on top */
@@ -29,8 +29,8 @@
 }
 
 .sidenav, .sidenav a {
-  background-color: var(--military-green);
-  color: var(--papayawhip);
+  background-color: var(--toolbar-background);
+  color: var(--main-text-color);
 }
 
 .toolbar-account-icon {

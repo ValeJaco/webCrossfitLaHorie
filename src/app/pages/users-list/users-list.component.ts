@@ -35,11 +35,11 @@ export class UsersListComponent implements OnInit, OnDestroy {
   }
 
   goToUserDetails(userId: number) {
-    this.router.navigate(['/users/' + userId]);
+    this.router.navigate(['/users/' + userId]).then();
   }
 
   goToNewUser(): void {
-    this.router.navigate(['/users/new']);
+    this.router.navigate(['/users/new']).then();
   }
 
   initialiseFormController(): void {

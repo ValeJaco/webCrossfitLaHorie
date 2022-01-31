@@ -14,7 +14,7 @@ export class Seance {
   startDate: Date;
   duration: number;
   location: string;
-  seanceType: string;
+  seanceType: string = 'ROLE_MEMBER';
   coachId: number;
   unsubscriptionHoursLimit: number;
   users: User[];
@@ -120,7 +120,8 @@ export class Seance {
         'startDate',
         'duration',
         'location',
-        'unsubscriptionHoursLimit'
+        'unsubscriptionHoursLimit',
+        'seanceType'
       ]);
   }
 

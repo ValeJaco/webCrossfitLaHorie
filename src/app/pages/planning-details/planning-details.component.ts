@@ -88,7 +88,7 @@ export class PlanningDetailsComponent implements OnInit {
   }
 
   redirectToPlanningList() {
-    this.router.navigate(['/planning']);
+    this.router.navigate(['/planning']).then();
   }
 
   unsubscribeFromAll() {
