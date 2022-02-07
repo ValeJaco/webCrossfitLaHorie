@@ -114,8 +114,8 @@
           "options": {
             "browserTarget": "webCrossfitLaHorie:build",
             "ssl": true,
-            "sslKey": "/merge/privkey.pem",
-            "sslCert": "/merge/cert.pem"
+            "sslKey": "/etc/letsencrypt/live/wiki-jardin.fr/privkey.pem",
+            "sslCert": "/etc/letsencrypt/live/wiki-jardin.fr/cert.pem"
           },
           "configurations": {
             "production": {

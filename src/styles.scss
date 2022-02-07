@@ -49,6 +49,7 @@
 body {
   background-color: var(--body-background-color);
   color: var(--main-text-color);
+  //background-image: url('/assets/image/pas_apa.png');
 }
 
 .error-snackbar {
@@ -171,5 +172,9 @@ mat-hint {
 
 .current-menu {
   background-color: var(--button-hover) !important;
+}
+
+.bottom-spacer {
+  min-height: 40px;
 }
 

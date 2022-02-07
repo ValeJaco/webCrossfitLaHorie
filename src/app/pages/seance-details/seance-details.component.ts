@@ -107,8 +107,9 @@ export class SeanceDetailsComponent implements OnInit {
           this.seance.seanceToApi())
           .pipe(take(1))
           .subscribe({
-            next: () => {
+            next: (seance) => {
               this.snackBarService.showSuccesSnackBar("SNACKBAR.CREATE_SEANCE_OK");
+              this.seance.id = seance.body.id;
             },
             error: () => {
               this.snackBarService.showErrorSnackBar("SNACKBAR.CREATE_SEANCE_NOK");
